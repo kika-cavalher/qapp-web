@@ -1,0 +1,68 @@
+@import '../global/variables.scss';
+
+.btn__send {
+
+    button {
+        align-items: center;
+        background: $turquoise;
+        border: 0;
+        border-radius: 8px;
+        color: $white;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        font-size: 1.2rem;
+        font-weight: 600;
+        height: 35px;
+        justify-content: center;
+        width: 10rem;
+    }
+}
+
+.btn__google {
+    align-items: center;
+    background: $red_google;
+    border: 0;
+    border-radius: 8px;
+    color: $white-offwhite;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    transition: filter 0.2s;
+    width: 100%;
+
+    @include monitor {
+        font-size: 1rem;
+        height: 35px;
+    }
+    
+    @include notebook {
+        font-size: 0.9rem;
+        height: 35px;
+    }
+
+    @include tablet {
+        font-size: 0.8rem;
+        height: 35px;
+    }
+
+    @include phone {
+        font-size: 0.8rem;
+        height: 30px;
+    }
+
+    @include slim {
+        font-size: 0.8rem;
+        height: 35px;
+    }
+
+    #img-icon__google {
+        margin: 0 5%;
+        width: 20px;
+
+        @include phone {
+            margin: 0 3%;
+            width: 15px;
+        }
+    }
+}

@@ -1,0 +1,25 @@
+#page-login {
+    display: flex;
+    align-items: stretch;
+    height: 100vh;
+}
+
+main {
+    flex: 8;
+
+    padding: 0 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+aside {
+    flex: 7;
+    padding: 120px 80px;
+
+    img {
+      max-width: 320px;
+    }
+}

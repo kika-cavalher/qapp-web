@@ -1,0 +1,16 @@
+@import 'variables.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: $white-offwhite;
+    color: $dark-grey;
+  }
+  
+  body, input, button, textarea {
+    font: 400 16px 'Rajdhani', sans-serif;
+  }
