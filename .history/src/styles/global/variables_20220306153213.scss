@@ -1,0 +1,50 @@
+//colors
+$white: #fff;
+$white-offwhite: #f8f8f8;
+$dark-offwhite: #f3f3f3;
+$grey_border: #a8a8b3;
+$dark-grey: #515158;
+
+$turquoise: #1ac7c5;
+$dark-greenish: #119d9c;
+$dark-pink: #c86291;
+$light-pink: #f8eaea;
+
+$red_google: #ea4335;
+
+// media queries
+$monitor-width: 1300px;
+@mixin monitor {
+    @media (min-width: #{$monitor-width}) {
+        @content;
+    }
+}
+
+$notebook-width: 1300px;
+$notebook-height: 700px;
+@mixin notebook {
+    @media (max-width: #{$notebook-width}) and (min-height: #{$notebook-height}){
+        @content;
+    }
+}
+
+$tablet-width: 850px;
+@mixin tablet {
+    @media (max-width: #{$tablet-width}){
+        @content;
+    }
+}
+
+$phone-width: 500px;
+@mixin phone {
+    @media (max-width: #{$phone-width}){
+        @content;
+    }
+}
+
+$screen-slim: 700px;
+@mixin slim {
+    @media (max-height: #{$screen-slim}) {
+        @content;
+    }
+}

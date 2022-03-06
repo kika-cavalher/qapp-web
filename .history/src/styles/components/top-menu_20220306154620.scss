@@ -1,0 +1,46 @@
+@import '../global/variables.scss';
+
+#component--top-menu {
+    background: $dark-offwhite;
+    border-bottom: 0.5px solid #DAD2D2;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
+    display: flex;
+    flex-direction: row;
+    height: 13vh;
+    justify-content: space-between;
+    width: 100vw;
+}
+
+.component--top-menu__logo {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-left: 0.5rem;
+
+    #img-logo {
+        cursor: pointer;
+        height: 60px;
+        width: 60px;
+    
+        @include phone {
+            width: 50px;
+        }
+    }
+
+    p {
+        font-size: 1rem;
+        font-weight: 500;;
+        width: 5rem;
+    }
+}
+
+.component--top-menu__pages {
+    align-items: center;
+    display: flex;
+    font-size: 1.2rem;
+    width: 100%;
+
+    Link {
+        margin-left: 2rem;
+    }
+}

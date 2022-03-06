@@ -1,0 +1,50 @@
+@import '../global/variables.scss';
+
+#component--search {
+    display: flex;
+    align-items: center;
+}
+
+.component--search__input {
+    display: flex;
+    align-items: center;
+    margin-right: 0.8rem;
+
+    input {
+        background: $transparente;
+        border: 1px solid $grey_border;
+        border-radius: 8px;
+        color: $dark-grey;
+        font-size: 0.8rem;
+        font-weight: 500;
+        height: 1.6rem;
+        margin: 0.5rem 0;
+        outline: none;
+        padding: 0 10px;
+        width: 17rem;    
+        z-index:2;
+    }
+
+    .search__input--icon {
+        align-items: flex-end;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 15em;
+        z-index:1;
+
+        img {
+            height: 1rem;
+            width: 1rem;
+        }
+    }
+}
+
+.component--filters {
+    margin-left: 0.8rem;
+
+    img {
+        height: 2rem;
+        width: 2.2rem;
+    }
+}

@@ -1,0 +1,25 @@
+@import '../global/variables.scss';
+
+#component--top-menu {
+    background: $turquoise;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 15vh;
+}
+
+.component--top-menu__logo {
+    display: flex;
+    flex-direction: row;
+
+    #img-logo {
+        cursor: pointer;
+        height: 80px;
+        width: 80px;
+    
+        @include phone {
+            width: 50px;
+        }
+    }
+}
+
