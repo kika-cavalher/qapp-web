@@ -1,0 +1,291 @@
+@import '../global/variables.scss';
+
+.page-register--main__container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+
+    @include monitor {
+        width: 40vw;
+    }
+    
+    @include notebook {
+        width: 50vw;
+    }
+
+    @include tablet {
+        width: 100vw;
+    }
+
+    @include slim {
+        width: 50vw;
+    }
+}
+
+.page-register--main__header {
+    display: flex;
+    flex-direction: row;
+    margin: 2rem 0;
+}
+
+.page-register--main__logo {
+
+    #img-logo {
+        cursor: pointer;
+        width: 85px;
+    }
+}
+
+.page-register--main__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+
+    @include slim {
+        width: 67%;
+    }
+}
+
+.page-register--container__title{
+
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        font-weight: 500;
+
+        @include monitor {
+            font-size: 3rem;
+        }
+        
+        @include notebook {
+            font-size: 2rem;
+        }
+    
+        @include tablet {
+            font-size: 1.8rem;
+        }
+    
+        @include phone {
+            font-size: 1.6rem;
+        }
+
+        @include slim {
+            font-size: 2.3rem;
+        }
+    }
+
+    h2 {
+        font-weight: 400;
+
+        @include monitor {
+            font-size: 1.8rem;
+        }
+        
+        @include notebook {
+            font-size: 1.3rem;
+        }
+    
+        @include tablet {
+            font-size: 1rem;
+        }
+    
+        @include phone {
+            font-size: 1rem;
+        }
+
+        @include slim {
+            font-size: 1.5rem;
+        }
+    }
+        
+    .page-register--main__link-register {
+        color: $dark-grey;
+        cursor: pointer;
+        font-weight: 400;
+        text-decoration: underline 1px;
+        text-underline-position: from-font;
+
+        @include monitor {
+            font-size: 2rem;
+        }
+        
+        @include notebook {
+            font-size: 1.5rem;
+        }
+    
+        @include tablet {
+            font-size: 1.3rem;
+        }
+    
+        @include phone {
+            font-size: 1.1rem;
+        }
+
+        @include slim {
+            font-size: 1.3rem;
+        }
+
+            &:hover {
+                font-weight: 600;
+                color: $dark-greenish
+            }
+        }
+}
+
+
+
+.page-register--main__forms {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    div {
+        justify-content: center;
+        margin-bottom: 2.5rem;
+        width: 100%;
+
+        @include slim {
+            margin-bottom: 1rem;
+        }
+    }
+
+    form {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin: 2rem 0;
+        width: 100%;
+
+        &:first-child {
+            margin-top: 2rem;
+
+            @include slim {
+                margin-top: 1rem;
+            }
+        }
+
+        &:last-child {
+            margin-bottom: 2rem;
+
+            @include slim {
+                margin-bottom: 1.3rem;
+            }
+        }
+
+        @include monitor {
+            max-width: 30rem;
+            width: 80%;
+        }
+        
+        @include notebook {
+            min-width: 18rem;
+            width: 60%;
+        }
+        
+        @include tablet {
+            max-width: 15rem;
+            width: 40%;
+        }
+        
+        @include phone {
+            margin: 2rem 0;
+            max-width: 25rem;
+        }
+        
+        @include slim {
+            margin: 0;
+            min-width: 15rem;
+            max-width: 20rem;
+            width: 75%;
+        }
+
+        p {
+            font-weight: 600;
+
+            @include monitor {
+                font-size: 1.3rem;
+            }
+
+            @include notebook {
+                font-size: 1.2rem;
+            }
+            
+            @include tablet {
+                font-size: 1rem;
+            }
+            
+            @include phone {
+                font-size: 1.3rem;
+            }
+            
+            @include slim {
+                font-size: 1.1rem;
+            }
+        }
+    
+        input {
+            background: $white;
+            border: 1px solid $grey_border;
+            border-radius: 8px;
+            color: $dark-grey;
+            font-weight: 500;
+            margin: 0.5rem 0;
+            outline: none;
+            padding: 0 16px;
+            width: 100%;
+
+            @include monitor {
+                font-size: 1rem;
+                height: 2.5rem;
+            }
+            
+            @include notebook {
+                font-size: 1rem;
+                height: 2.5rem;
+
+            }
+            
+            @include tablet {
+                font-size: 0.8rem;
+            }
+            
+            @include phone {
+            }
+            
+            @include slim {
+                font-size: 0.8rem;
+                height: 2rem;
+            }
+    
+            &:hover {
+                border: 2px solid $dark-greenish;
+
+                @include phone {
+                    border: 1px solid $dark-greenish;
+                }
+                
+                @include slim {
+                    border: 1px solid $dark-greenish;
+                }
+            }
+                
+            &:focus-visible {
+                border: 2px solid $dark-greenish;
+
+                @include phone {
+                    border: 1px solid $dark-greenish;
+                }
+                
+                @include slim {
+                    border: 1px solid $dark-greenish;
+                }
+            }
+        }
+    }
+}
