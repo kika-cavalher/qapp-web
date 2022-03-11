@@ -4,6 +4,8 @@ import { auth, firebase } from "../services/firebase";
 type User = {
   id: string;
   name: string;
+/*   email: string;
+  password: string; */
   avatar: string;
 }
 
@@ -29,7 +31,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
         if (!displayName || !photoURL) {
           throw new Error('Missing information from Google Account.');
         }
-
+        console.log(user)
         setUser({
           id: uid,
           name: displayName,

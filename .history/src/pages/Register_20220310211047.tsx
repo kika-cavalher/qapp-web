@@ -1,38 +1,65 @@
 import { Link } from 'react-router-dom'
-import {FormEvent, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import React, {createContext, ReactNode, useState} from 'react';
 import validator from 'validator'
     
 import { Button } from '../components/Button';
-import Logo from '../components/Logo';
     
 import imgLogin from '../assets/images/imgLogin.jpg';
+import logoQapp from '../assets/images/logoQapp.png';
 import '../styles/pages/login.scss'
 import '../styles/pages/register.scss'
-import React from 'react';
 
+type UserRegister = {
+    id: string;
+    name: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+}
+
+/* type ValidatorPassword = {
+    password: string;
+  }
+
+type errorMessage = {
+    error: String;
+}
+
+
+  } */
     
 export function RegisterPage () {
-    const [state, setState] = React.useState({
-        name: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
-      })
+    const history = useNavigate();
+    const [user, setUser] = useState<UserRegister>();
+    const [values, setValues] = useState(initialState)
 
-    function handleChange(e: any) {
-        const value = e.target.value;
-        setState({
-          ...state,
-          [e.target.name]: value
-        });
-      }
+    function navigateToHome(e: { preventDefault: () => void; }) {
+        e.preventDefault();
+        history('/');
+    };
 
-
-    function aoEnviar() {
-        console.log({...state})
+    function initialState() {
+        return {name: '', email: '', password: '', confirmPassword: '',};
+        }
     }
 
-    function enviarFOrmulario(e: FormEvent) {
+    function handleUserRegister(e: any) {
+        const {value, name} = e.target;
+
+        setValues ({
+            ...values,
+            [name]: value,
+        })
+    };
+
+
+
+/*     function aoEnviar() {
+        console.log()
+    } */
+
+    function enviarFOrmulario(e: { preventDefault: () => void; }) {
         e.preventDefault();
         aoEnviar();
     };
@@ -61,7 +88,7 @@ export function RegisterPage () {
                 <div className='page-register--main__container'>
                     <div className='page-register--main__header'>
                         <div className='page-register--main__logo'>
-                            <Logo />
+                            <img onClick={navigateToHome} id="img-logo" src={logoQapp} alt="Logo da empresa QApp" />
                         </div>
                         <div className='page-register--main__title'>
                             <div className='page-register--container__title'>
@@ -78,38 +105,39 @@ export function RegisterPage () {
                             <div className='page-register--forms__name'>
                                     <p>Nome</p>
                                     <input
+                                    value={userRegister.name}
                                     name="name"
-                                    value={state.name}
-                                    onChange={handleChange}
+                                    onChange={handleUserRegister}
                                     type="text" 
                                     placeholder="Insira o seu nome"/>
                             </div>
                             <div className='page-register--forms__email'>
                                     <p>E-mail</p>
                                     <input
-                                    name="email"                                    
-                                    value={state.email}
-                                    onChange={handleChange}
+                                    value={userRegister.email}
+                                    name="email"
+                                    onChange={handleUserRegister}
                                     type="text" 
                                     placeholder="Insira o seu e-mail"/>
                             </div>
                             <div className='page-register--forms__password'>
-                                    <p>Senha</p>
-                                    <input
-                                    name="password"                                    
-                                    value={state.password}
-                                    onChange={handleChange}
-                                    type="text" 
-                                    placeholder="Insira sua senha"/>                 
-                                    <span style={{ fontWeight: 'bold', color: 'red', }}>
-                                        {ValidatorPassword}</span>
+                                <p>Senha</p>
+                                <input
+                                value={ValidatorPassword(userRegister.password)}
+                                name="password"
+                                onChange={handleUserRegister}   
+                                name="senha"
+                                type="text" 
+                                placeholder="Insira sua senha"/>                 
+                                <span style={{ fontWeight: 'bold', color: 'red', }}>
+                                    {ValidatorPassword}</span>
                             </div>
                             <div className='page-register--forms__confirm-password'>
                                     <p>Confirmar senha</p>
                                     <input
+                                    value={userRegister.confirmPassword}
                                     name="confirmPassword"
-                                    value={state.confirmPassword}
-                                    onChange={handleChange}                                 
+                                    onChange={handleUserRegister}                                  
                                     type="text" 
                                     placeholder="Confirmar senha"/>
                             </div>

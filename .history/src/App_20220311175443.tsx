@@ -2,7 +2,7 @@ import { AuthContextProvider } from './contexts/AuthContext'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { ProjectPage  } from "./pages/Project";
-import { LoginPage } from "./pages/Login";
+import LoginPage from "./pages/Login";
 import { RegisterPage } from "./pages/Register";
 
 

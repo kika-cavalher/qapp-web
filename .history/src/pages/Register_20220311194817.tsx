@@ -10,9 +10,30 @@ import '../styles/pages/login.scss'
 import '../styles/pages/register.scss'
 import React from 'react';
 
+
+type UserRegister = {
+    id: string;
+    name: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+}
+
+/* type ValidatorPassword = {
+    password: string;
+  }
+
+type errorMessage = {
+    error: String;
+}
+
+
+  } */
     
 export function RegisterPage () {
+    const [user, setUser] = useState<UserRegister>();
     const [state, setState] = React.useState({
+        id: "",
         name: "",
         email: "",
         password: "",
@@ -78,7 +99,6 @@ export function RegisterPage () {
                             <div className='page-register--forms__name'>
                                     <p>Nome</p>
                                     <input
-                                    name="name"
                                     value={state.name}
                                     onChange={handleChange}
                                     type="text" 
@@ -87,29 +107,27 @@ export function RegisterPage () {
                             <div className='page-register--forms__email'>
                                     <p>E-mail</p>
                                     <input
-                                    name="email"                                    
                                     value={state.email}
                                     onChange={handleChange}
                                     type="text" 
                                     placeholder="Insira o seu e-mail"/>
                             </div>
                             <div className='page-register--forms__password'>
-                                    <p>Senha</p>
-                                    <input
-                                    name="password"                                    
-                                    value={state.password}
-                                    onChange={handleChange}
-                                    type="text" 
-                                    placeholder="Insira sua senha"/>                 
-                                    <span style={{ fontWeight: 'bold', color: 'red', }}>
-                                        {ValidatorPassword}</span>
+                                <p>Senha</p>
+                                <input
+                                value={state.password}
+                                onChange={handleChange}
+                                name="senha"
+                                type="text" 
+                                placeholder="Insira sua senha"/>                 
+                                <span style={{ fontWeight: 'bold', color: 'red', }}>
+                                    {ValidatorPassword}</span>
                             </div>
                             <div className='page-register--forms__confirm-password'>
                                     <p>Confirmar senha</p>
                                     <input
-                                    name="confirmPassword"
-                                    value={state.confirmPassword}
-                                    onChange={handleChange}                                 
+                                value={state.confirmPassword}
+                                onChange={handleChange}                                 
                                     type="text" 
                                     placeholder="Confirmar senha"/>
                             </div>

@@ -1,19 +1,26 @@
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 
+
 import { useAuth } from '../hooks/useAuth';
-import Logo from '../components/Logo';
 
 import { Button } from '../components/Button';
 import imgLogin from '../assets/images/imgLogin.jpg';
+import logoQapp from '../assets/images/logoQapp.png';
 import googleIconImg from '../assets/icon/googleIconImg.png';
 import '../styles/pages/login.scss'
-
+import { useContext } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
 
 export function LoginPage() {
     const history = useNavigate();
     const { user, signInWithGoogle } = useAuth()
 
+    function navigateToHome(e: { preventDefault: () => void; }) {
+        e.preventDefault();
+        history('/');
+    }
+    
     async function handleCreateUser () {
         if (!user) {
             await signInWithGoogle()
@@ -26,7 +33,7 @@ export function LoginPage() {
             <main>
                 <div className='page-login--main__container'>
                     <div className='page-login--main__logo'>
-                        <Logo />
+                        <img onClick={navigateToHome} id="img-logo" src={logoQapp} alt="Logo da empresa QApp" />
                     </div>
                     <div className='page-login--main__title'>
                         <div className='page-login--container__title'>

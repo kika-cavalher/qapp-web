@@ -1,4 +1,3 @@
-import { FormEvent } from "react";
 
 import { TopMenu } from "../components/Top-menu";
 import { Search } from "../components/Search";
@@ -6,14 +5,14 @@ import { Footer } from "../components/Footer";
 
 import iconAdd from '../assets/icon/add.png';
 import '../styles/pages/project.scss'
-
+import { Button } from "../components/Button";
 
 export function ProjectPage () {
     const arrumarVariavel = "Projetos";
 
-    async function HandleCreateProject(e:FormEvent) {
-        e.preventDefault();
-    }
+/*     async function HandleCreateProject(e) {
+
+    } */
 
     return (
         <div id="page-project">

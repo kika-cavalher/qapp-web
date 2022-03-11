@@ -10,8 +10,28 @@ import '../styles/pages/login.scss'
 import '../styles/pages/register.scss'
 import React from 'react';
 
+
+type UserRegister = {
+    id: string;
+    name: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+}
+
+/* type ValidatorPassword = {
+    password: string;
+  }
+
+type errorMessage = {
+    error: String;
+}
+
+
+  } */
     
 export function RegisterPage () {
+    const [user, setUser] = useState<UserRegister>();
     const [state, setState] = React.useState({
         name: "",
         email: "",

@@ -1,13 +1,22 @@
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
 import { useAuth } from '../hooks/useAuth';
 
+import logoQapp from '../assets/images/logoQapp.png';
 import '../styles/components/top-menu.scss'
-import Logo from './Logo';
 
 export function TopMenu () {
 
     const { user } = useAuth()
+    const history = useNavigate();
+    
+        function navigateToHome(e: { preventDefault: () => void; }) {
+            e.preventDefault();
+            history('/');
+        }
+/* 
+    const initials = String(user?.name).split(" "); */
     const fullName = String(user?.name);
     const initials = fullName.normalize('NFD').replace(/[\u0300-\u036f]/g, "").split(" ");
 
@@ -22,7 +31,7 @@ export function TopMenu () {
     return (
         <div id="component--top-menu">
              <div className='component--top-menu__logo'>
-                <Logo />
+                <img onClick={navigateToHome} id="img-logo" src={logoQapp} alt="Logo da empresa QApp" />
                 <p>Gerenciador de testes.</p>
             </div>
             <div className='component--top-menu__pages'>

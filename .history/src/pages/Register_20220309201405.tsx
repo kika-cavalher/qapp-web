@@ -1,67 +1,74 @@
 import { Link } from 'react-router-dom'
-import {FormEvent, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
 import validator from 'validator'
     
 import { Button } from '../components/Button';
-import Logo from '../components/Logo';
     
 import imgLogin from '../assets/images/imgLogin.jpg';
+import logoQapp from '../assets/images/logoQapp.png';
 import '../styles/pages/login.scss'
 import '../styles/pages/register.scss'
-import React from 'react';
 
+type ValidatorPassword = {
+    password: string;
+  }
+
+/* type UserRegister = {
+    id: string;
+    name: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+  } */
     
 export function RegisterPage () {
-    const [state, setState] = React.useState({
-        name: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
-      })
-
-    function handleChange(e: any) {
-        const value = e.target.value;
-        setState({
-          ...state,
-          [e.target.name]: value
-        });
-      }
-
+    const history = useNavigate();
+    const [nome, setNome] = useState("")
+    const [email, setEmail] = useState("")
+    const [senha, setSenha] = useState("")
+    const [confirmarSenha, setConfirmarSenha] = useState("")
+    const [errorMessage, setErrorMessage] = useState('')
+    
+    
+    function navigateToHome(e: { preventDefault: () => void; }) {
+        e.preventDefault();
+        history('/');
+    };
 
     function aoEnviar() {
-        console.log({...state})
+        console.log(nome, email, senha, confirmarSenha)
     }
 
-    function enviarFOrmulario(e: FormEvent) {
+    function enviarFOrmulario(e: { preventDefault: () => void; }) {
         e.preventDefault();
         aoEnviar();
     };
 
 
-    function ValidatorPassword(senha: string) {
-        const [error, setErrorMessage] = useState(''); 
-        if(!senha === undefined) {
-            if (validator.isStrongPassword(senha, {
-                minLength: 8, minLowercase: 1,
-                minUppercase: 1, minNumbers: 1, minSymbols: 1
-              })) {
-                setErrorMessage('Senha forte')
-                console.log(senha)
-                return senha
-              } else {
-                setErrorMessage('Senha fraca')
-                console.log(senha)
-            }
-        }
-    }; 
 
+/*         function ValidatorPassword(e: any) {
+
+        function ValidatorPassword(props: ValidatorPassword, e) {
+        const password = setSenha(e.target.value)
+        if (validator.isStrongPassword(password, {
+            minLength: 8, minLowercase: 1,
+            minUppercase: 1, minNumbers: 1, minSymbols: 1
+          })) {
+            setErrorMessage('Senha forte')
+          } else {
+            setErrorMessage('Senha fraca')
+        }
+    }; */
+
+    
     return (
         <div id="page-login">
             <main>
                 <div className='page-register--main__container'>
                     <div className='page-register--main__header'>
                         <div className='page-register--main__logo'>
-                            <Logo />
+                            <img onClick={navigateToHome} id="img-logo" src={logoQapp} alt="Logo da empresa QApp" />
                         </div>
                         <div className='page-register--main__title'>
                             <div className='page-register--container__title'>
@@ -78,38 +85,36 @@ export function RegisterPage () {
                             <div className='page-register--forms__name'>
                                     <p>Nome</p>
                                     <input
-                                    name="name"
-                                    value={state.name}
-                                    onChange={handleChange}
+                                    value={nome}
+                                    onChange={(e) => {setNome(e.target.value)}}
                                     type="text" 
                                     placeholder="Insira o seu nome"/>
                             </div>
                             <div className='page-register--forms__email'>
                                     <p>E-mail</p>
                                     <input
-                                    name="email"                                    
-                                    value={state.email}
-                                    onChange={handleChange}
+                                    value={email}
+                                    onChange={(e) => {setEmail(e.target.value)}}
                                     type="text" 
                                     placeholder="Insira o seu e-mail"/>
                             </div>
                             <div className='page-register--forms__password'>
-                                    <p>Senha</p>
-                                    <input
-                                    name="password"                                    
-                                    value={state.password}
-                                    onChange={handleChange}
-                                    type="text" 
-                                    placeholder="Insira sua senha"/>                 
-                                    <span style={{ fontWeight: 'bold', color: 'red', }}>
-                                        {ValidatorPassword}</span>
+                                <p>Senha</p>
+                                <input
+                                value={senha}
+                                onChange={(e) => {setSenha(e.target.value)}}    
+                                name="senha"
+                                type="text" 
+                                placeholder="Insira sua senha"/>
+{/*                                 onChange={(e) => ValidatorPassword(e.target.value)}    */}                 
+                                <span style={{ fontWeight: 'bold', color: 'red', }}>
+                                    {errorMessage}</span>
                             </div>
                             <div className='page-register--forms__confirm-password'>
                                     <p>Confirmar senha</p>
                                     <input
-                                    name="confirmPassword"
-                                    value={state.confirmPassword}
-                                    onChange={handleChange}                                 
+                                    value={confirmarSenha}
+                                    onChange={(e) => {setConfirmarSenha(e.target.value)}}                                    
                                     type="text" 
                                     placeholder="Confirmar senha"/>
                             </div>
