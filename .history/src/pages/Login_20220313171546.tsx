@@ -32,7 +32,7 @@ export function LoginPage() {
         if (!user) {
             await signInWithGoogle()
           }
-            history('/')
+          SignIn()
         }
 
     function handleSignInWithEmailAndPassword() {
@@ -41,14 +41,21 @@ export function LoginPage() {
             signInWithEmailAndPassword(auth, state.email, state.password)
             .then((userCredential) => {
                 const user = userCredential.user;
+                return user
             })
             .catch((error) => {
                 if(error.code ==='auth/user-not-found'||error.code ==='auth/wrong-password'){
                     alert('Usuário não encontrado. Email e/ou senha inválida!')
                 }
             });
+                SignIn()
             }
-                history('/')
+        }
+
+    function SignIn() {
+        if(user) {
+            history('/')
+            }
         }
 
         return (

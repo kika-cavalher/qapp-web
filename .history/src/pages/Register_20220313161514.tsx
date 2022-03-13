@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
+import {FormEvent, useState} from 'react';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
     
 import { Button } from '../components/Button';
@@ -32,9 +33,10 @@ export function RegisterPage () {
       createUserWithEmailAndPassword(auth, state.email, state.password)
       .then((userCredential) => {
         const user = userCredential.user;
+        history('/')
         })
           .catch(error=>{
-            e.preventDefault();
+            console.log(error.code)
         
             if(error.code==='auth/email-already-in-use'){
               alert('Email não disponível. Escolha outro email para cadastrar')
@@ -48,7 +50,6 @@ export function RegisterPage () {
               alert('A senha deve ter no mínimo 6 dígitos')
             }
           })
-          history('/auth/sign-in')
     };
 
     return (

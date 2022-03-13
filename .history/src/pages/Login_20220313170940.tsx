@@ -32,7 +32,7 @@ export function LoginPage() {
         if (!user) {
             await signInWithGoogle()
           }
-            history('/')
+          SignIn()
         }
 
     function handleSignInWithEmailAndPassword() {
@@ -47,8 +47,14 @@ export function LoginPage() {
                     alert('Usuário não encontrado. Email e/ou senha inválida!')
                 }
             });
+                SignIn()
             }
-                history('/')
+        }
+
+    function SignIn() {
+        if(user) {
+            history('/')
+            }
         }
 
         return (

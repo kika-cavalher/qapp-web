@@ -8,6 +8,7 @@ import imgLogin from '../assets/images/imgLogin.jpg';
 import '../styles/pages/login.scss'
 import '../styles/pages/register.scss'
 import React from 'react';
+import { auth } from '../services/firebase';
 
     
 export function RegisterPage () {
@@ -27,14 +28,15 @@ export function RegisterPage () {
         });
       }
 
-    function handleCreateUserAccount(e: any) {
+    function handleCreateUserAccount() {
       const auth = getAuth();
       createUserWithEmailAndPassword(auth, state.email, state.password)
       .then((userCredential) => {
+        history('/auth/sign-in')
         const user = userCredential.user;
+        return user
         })
           .catch(error=>{
-            e.preventDefault();
         
             if(error.code==='auth/email-already-in-use'){
               alert('Email não disponível. Escolha outro email para cadastrar')
@@ -48,8 +50,16 @@ export function RegisterPage () {
               alert('A senha deve ter no mínimo 6 dígitos')
             }
           })
-          history('/auth/sign-in')
     };
+
+    function SignUp(e: any) {
+    const user = auth.currentUser
+    if(!user){
+        handleCreateUserAccount()
+        history('auth/sign-in')
+        }
+    }
+
 
     return (
         <div id="page-login">
@@ -108,7 +118,7 @@ export function RegisterPage () {
                                     placeholder="Confirmar senha"/>
                             </div>
                             <div className='btn__send'>
-                                <Button onClick={handleCreateUserAccount} type="submit">Entrar</Button>
+                                <Button onClick={SignUp} type="submit">Entrar</Button>
                             </div>
                         </form>
                     </div>

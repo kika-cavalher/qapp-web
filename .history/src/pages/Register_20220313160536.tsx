@@ -1,4 +1,5 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import {FormEvent, useState} from 'react';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
     
 import { Button } from '../components/Button';
@@ -11,7 +12,6 @@ import React from 'react';
 
     
 export function RegisterPage () {
-    const history = useNavigate();
     const [state, setState] = React.useState({
         name: "",
         email: "",
@@ -27,14 +27,16 @@ export function RegisterPage () {
         });
       }
 
-    function handleCreateUserAccount(e: any) {
+    function CreateNewUSer(e: any) {
       const auth = getAuth();
+      e.preventDefault();
       createUserWithEmailAndPassword(auth, state.email, state.password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        })
+          .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user)
+          })
           .catch(error=>{
-            e.preventDefault();
+            console.log(error.code)
         
             if(error.code==='auth/email-already-in-use'){
               alert('Email não disponível. Escolha outro email para cadastrar')
@@ -48,7 +50,6 @@ export function RegisterPage () {
               alert('A senha deve ter no mínimo 6 dígitos')
             }
           })
-          history('/auth/sign-in')
     };
 
     return (
@@ -86,7 +87,7 @@ export function RegisterPage () {
                                     name="email"                                    
                                     value={state.email}
                                     onChange={handleChange}
-                                    type="email" 
+                                    type="text" 
                                     placeholder="Insira o seu e-mail"/>
                             </div>
                             <div className='page-register--forms__password'>
@@ -95,7 +96,7 @@ export function RegisterPage () {
                                     name="password"                                    
                                     value={state.password}
                                     onChange={handleChange}
-                                    type="password" 
+                                    type="text" 
                                     placeholder="Insira sua senha"/>                 
                             </div>
                             <div className='page-register--forms__confirm-password'>
@@ -104,11 +105,11 @@ export function RegisterPage () {
                                     name="confirmPassword"
                                     value={state.confirmPassword}
                                     onChange={handleChange}                                 
-                                    type="password"
+                                    type="text" 
                                     placeholder="Confirmar senha"/>
                             </div>
                             <div className='btn__send'>
-                                <Button onClick={handleCreateUserAccount} type="submit">Entrar</Button>
+                                <Button onClick={CreateNewUSer} type="submit">Entrar</Button>
                             </div>
                         </form>
                     </div>

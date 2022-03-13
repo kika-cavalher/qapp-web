@@ -48,7 +48,6 @@ export function RegisterPage () {
               alert('A senha deve ter no mínimo 6 dígitos')
             }
           })
-          history('/auth/sign-in')
     };
 
     return (

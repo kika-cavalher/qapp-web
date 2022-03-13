@@ -34,7 +34,7 @@ export function RegisterPage () {
         const user = userCredential.user;
         })
           .catch(error=>{
-            e.preventDefault();
+            console.log(error.code)
         
             if(error.code==='auth/email-already-in-use'){
               alert('Email não disponível. Escolha outro email para cadastrar')
@@ -48,7 +48,7 @@ export function RegisterPage () {
               alert('A senha deve ter no mínimo 6 dígitos')
             }
           })
-          history('/auth/sign-in')
+          history('/')
     };
 
     return (

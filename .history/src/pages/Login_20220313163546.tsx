@@ -37,19 +37,15 @@ export function LoginPage() {
 
     function handleSignInWithEmailAndPassword() {
         const auth = getAuth();
-        if (!user) {
-            signInWithEmailAndPassword(auth, state.email, state.password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-            })
-            .catch((error) => {
-                if(error.code ==='auth/user-not-found'||error.code ==='auth/wrong-password'){
-                    alert('Usuário não encontrado. Email e/ou senha inválida!')
-                }
-            });
+        signInWithEmailAndPassword(auth, state.email, state.password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+          })
+          .catch((error) => {
+            if(error.code ==='auth/user-not-found'||error.code ==='auth/wrong-password'){
+                alert('Usuário não encontrado. Email e/ou senha inválida!')
             }
-                history('/')
-        }
+        });
 
         return (
             <div id="page-login">
@@ -111,4 +107,4 @@ export function LoginPage() {
                 </main>
             </div>
         )
-    };
+    }};

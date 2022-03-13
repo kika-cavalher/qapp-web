@@ -32,6 +32,8 @@ export function RegisterPage () {
       createUserWithEmailAndPassword(auth, state.email, state.password)
       .then((userCredential) => {
         const user = userCredential.user;
+        console.log(user)
+        return user
         })
           .catch(error=>{
             e.preventDefault();
@@ -47,9 +49,15 @@ export function RegisterPage () {
             if(error.code==='auth/weak-password'){
               alert('A senha deve ter no mínimo 6 dígitos')
             }
-          })
-          history('/auth/sign-in')
-    };
+          }).then((user) => {
+            if(!user === undefined) {
+                history('/auth/sign-in')}
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
+
 
     return (
         <div id="page-login">
