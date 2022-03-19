@@ -1,8 +1,13 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } from "firebase/auth"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, getAuth, UserCredential } from "firebase/auth"
+import { auth } from "../services/firebase";
 
 
 type User = {
+  email: string;
+}
+
+type Signup = {
   email: string;
   password: string;
 }
@@ -13,43 +18,37 @@ type AuthContextProviderProps = {
 
 type AuthContextType = {
   user: User | undefined;
-  signIn: (props: User) => {};
-  signUp: (props: User) => {};
+  signIn: (props: Signup) => {};
+  signUp: (props: Signup) => {};
 }
 
 
 export const AuthContext = createContext({} as AuthContextType);
 
-/* adicionar user */
-
 export const AuthContextProvider = (props: AuthContextProviderProps) => {
   const [user, setUser] = useState<User>();
-  const auth = getAuth();
 
-  const signIn = async (props: User) => {
+  const signIn = async (props: Signup) => {
+    const auth = getAuth();
     signInWithEmailAndPassword(auth, props.email, props.password)
     .then((userCredential) => {
-      if (!userCredential) {
-        throw new Error('Missing information from Google Account.');
-      }
-      setUser({
-        email: props.email,
-        password: props.password
-      })
+      const user = userCredential.user;
     })
     .catch((error) => {
-      console.log(error.code & error.message);
+      const errorCode = error.code;
+      const errorMessage = error.message;
     })
-  }
+  };
 
-
-  const signUp = async (props: User) => {
+  const signUp = async (props: Signup) => {
+    const auth = getAuth();
     createUserWithEmailAndPassword(auth, props.email, props.password)
     .then((userCredential) => {
-      console.log(userCredential.user);
+      const user = userCredential.user;
     })
     .catch((error) => {
-      console.log(error.code & error.message);
+      const errorCode = error.code;
+      const errorMessage = error.message;
     })
   };
 
@@ -62,8 +61,7 @@ export const AuthContextProvider = (props: AuthContextProviderProps) => {
           throw new Error('Missing information from your Account.');
         }
         setUser({
-          email: email,
-          password: user.refreshToken
+          email: email
         })
       }
     })

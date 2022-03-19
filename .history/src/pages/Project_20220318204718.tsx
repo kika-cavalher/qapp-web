@@ -1,3 +1,5 @@
+import { FormEvent } from "react";
+
 import { TopMenu } from "../components/top-menu";
 import { Search } from "../components/Search";
 import { Footer } from "../components/Footer";

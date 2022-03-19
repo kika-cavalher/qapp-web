@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } from "firebase/auth"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, getAuth, UserCredential } from "firebase/auth"
+import firebase, { auth } from "../services/firebase";
 
 
 type User = {
@@ -15,12 +16,11 @@ type AuthContextType = {
   user: User | undefined;
   signIn: (props: User) => {};
   signUp: (props: User) => {};
+  signInWithGoogle: () => Promise<void>;
 }
 
 
 export const AuthContext = createContext({} as AuthContextType);
-
-/* adicionar user */
 
 export const AuthContextProvider = (props: AuthContextProviderProps) => {
   const [user, setUser] = useState<User>();
@@ -29,29 +29,41 @@ export const AuthContextProvider = (props: AuthContextProviderProps) => {
   const signIn = async (props: User) => {
     signInWithEmailAndPassword(auth, props.email, props.password)
     .then((userCredential) => {
-      if (!userCredential) {
-        throw new Error('Missing information from Google Account.');
-      }
-      setUser({
-        email: props.email,
-        password: props.password
-      })
+      userCredential.user;
     })
     .catch((error) => {
-      console.log(error.code & error.message);
+      error.code && error.message;
     })
-  }
-
+  };
 
   const signUp = async (props: User) => {
     createUserWithEmailAndPassword(auth, props.email, props.password)
     .then((userCredential) => {
-      console.log(userCredential.user);
+      userCredential.user;
     })
     .catch((error) => {
-      console.log(error.code & error.message);
+      error.code && error.message;
     })
   };
+
+  async function signInWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    const result = await auth.signInWithPopup(provider);
+
+    if (result.user) {
+      const { displayName, photoURL, uid } = result.user
+
+      if (!displayName || !photoURL) {
+        throw new Error('Missing information from Google Account.');
+      }
+
+      setUser({
+        id: uid,
+        name: displayName,
+      })
+    }
+  }
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -62,8 +74,7 @@ export const AuthContextProvider = (props: AuthContextProviderProps) => {
           throw new Error('Missing information from your Account.');
         }
         setUser({
-          email: email,
-          password: user.refreshToken
+          email: email
         })
       }
     })
