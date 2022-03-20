@@ -1,16 +1,11 @@
-import { useCallback, useRef } from "react";
-
 import { TopMenu } from "../components/top-menu";
 import { Search } from "../components/Search";
 import { Footer } from "../components/Footer";
-import Modals, { ModalHandles } from "../components/modals";
-import { Button } from "../components/Button";
 
 import iconAdd from '../assets/icon/add.png';
 import '../styles/pages/project.scss'
-
-
-
+import Modals, { ModalHandles } from "../components/modals";
+import { useCallback, useRef } from "react";
 
 
 
@@ -32,9 +27,9 @@ export function ProjectPage () {
                         <h1>{arrumarVariavel}</h1>
                     </div>
                 <Search />
-                <Button onClick={handleOpenModal} className="btn-open-modal">
+                <button onClick={handleOpenModal} className="btn-open-modal">
                     add projeto
-                </Button>
+                </button>
                 <Modals ref={modalRef}/>
                     <div className='page-project--cards'>
                         <div className='page-project--cards__new'>
