@@ -1,0 +1,22 @@
+@import '../global/variables.scss';
+
+#component--search {
+    display: flex;
+    align-items: center;
+}
+
+.component--search__input {
+    display: flex;
+    align-items: center;
+
+    input {        
+        height: 3rem;
+        width: 17rem;
+
+    }
+
+    img {
+        height: 40px;
+        width: 40px;
+    }
+}

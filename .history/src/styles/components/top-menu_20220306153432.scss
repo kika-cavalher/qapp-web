@@ -1,0 +1,32 @@
+@import '../global/variables.scss';
+
+#component--top-menu {
+    background: $dark-offwhite;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 13vh;
+}
+
+.component--top-menu__logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    #img-logo {
+        cursor: pointer;
+        height: 60px;
+        width: 60px;
+    
+        @include phone {
+            width: 50px;
+        }
+    }
+
+    p {
+        font-size: 0.8rem;
+        font-weight: 500;;
+        width: 5rem;
+    }
+}
+

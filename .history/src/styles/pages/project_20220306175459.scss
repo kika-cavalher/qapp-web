@@ -1,0 +1,18 @@
+@import '../global/variables.scss';
+
+#page-project {
+    display: flex
+}
+
+.page-project--main__container {
+    margin: 2rem 5rem;
+}
+
+.page-project--container__title {
+    
+    h1 {
+        color: $dark-grey;
+        font-size: 4rem;
+        font-weight: 500;
+    }
+}
