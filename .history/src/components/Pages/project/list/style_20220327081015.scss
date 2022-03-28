@@ -1,0 +1,10 @@
+.page-list-project{
+    display: grid;
+    justify-items: start;
+    justify-content: space-between;
+    grid-template-columns: 1fr 2fr 2fr;
+}
+
+.page-list--itens {
+    grid-column: 3;
+}

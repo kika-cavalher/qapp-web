@@ -1,0 +1,18 @@
+#page-list-project{
+
+}
+
+.page-list--itens {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+    flex-wrap: wrap;
+    margin: 2rem;
+}
+
+#page-item-project{
+    width: 30%;
+
+}
+

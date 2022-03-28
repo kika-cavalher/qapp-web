@@ -1,0 +1,38 @@
+@import '../../../../styles/variables.scss';
+
+.item-project--box {
+
+}
+
+.item-project--box-active {
+
+}
+
+.item-project--divider {
+
+}
+
+.item-project--head {
+    display: flex;
+    flex-direction: row;
+}
+
+.item-project--menber {
+    width: 70%;
+}
+
+.btn-more-options {
+
+    button {
+        border: none;
+        background: $white-offwhite;
+    
+    }
+
+    img {
+        width: 40px;
+        height: 40px;
+    }
+
+
+}

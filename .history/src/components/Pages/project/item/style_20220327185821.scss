@@ -1,0 +1,68 @@
+@import '../../../../styles/variables.scss';
+
+.item-project--box {
+    max-width: 20rem;
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: $dark-greenish-with-transparency;
+    border: 0;
+    border-radius: 8px;
+    color: $white-offwhite;
+    cursor: pointer;
+}
+
+.item-project--content{
+    width: 100%;
+    height: 100%;
+}
+
+.item-project--box-active {
+
+}
+
+.item-project--divider {
+    background: $light-grey;
+    height: 50rem;
+    width: 100%;
+    border: 0;
+    border-radius: 0 0 8px 8px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-project--container__initials {
+    border-radius: 100%;
+    background: $turquoise;
+    margin-top: -3rem;
+    width: 6rem;
+    height: 9rem;
+}
+
+.item-project--head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.item-project--menber {
+    width: 70%;
+}
+
+.btn-more-options {
+
+    button {
+        margin-top: 1rem;
+        border: none;
+        background: $transparente
+    
+    }
+
+    img {
+        width: 40px;
+        height: 40px;
+    }
+}
