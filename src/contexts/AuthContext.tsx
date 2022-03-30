@@ -1,24 +1,27 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } from "firebase/auth"
-import firebase from "firebase/compat";
-
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  getAuth,
+  GoogleAuthProvider,
+} from "firebase/auth";
 
 type User = {
   email: string;
   password: string;
-}
+};
 
 type AuthContextProviderProps = {
   children?: ReactNode | undefined;
-}
+};
 
 type AuthContextType = {
   user: User | undefined;
   signIn: (props: User) => Promise<void>;
   signUp: (props: User) => Promise<void>;
-  // signInWithGoogle: () => Promise<void>;
-}
-
+  signInWithGoogle: () => Promise<void>;
+};
 
 export const AuthContext = createContext({} as AuthContextType);
 
@@ -26,78 +29,85 @@ export const AuthContextProvider = (props: AuthContextProviderProps) => {
   const [user, setUser] = useState<User>();
   const auth = getAuth();
 
-
   const signIn = async (props: User) => {
-    signInWithEmailAndPassword(auth, props.email, props.password)
-    .then((userCredential) => {
-      if (!userCredential) {
-        throw new Error('Missing information from Google Account.');
+    try {
+      const response = await signInWithEmailAndPassword(
+        auth,
+        props.email,
+        props.password
+      );
+
+      console.log(response, "response signIn");
+
+      if (response) {
+        localStorage.setItem('@qapp:user-token', response.user.refreshToken);
       }
-      setUser({
-        email: props.email,
-        password: props.password
-      })
-    })
-    .catch((error) => {
+    } catch (error: any) {
       console.log(error.code & error.message);
-    })
-  }
-
-
-  const signUp = async (props: User) => {
-    createUserWithEmailAndPassword(auth, props.email, props.password)
-    .then((userCredential) => {
-      console.log(userCredential.user);
-    })
-    .catch((error) => {
-      console.log(error.code & error.message);
-    })
+    }
   };
 
-  // async function signInWithGoogle() {
-  //   const provider = new firebase.auth.GoogleAuthProvider();
-  //   const result = await auth.signInWithPopup(provider);
-  //   .then((userCredential) => {
-  //     if (!userCredential) {
-  //       throw new Error('Missing information from Google Account.');
-  //     }
-  //     setUser({
-  //       email: email,
-  //       password: password
-  //     })
-  //   })
-  //   .catch((error) => {
-  //     console.log(error.code & error.message);
-  //   })
-  // }
-  
+  const signUp = async (props: User) => {
+    try {
+      const response = await createUserWithEmailAndPassword(
+        auth,
+        props.email,
+        props.password
+      );
+
+      console.log(response, "response");
+    } catch (error: any) {
+      console.log(error.code & error.message);
+    }
+
+    // createUserWithEmailAndPassword(auth, props.email, props.password)
+    // .then((userCredential) => {
+    //   console.log(userCredential.user);
+    // })
+    // .catch((error) => {
+    //   console.log(error.code & error.message);
+    // })
+  };
+
+  async function signInWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    try {
+      const response = await signInWithPopup(auth, provider);
+      if (response) {
+        localStorage.setItem("@qapp:user-token", response.user.refreshToken);
+        localStorage.setItem(
+          "@qapp:user-name",
+          response.user.displayName ? response.user.displayName : ""
+        );
+      }
+    } catch (error: any) {
+      console.log(error.code & error.message);
+    }
+  }
+
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        const { email } = user
+        const { email } = user;
 
         if (!email) {
-          throw new Error('Missing information from your Account.');
+          throw new Error("Missing information from your Account.");
         }
         setUser({
           email: email,
-          //erro , onde pega a senha?
-          password: user.refreshToken
-        })
+          password: user.refreshToken,
+        });
       }
-    })
+    });
 
     return () => {
       unsubscribe();
-    }
-  }, [])
-
-  //useImperativeHandle? 
+    };
+  }, []);
 
   return (
-    <AuthContext.Provider  value={{user, signIn, signUp}}>
+    <AuthContext.Provider value={{ user, signIn, signUp, signInWithGoogle }}>
       {props.children}
     </AuthContext.Provider>
-  )
-
-}
+  );
+};
