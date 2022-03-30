@@ -15,6 +15,8 @@ export function ProjectPage () {
     const [openModal, setOpenModal] = useState(false)
     const [project, setProject] = useState<ProjectProps[]>([]);
     const [selected, setSelected] = useState<ProjectProps>();
+
+    const userName = localStorage.getItem("@qapp:user-name");
   
     function selectedProject(selecterProject: ProjectProps) {
         setSelected(selecterProject);
@@ -30,6 +32,7 @@ export function ProjectPage () {
                 <div className='page-project--main__container'>
                     <div className='page-project--container__title'>
                         <h1>{page}</h1>
+                        {userName}
                     </div>
                     <div className='page-project--container__options'>
                         <Search />

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 
 import { useAuth } from '../../../../hooks/useAuth';
 import Logo from '../../../PageDefault/head/logo';
@@ -39,12 +39,13 @@ export function RegisterPage () {
         });
       }
 
-    async function handleSubmit() {
-        if (!user){
+    async function handleSubmit(event: FormEvent) {
+        event.preventDefault();
+        try {
             await signUp(signUpForms)
-            navigate("/auth/sign-in")
-        } else{
-            console.log("MERDA")
+            navigate("/auth/sign-in") 
+        } catch (error: any) {
+            console.log(error)
         }
     }
 
@@ -67,7 +68,7 @@ export function RegisterPage () {
                         </div>
                     </div>
                     <div className='page-register--main__forms'>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <div className='page-register--forms__name'>
                                     <p>Nome</p>
                                     <input
@@ -105,7 +106,7 @@ export function RegisterPage () {
                                     placeholder="Confirmar senha"/>
                             </div>
                             <div className='btn__send'>
-                                <button onClick={handleSubmit} type="submit">Entrar</button>
+                                <button type="submit">Entrar</button>
                             </div>
                         </form>
                     </div>

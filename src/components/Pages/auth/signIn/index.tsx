@@ -13,7 +13,7 @@ import './style.scss'
 
 
 export function LoginPage() {
-    const {signIn, user} = useAuth()
+    const {signIn, user, signInWithGoogle} = useAuth()
     // const {signIn, user, signInWithGoogle} = useAuth()
     const navigate = useNavigate()
     const [state, setState] = React.useState({
@@ -30,14 +30,20 @@ export function LoginPage() {
       }
 
 
-    async function handleSubmit(e: Event) {
+    async function handleSubmit(e: FormEvent) {
+        e.preventDefault();
         try {
             await signIn(state)
-            navigate("/auth/sign-in")
+            navigate("/dashboard")
         } catch (error: any) {
             e.preventDefault()
             console.log("MERDA" + error.message)
         }
+    }
+
+    async function handleGoogleLogin() {
+        await signInWithGoogle();
+        navigate('/dashboard')
     }
       
     function HandleSignOut()   {
@@ -48,12 +54,6 @@ export function LoginPage() {
             });
         }
     }
-
-    // async function handleCreateUser () {
-    //     if (!user) {
-    //         await signInWithGoogle()
-    //       }
-    //     }
 
         return (
             <div id="page-login">
@@ -73,6 +73,7 @@ export function LoginPage() {
                         </div>
                         <div className='page-login--main__google'>
                             <Button className='btn__google'
+                            onClick={handleGoogleLogin}
                             /* onClick={handleCreateUser} */>
                                 <img id="img-icon__google" src={googleIconImg} alt="Logo da empresa QApp" />
                                 <p>Entrar usando sua conta Google.</p>
@@ -82,7 +83,7 @@ export function LoginPage() {
                             <div>Ou entre com o seu login</div>
                         </div>
                         <div className='page-login--main__forms'>
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <div className='page-login--forms__email'>
                                     <p>E-mail</p>
                                     <input 
@@ -103,7 +104,6 @@ export function LoginPage() {
                                 </div>
                                 <div className='btn__send'>
                                     <Button
-                                    onClick={() => handleSubmit}
                                     type="submit">Entrar</Button>
                                     <Button
                                     onClick={HandleSignOut}
