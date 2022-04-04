@@ -182,11 +182,19 @@ main{
     @include slim {
         margin: 0.7rem 0;
     }
+
+    @include phone {
+        margin: 0.7rem 0;
+    }
 }
 
 .page-login--forms__password{
     margin-bottom: 3rem;
     width: 100%;
+
+    @include phone {
+        margin-bottom: 1.5rem;
+    }
 }
 
 .page-login--main__forms {
@@ -211,6 +219,7 @@ main{
         p {
             font-weight: 600;
             font-size: 1.5rem;
+            height: 2rem;
             
             @include slim {
                 font-size: 1.3rem;
@@ -222,6 +231,7 @@ main{
             }
 
             @include phone {
+                height: 2rem;
                 font-size: 1.5rem;
             }
 
