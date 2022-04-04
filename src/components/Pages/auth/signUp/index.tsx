@@ -70,7 +70,7 @@ export function RegisterPage () {
                     <div className='page-register--main__forms'>
                         <form onSubmit={handleSubmit}>
                             <div className='page-register--forms__name'>
-                                    <p>Nome</p>
+                                    <p>Nome completo</p>
                                     <input
                                     name="name"
                                     value={state.name}
