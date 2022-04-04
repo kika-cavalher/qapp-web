@@ -59,10 +59,10 @@ export function LoginPage() {
             <div id="page-login">
                 <main>
                     <div className='page-login--main__container'>
-                        <div className='page-login--main__logo'>
-                            <Logo />
-                        </div>
                         <div className='page-login--main__title'>
+                            <div className='page-login--main__logo'>
+                                <Logo />
+                            </div>
                             <div className='page-login--container__title'>
                                 <h1>Faça o seu login.</h1>
                                 <h2>Não tem conta ainda? </h2>
@@ -76,7 +76,7 @@ export function LoginPage() {
                             onClick={handleGoogleLogin}
                             /* onClick={handleCreateUser} */>
                                 <img id="img-icon__google" src={googleIconImg} alt="Logo da empresa QApp" />
-                                <p>Entrar usando sua conta Google.</p>
+                                <p>Entrar usando conta Google.</p>
                             </Button>
                         </div>
                         <div className='page-login--main__divider'>
@@ -105,9 +105,9 @@ export function LoginPage() {
                                 <div className='btn__send'>
                                     <Button
                                     type="submit">Entrar</Button>
-                                    <Button
+                                    {/* <Button
                                     onClick={HandleSignOut}
-                                    type="submit">Sair</Button>
+                                    type="submit">Sair</Button> */}
                                 </div>
                             </form>
                         </div>
