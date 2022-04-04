@@ -9,6 +9,9 @@
   body {
     background: $white-offwhite;
     color: $dark-grey;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
   }
   
   body, input, button, textarea {
