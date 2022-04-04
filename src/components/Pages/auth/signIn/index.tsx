@@ -65,7 +65,7 @@ export function LoginPage() {
                             </div>
                             <div className='page-login--container__title'>
                                 <h1>Faça o seu login.</h1>
-                                <h2>Não tem conta ainda? </h2>
+                                <h2>Não possui conta? </h2>
                                 <Link to='/auth/sign-up' className='page-login--main__link-register'>
                                 Cadastre-se
                                 </Link>
