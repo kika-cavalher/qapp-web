@@ -12,17 +12,24 @@
 
     input {
         background: $transparente;
-        border: 1px solid $grey_border;
+        border: 2px solid $grey_border;
         border-radius: 8px;
         color: $dark-grey;
-        font-size: 0.8rem;
+        font-size: 1rem;
         font-weight: 500;
-        height: 2rem;
+        height: 2.6rem;
         margin: 0.5rem 0;
         outline: none;
         padding: 0 10px;
         width: 17rem;    
         z-index:2;
+
+        @include phone {
+            border: 1px solid $grey_border;
+            height: 2.2rem;
+            width: 15rem;  
+            font-size: 0.8rem;
+        }
     }
 
     .search__input--icon {
@@ -32,6 +39,10 @@
         position: absolute;
         width: 16.3rem;
         z-index:1;
+
+        @include phone {
+            width: 14.5rem;  
+        }
 
         img {
             height: 1.1rem;

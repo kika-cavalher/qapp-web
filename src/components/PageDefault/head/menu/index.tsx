@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 
 import './style.scss'
 import Logo from '../logo';
+import IconMenu from '../../../../assets/icon/menu.png';
 
 export function TopMenu () {
 
@@ -30,6 +31,9 @@ export function TopMenu () {
             <div className='component--top-menu__user'>
                 <div className='component--user__round'>
 {/*                     <h1>{initials}</h1> */}
+                </div>
+                <div className='component--menu--mobile'>
+                     <img src={IconMenu} alt="Icone menu mobile" />
                 </div>
             </div>
         </div>

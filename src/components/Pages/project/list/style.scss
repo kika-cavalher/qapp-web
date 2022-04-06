@@ -1,16 +1,13 @@
 .page-list--itens {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100vw;
     flex-wrap: wrap;
     margin: 2rem 0;
+    z-index: 2;
 }
 
 #page-item-project{
     width: 30%;
-    margin-bottom: 2rem;
-}
-
-.page-list-project {
-    margin-bottom: 10rem;
+    margin-bottom: 3rem;
 }

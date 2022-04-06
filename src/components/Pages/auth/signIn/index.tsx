@@ -73,8 +73,7 @@ export function LoginPage() {
                         </div>
                         <div className='page-login--main__google'>
                             <Button className='btn__google'
-                            onClick={handleGoogleLogin}
-                            /* onClick={handleCreateUser} */>
+                            onClick={handleGoogleLogin}>
                                 <img id="img-icon__google" src={googleIconImg} alt="Logo da empresa QApp" />
                                 <p>Entrar usando conta Google.</p>
                             </Button>

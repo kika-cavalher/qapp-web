@@ -1,10 +1,9 @@
-import React, { useCallback, useImperativeHandle, useRef, useState } from "react"
-import { ProjectProps } from "../../../types/project";
-import { Button } from "../button";
+import React, { useState } from "react"
+import { ProjectProps } from "../../../../types/project";
+import { Button } from "../../button";
 import { v4 as uuidv4 } from 'uuid';
-import moreOptions from '../../../../assets/icon/more-option-white.png'
-import closeModal from '../../../../assets/icon/close-modal.png'
 
+import addModal from '../../../../assets/icon/addModal.png'
 import './style.scss'
 
 export type CreateProjectProps = {
@@ -60,14 +59,13 @@ export function Modals({ setProject, closeModal }: CreateProjectProps) {
     return (
         <div className="modal-out">
             <div className="modal">
-            <div className="modal-header">
-                <h1>Adicionar um novo Projeto</h1>
-                {/* <Button className="btn-close-modal"
-                onClick={() => {handleClose}}>
-                    <img className="item-project--btn-close-modal" src={closeModal} alt="icone para fechar o modal." />
-                </Button>   */}
-            </div>
-            <div className="modal-content">
+                <div className="modal-header">
+                    <img className="item-project--btn-close-modal" 
+                    src={addModal} alt="icone para fechar o modal." />
+                    <h1>Novo Projeto</h1>
+                    {/* <img className="item-project--btn-close-modal" src={closeModal} alt="icone para fechar o modal." />
+                     </Button>   */}
+                </div>
                 <form className="modal-content--form" onSubmit={createProject}>
                     <div className="modal-content--titleAndAbreviation">
                         <div className="modal-content--title">
@@ -114,7 +112,5 @@ export function Modals({ setProject, closeModal }: CreateProjectProps) {
                 </form>
                 </div>
             </div>
-        </div>
-       
     )
 }

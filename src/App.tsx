@@ -30,14 +30,16 @@ function App() {
           <Route path="/auth/sign-in" element={<LoginPage />} />
           <Route path="/auth/sign-up" element={<RegisterPage />} />
           <Route path="/" element={<LoginPage />} />
-          <Route
-            path="/dashboard"
+          <Route path="/projects" element={<ProjectPage />} />
+
+          {/* <Route
+            path="/projects"
             element={
               <RequireAuth>
                 <ProjectPage />
               </RequireAuth>
             }
-          />
+          /> */}
         </Routes>
       </AuthContextProvider>
     </BrowserRouter>

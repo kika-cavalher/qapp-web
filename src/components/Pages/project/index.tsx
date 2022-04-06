@@ -6,7 +6,7 @@ import { Footer } from "../../PageDefault/footer";
 import { Button } from "../../Global/button";
 
 import './style.scss'
-import { Modals } from "../../Global/modal";
+import { Modals } from "../../Global/modal/addProject/index";
 import { ProjectProps } from "../../../types/project";
 import { ListProject } from "./list";
 

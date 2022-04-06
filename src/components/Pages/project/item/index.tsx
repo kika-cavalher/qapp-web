@@ -2,6 +2,8 @@ import { ProjectProps } from '../../../../types/project'
 import { Button } from '../../../Global/button'
 
 import moreOptions from '../../../../assets/icon/more-option-white.png'
+import newProject from '../../../../assets/icon/newProject.png'
+
 import './style.scss'
 
 type ItemProps = ProjectProps & {
@@ -19,6 +21,11 @@ export function ItemProject({ id, title, abbreviation, describe, selecionado, se
                     <div className="item-project--head">
                         <div className="item-project--container__initials">
                             <div className="item-project--initials">
+                                <div className="item-project--space-color">
+                                </div>
+                                <div className="item-project--img-ilustartion">
+                                    <img className="item-project--btn-more-options" src={moreOptions} alt="icone para expandir maios opções." />
+                                </div>
                                 <h2 className="item-project--initials__title">{abbreviation}</h2>
                             </div>
                         </div>

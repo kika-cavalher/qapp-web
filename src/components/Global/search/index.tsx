@@ -19,9 +19,9 @@ export function Search () {
             className="btn__search">
                 Buscar
             </Button>
-            <div className='component--filters'>
+            {/* <div className='component--filters'>
                 <img id="icon-filter" src={iconFilter} alt="icone de identificação visual das opções de filtragem" />
-            </div>
+            </div> */}
         </div>
     )
 }
