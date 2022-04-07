@@ -1,0 +1,247 @@
+@import '../../../styles/styles.scss';
+
+
+.modal-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.modal-out {
+    background: $black-with-transparency;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: 200%;
+}
+
+.modal {
+    background: $white-offwhite;
+    border-radius: 20px;
+    display: flex;
+    height: 55%;
+    flex-direction: column;
+    overflow: hidden;
+    position: fixed;
+    width: 30%;
+    z-index: 999;
+    margin-top: 10rem;
+
+    @include slim {
+        margin-top: 5rem;
+        height: 75%;
+        width: 45%;
+    }
+
+    @include tablet {
+        height: 60%;
+        width: 60%;
+    }
+
+    @include phone {
+        height: 65%;
+        width: 90%;
+    }
+}
+
+.icon-close-modal {
+    margin: 1rem 1rem 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    button {
+        background: $white-offwhite;
+        cursor: pointer;
+        border: none;
+    }
+
+    img {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+.modal-header {
+    margin: 0rem 1rem 1rem 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    
+    @include slim {
+        margin: 0 0 0 3rem;
+    }
+
+    img {
+        height: 40px;
+        width: 40px;
+
+        @include slim {
+            height: 30px;
+            width: 30px;
+        }
+    }
+
+    h1 {
+        margin-left: 1rem;
+        font-weight: 600;
+
+        @include slim {
+            margin-left: 0.8rem;
+        }
+    }
+}
+
+.modal-content {
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-content--form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0.5rem 10%;
+
+    p {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-left: 3px;
+    }
+}
+
+.modal-content--titleAndAbreviation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem 0;
+    width: 100%;
+
+    @include tablet {
+        flex-direction: column;
+    }
+
+    @include phone {
+        flex-direction: column;
+    }
+
+    input {
+        background: $white-offwhite;
+        border: none;
+        border-bottom: 1px solid $grey_border;
+        color: $dark-grey;
+        font-weight: 500;
+        height: 2.5rem;
+        margin: 0.5rem 0 2rem 0;
+        outline: none;
+        padding: 0 5px;
+        width: 100%;
+
+        @include slim {
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        @include phone {
+            margin: 0.5rem 0 1rem 0;
+        }
+
+        &:hover {
+            border-bottom: 2px solid $turquoise;
+
+            @include phone {
+                bborder-bottom: 1px solid $turquoise;
+            }
+            
+            @include slim {
+                border-bottom: 1px solid $turquoise;
+            }
+        }
+            
+        &:focus-visible {
+            border-bottom: 2px solid $turquoise;
+
+            @include phone {
+                border-bottom: 1px solid $turquoise;
+            }
+            
+            @include slim {
+                border-bottom: 1px solid $turquoise;
+            }
+        }
+    }
+
+}
+
+.modal-content--title {
+    width: 60%;
+
+    @include tablet {
+        width: 90%;
+    }
+
+    @include phone {
+        width: 90%;
+    }
+}
+
+.modal-content--abbreviation {
+    width: 30%;
+
+    @include tablet {
+        width: 40%;
+    }
+
+    @include phone {
+        width: 40%;
+    }
+}
+
+
+.modal-content--describe {
+    margin-bottom: 1.5rem;
+
+    @include phone {
+            margin-bottom: 0.5rem;
+    }
+
+    textarea {
+        background: $white;
+        border: 1.8px solid $grey_border;
+        border-radius: 10px;
+        color: $dark-grey;
+        font-weight: 500;
+        height: 5rem;
+        margin-top: 0.5rem;
+        outline: none;
+        padding: 5px 15px;
+        width: 100%;
+
+            &:hover {
+            border: 2px solid $turquoise;
+
+            @include phone {
+                border: 1px solid $turquoise;
+            }
+            
+            @include slim {
+                border: 1px solid $turquoise;
+            }
+        }
+            
+        &:focus-visible {
+            border: 2px solid $turquoise;
+
+            @include phone {
+                border: 1px solid $turquoise;
+            }
+            
+            @include slim {
+                border: 1px solid $turquoise;
+            }
+        }
+    }
+}
+
