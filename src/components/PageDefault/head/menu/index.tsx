@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom'
 import './style.scss'
 import Logo from '../logo';
 import IconMenu from '../../../../assets/icon/menu.png';
+import { Button } from '../../../Global/button';
+import { useState } from 'react';
+import { ModalMobile } from '../menu-mobile';
 
 export function TopMenu () {
-
-
+    const [openModal, setOpenModal] = useState(false)
 
     return (
         <div id="component--top-menu">
@@ -33,8 +35,14 @@ export function TopMenu () {
 {/*                     <h1>{initials}</h1> */}
                 </div>
                 <div className='component--menu--mobile'>
-                     <img src={IconMenu} alt="Icone menu mobile" />
+                    <Button 
+                    onClick={() => {setOpenModal(true)}} 
+                    className="modal-mobile--btn-open">
+                        <img src={IconMenu} alt="Icone menu mobile" />
+                    </Button>
                 </div>
+                {openModal && <ModalMobile 
+                        closeModal={setOpenModal}/>}
             </div>
         </div>
     )
