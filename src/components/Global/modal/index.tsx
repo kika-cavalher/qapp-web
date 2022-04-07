@@ -1,9 +1,10 @@
 import React, { useState } from "react"
-import { ProjectProps } from "../../../../types/project";
-import { Button } from "../../button";
+import { ProjectProps } from "../../../types/project";
+import { Button } from "../button";
 import { v4 as uuidv4 } from 'uuid';
 
-import addModal from '../../../../assets/icon/addModal.png'
+import addModal from '../../../assets/icon/addModal.png'
+import iconCloseModal from '../../../assets/icon/closeModalX.png'
 import './style.scss'
 
 export type CreateProjectProps = {
@@ -28,9 +29,8 @@ export function Modals({ setProject, closeModal }: CreateProjectProps) {
         });
       };
 
-    function handleClose(e: any) {
-        closeModal(false)
-        
+    function handleClose() {
+        closeModal(false) 
     };
 
     function createProject(e: any) {
@@ -57,14 +57,19 @@ export function Modals({ setProject, closeModal }: CreateProjectProps) {
 
 
     return (
-        <div className="modal-out">
+        <div className="modal-main">
             <div className="modal">
+                <div className="modal-header--close-menu">
+                    <Button 
+                    className="icon-close-modal"
+                    onClick={handleClose}>
+                        <img className="item-project--btn-close-modal" src={iconCloseModal} alt="icone para fechar o modal." />
+                    </Button>
+                </div>
                 <div className="modal-header">
-                    <img className="item-project--btn-close-modal" 
+                    <img className="item-project--btn-add-modal" 
                     src={addModal} alt="icone para fechar o modal." />
                     <h1>Novo Projeto</h1>
-                    {/* <img className="item-project--btn-close-modal" src={closeModal} alt="icone para fechar o modal." />
-                     </Button>   */}
                 </div>
                 <form className="modal-content--form" onSubmit={createProject}>
                     <div className="modal-content--titleAndAbreviation">
@@ -110,6 +115,8 @@ export function Modals({ setProject, closeModal }: CreateProjectProps) {
                         >Salvar</Button>
                     </div>
                 </form>
+                </div>
+                <div className="modal-out" onClick={handleClose}>
                 </div>
             </div>
     )

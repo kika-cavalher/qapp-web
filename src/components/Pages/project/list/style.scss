@@ -1,13 +1,23 @@
+@import '../../../../styles/variables.scss';
+
+
 .page-list--itens {
     display: flex;
-    flex-direction: column;
-    width: 100vw;
+    flex-direction: row;
     flex-wrap: wrap;
-    margin: 2rem 0;
+    margin: 4rem 0;
     z-index: 2;
+
+    @include tablet {
+        margin: 2rem 0;
+    }
+
+    @include phone {
+        margin: 2rem 0;
+    }
 }
 
 #page-item-project{
-    width: 30%;
-    margin-bottom: 3rem;
+    width: 100%;
+    margin-bottom: 2rem;
 }
