@@ -29,7 +29,6 @@ export function ItemProject({ id, title, abbreviation, describe, selecionado, se
                         <div className="item-project--title">
                             <h2 className="item-project--title__title">{title}</h2>
                         </div>
-                        <div className="item-project--divider"></div>
                         <div className="item-project--subtitle">
                             <h3 className="item-project--title__subtitle">{describe}</h3>
                         </div>
@@ -37,6 +36,7 @@ export function ItemProject({ id, title, abbreviation, describe, selecionado, se
                                 {/* <h2 className="item-project--menber__title">{member}</h2> */}
                         </div>
                     </div>
+                    <div className="item-project--divider"></div>
                     <div className="item-project--more-options">
                         <Button className="btn-crud btn-crud-edit">
                             <img className="item-project--btn-more-edit" src={editCrud} alt="icone para expandir maios opções." />

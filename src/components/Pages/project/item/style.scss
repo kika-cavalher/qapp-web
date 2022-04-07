@@ -18,6 +18,10 @@
     height: 6rem;
     color: $white-offwhite;
     justify-content: center;
+    
+    @include slim {
+        width: 8rem;
+    }
 
     @include phone {
             width: 4.5rem;
@@ -55,7 +59,7 @@
 .item-project--content {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     margin: 0 1rem;
 
     @include tablet {
@@ -63,7 +67,7 @@
     }
 
     @include phone {
-        width: 48%;
+        width: 45%;
     }
 }
 
@@ -115,11 +119,31 @@
     }
 }
 
+.item-project--divider {
+    border-left: 2px solid $grey-with-transparency;
+    width: 2rem;
+    height: 3rem;
+
+    @include tablet {
+        border-left: 1px solid $grey-with-transparency;
+        width: 1rem;
+    }
+
+    @include phone {
+        border-left: 1px solid $grey-with-transparency;
+        width: 1rem;
+    }
+}
+
 .item-project--more-options{
     display: flex;
     flex-direction: row;
     width: 8%;
     margin-right: 2rem;
+
+    @include slim {
+        margin-right: 3rem;
+    }
 
     .btn-crud {
 
