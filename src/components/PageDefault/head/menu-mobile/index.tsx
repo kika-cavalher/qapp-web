@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { Link } from "react-router-dom";
 
 import './style.scss'
@@ -9,7 +8,6 @@ export type CreateProjectProps = {
 }
 
 export function ModalMobile({ closeModal }: CreateProjectProps) {
-    const [openModal, setOpenModal] = useState(true);
 
     function handleClose() {
         closeModal(false) 

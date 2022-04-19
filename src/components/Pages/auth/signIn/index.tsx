@@ -14,7 +14,6 @@ import './style.scss'
 
 export function LoginPage() {
     const {signIn, user, signInWithGoogle} = useAuth()
-    // const {signIn, user, signInWithGoogle} = useAuth()
     const navigate = useNavigate()
     const [state, setState] = React.useState({
         email: "",
@@ -34,7 +33,7 @@ export function LoginPage() {
         e.preventDefault();
         try {
             await signIn(state)
-            navigate("/dashboard")
+            navigate("/projects")
         } catch (error: any) {
             e.preventDefault()
             console.log("MERDA" + error.message)
@@ -43,7 +42,7 @@ export function LoginPage() {
 
     async function handleGoogleLogin() {
         await signInWithGoogle();
-        navigate('/dashboard')
+        navigate('/projects')
     }
       
     function HandleSignOut()   {

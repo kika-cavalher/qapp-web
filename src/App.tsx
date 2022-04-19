@@ -3,24 +3,24 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Navigate,
-  useLocation,
+  // Navigate,
+  // useLocation,export 'getAuth' (imported as 'getAuth') was not found in 'firebase/auth' (module has no exports)
 } from "react-router-dom";
 
 import { ProjectPage } from "./components/Pages/project";
 import { LoginPage } from "./components/Pages/auth/signIn";
 import { RegisterPage } from "./components/Pages/auth/signUp";
 
-function RequireAuth({ children }: { children: JSX.Element }) {
-  const userToken = localStorage.getItem("@qapp:user-token");
-  const location = useLocation();
+// function RequireAuth({ children }: { children: JSX.Element }) {
+//   const userToken = localStorage.getItem("@qapp:user-token");
+//   const location = useLocation();
 
-  if (!userToken) {
-    return <Navigate to="/auth/sign-in" state={{ from: location }} replace />;
-  } else {
-    return children;
-  }
-}
+//   if (!userToken) {
+//     return <Navigate to="/auth/sign-in" state={{ from: location }} replace />;
+//   } else {
+//     return children;
+//   }
+// }
 
 function App() {
   return (

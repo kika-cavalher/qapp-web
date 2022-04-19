@@ -59,14 +59,6 @@ export const AuthContextProvider = (props: AuthContextProviderProps) => {
     } catch (error: any) {
       console.log(error.code & error.message);
     }
-
-    // createUserWithEmailAndPassword(auth, props.email, props.password)
-    // .then((userCredential) => {
-    //   console.log(userCredential.user);
-    // })
-    // .catch((error) => {
-    //   console.log(error.code & error.message);
-    // })
   };
 
   async function signInWithGoogle() {

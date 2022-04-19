@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import addModal from '../../../assets/icon/addModal.png'
 import iconCloseModal from '../../../assets/icon/closeModalX.png'
 import './style.scss'
+// import { getDatabase, ref, set } from "firebase/database";
 
 export type CreateProjectProps = {
     setProject?: React.Dispatch<React.SetStateAction<ProjectProps[]>>,
@@ -13,7 +14,6 @@ export type CreateProjectProps = {
 }
 
 export function Modals({ setProject, closeModal }: CreateProjectProps) {
-    const [openModal, setOpenModal] = useState(true);
     const [state, setState] = useState({
         id: "",
         title: "",
@@ -34,7 +34,6 @@ export function Modals({ setProject, closeModal }: CreateProjectProps) {
     };
 
     function createProject(e: any) {
-        const value = e.target.value;
         e.preventDefault();
         setProject!((oldProject: ProjectProps[]) => 
             [...oldProject, 
@@ -54,6 +53,15 @@ export function Modals({ setProject, closeModal }: CreateProjectProps) {
         });
         closeModal(false)
     };
+
+    // function writeProjectData({id, title, abbreviation, describe}: ProjectProps) {
+    //     set(ref(database, 'projects/' + id), {
+    //         ProjectId: state.id,
+    //         title: state.title,
+    //         abbreviation : state.abbreviation,
+    //         describe : state.describe
+    //     });
+    //   }
 
 
     return (

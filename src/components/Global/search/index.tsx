@@ -1,7 +1,6 @@
 import { Button } from '../button';
 
 import iconSearch from '../../../assets/icon/search.png';
-import iconFilter from '../../../assets/icon/filter.png';
 import './style.scss'
 
 
@@ -19,9 +18,6 @@ export function Search () {
             className="btn__search">
                 Buscar
             </Button>
-            {/* <div className='component--filters'>
-                <img id="icon-filter" src={iconFilter} alt="icone de identificação visual das opções de filtragem" />
-            </div> */}
         </div>
     )
 }
