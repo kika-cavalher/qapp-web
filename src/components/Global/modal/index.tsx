@@ -1,21 +1,20 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { ProjectProps } from "../../../types/project";
 import { Button } from "../button";
-import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios'
 
 import addModal from '../../../assets/icon/addModal.png'
 import iconCloseModal from '../../../assets/icon/closeModalX.png'
 import './style.scss'
-// import { getDatabase, ref, set } from "firebase/database";
 
 export type CreateProjectProps = {
     setProject?: React.Dispatch<React.SetStateAction<ProjectProps[]>>,
     closeModal: (isOpen: boolean) => void
+    selectedProject: any
 }
 
-export function Modals({ setProject, closeModal }: CreateProjectProps) {
+export function Modals({ setProject, closeModal, selectedProject }: CreateProjectProps) {
     const [state, setState] = useState({
-        id: "",
         title: "",
         abbreviation: "",
         describe: ""
@@ -29,39 +28,29 @@ export function Modals({ setProject, closeModal }: CreateProjectProps) {
         });
       };
 
+      console.log(selectedProject)
+
     function handleClose() {
         closeModal(false) 
     };
 
     function createProject(e: any) {
         e.preventDefault();
-        setProject!((oldProject: ProjectProps[]) => 
-            [...oldProject, 
-                {
-                    ...state,
-                    selecionado: false,
-                    id: uuidv4()
-                } 
-            ]
-        )
+        axios.post('https://qapp-api.herokuapp.com/projects', {
+            title: state.title,
+            abbreviation: state.abbreviation,
+            describe: state.describe
+        })
+        .then((res) => console.log(res))
+        .catch((error) => console.log(error))
 
         setState({
-            id: "",
             title: "",
             abbreviation: "",
             describe: "",
         });
         closeModal(false)
     };
-
-    // function writeProjectData({id, title, abbreviation, describe}: ProjectProps) {
-    //     set(ref(database, 'projects/' + id), {
-    //         ProjectId: state.id,
-    //         title: state.title,
-    //         abbreviation : state.abbreviation,
-    //         describe : state.describe
-    //     });
-    //   }
 
 
     return (
@@ -85,7 +74,7 @@ export function Modals({ setProject, closeModal }: CreateProjectProps) {
                             <p className="modal---title">Titulo</p>
                             <input className="modal--title__input"
                             name="title"
-                            value={state.title}
+                            value={!selectedProject?.title? state.title : selectedProject.title}
                             onChange={handleChange}
                             type="text"
                             maxLength={28}
@@ -119,7 +108,7 @@ export function Modals({ setProject, closeModal }: CreateProjectProps) {
                     <div className="btn">
                         <Button
                         className="btn__send"
-                        onClick={() => createProject} 
+                        onClick={(e: void) => createProject(e)} 
                         >Salvar</Button>
                     </div>
                 </form>

@@ -5,17 +5,20 @@ import deleteCrud from '../../../../assets/icon/delete-crud.png'
 import editCrud from '../../../../assets/icon/edit-crud.png'
 
 import './style.scss'
+import axios from 'axios'
 
 type ItemProps = ProjectProps & {
-    selectProject: (selectedProject: ProjectProps) => void 
+    selectProject: (selectedProject: ProjectProps) => void
+    editar: (title:string, abbreviation:string, describe:string) => void
 }
 
 
-export function ItemProject({ id, title, abbreviation, describe, selecionado, selectProject}: ItemProps) {
+export function ItemProject({ id, title, abbreviation, describe, selecionado, selectProject, editar}: ItemProps) {
+
     return (
         <div id="page-item-project">
             <div  
-                className={`${'item-project--box'} ${selecionado ? 'item-project--box-active' : ''}`}
+                className="item-project--box"
                 onClick={() =>  selectProject({ id, title, abbreviation, describe, selecionado})}>
                 <div className="item-project--container">
                     <div className="item-project--head">
@@ -38,7 +41,9 @@ export function ItemProject({ id, title, abbreviation, describe, selecionado, se
                     </div>
                     <div className="item-project--divider"></div>
                     <div className="item-project--more-options">
-                        <Button className="btn-crud btn-crud-edit">
+                        <Button 
+                        className="btn-crud btn-crud-edit"
+                        onClick={() => editar(title, abbreviation, describe)}>
                             <img className="item-project--btn-more-edit" src={editCrud} alt="icone para expandir maios opções." />
                         </Button>
                         <Button className="btn-crud btn-crud-delete">
