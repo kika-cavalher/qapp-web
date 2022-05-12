@@ -9,17 +9,16 @@ import axios from 'axios'
 
 type ItemProps = ProjectProps & {
     selectProject: (selectedProject: ProjectProps) => void
-    editar: (title:string, abbreviation:string, describe:string) => void
+    ItemUpdate: (title:string, abbreviation:string, describe:string) => void
 }
 
 
-export function ItemProject({ id, title, abbreviation, describe, selecionado, selectProject, editar}: ItemProps) {
+export function ItemProject({ title, abbreviation, describe, ItemUpdate, selectProject}: ItemProps) {
 
     return (
         <div id="page-item-project">
             <div  
-                className="item-project--box"
-                onClick={() =>  selectProject({ id, title, abbreviation, describe, selecionado})}>
+                className="item-project--box">
                 <div className="item-project--container">
                     <div className="item-project--head">
                         <div className="item-project--container__initials">
@@ -43,7 +42,7 @@ export function ItemProject({ id, title, abbreviation, describe, selecionado, se
                     <div className="item-project--more-options">
                         <Button 
                         className="btn-crud btn-crud-edit"
-                        onClick={() => editar(title, abbreviation, describe)}>
+                        onClick={() => ItemUpdate(title, abbreviation, describe)}>
                             <img className="item-project--btn-more-edit" src={editCrud} alt="icone para expandir maios opções." />
                         </Button>
                         <Button className="btn-crud btn-crud-delete">

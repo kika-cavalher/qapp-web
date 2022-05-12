@@ -8,12 +8,11 @@ import iconCloseModal from '../../../assets/icon/closeModalX.png'
 import './style.scss'
 
 export type CreateProjectProps = {
-    setProject?: React.Dispatch<React.SetStateAction<ProjectProps[]>>,
+    // setProject?: React.Dispatch<React.SetStateAction<ProjectProps[]>>,
     closeModal: (isOpen: boolean) => void
-    selectedProject: any
 }
 
-export function Modals({ setProject, closeModal, selectedProject }: CreateProjectProps) {
+export function Modals({ closeModal }: CreateProjectProps) {
     const [state, setState] = useState({
         title: "",
         abbreviation: "",
@@ -28,8 +27,6 @@ export function Modals({ setProject, closeModal, selectedProject }: CreateProjec
         });
       };
 
-      console.log(selectedProject)
-
     function handleClose() {
         closeModal(false) 
     };
@@ -37,6 +34,24 @@ export function Modals({ setProject, closeModal, selectedProject }: CreateProjec
     function createProject(e: any) {
         e.preventDefault();
         axios.post('https://qapp-api.herokuapp.com/projects', {
+            title: state.title,
+            abbreviation: state.abbreviation,
+            describe: state.describe
+        })
+        .then((res) => console.log(res))
+        .catch((error) => console.log(error))
+
+        setState({
+            title: "",
+            abbreviation: "",
+            describe: "",
+        });
+        closeModal(false)
+    };
+
+    function createEditProject(e: any) {
+        e.preventDefault();
+        axios.put('https://qapp-api.herokuapp.com/projects', {
             title: state.title,
             abbreviation: state.abbreviation,
             describe: state.describe
@@ -74,7 +89,7 @@ export function Modals({ setProject, closeModal, selectedProject }: CreateProjec
                             <p className="modal---title">Titulo</p>
                             <input className="modal--title__input"
                             name="title"
-                            value={!selectedProject?.title? state.title : selectedProject.title}
+                            // value={!setProject?.title? state.title : setProject.title}
                             onChange={handleChange}
                             type="text"
                             maxLength={28}

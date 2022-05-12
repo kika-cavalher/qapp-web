@@ -11,16 +11,20 @@ import { ProjectProps } from "../../../types/project";
 import { ListProject } from "./list";
 import axios from "axios";
 
+export type ModalProps = {
+    ItemUpdate: (title:string, abbreviation:string, describe:string) => void
+}
+
  // const userName = localStorage.getItem("@qapp:user-name");
 export function ProjectPage () {
 const page = "Projetos";
 const [openModal, setOpenModal] = useState(false);
 const [project, setProject] = useState<ProjectProps[]>([]);
-const [ProjetoEditar, setProjetoEditar] = useState({});
+const [updateProject, setUpdateProject] = useState({});
 const [projects, setProjects] = useState([]);
 
-function editar(title:string, abbreviation:string, describe:string) {
-    setProjetoEditar({
+function UpdateProject(title:string, abbreviation:string, describe:string) {
+    setUpdateProject({
         title,
         abbreviation,
         describe})
@@ -56,14 +60,13 @@ function editar(title:string, abbreviation:string, describe:string) {
                         </Button>
                     </div>
                     {openModal && <Modals
-                        selectedProject={setProjetoEditar}
-                        setProject={setProject}
+                        // setProject={setProject}
                         closeModal={setOpenModal}/>}
 
                     <div className='page-project--list'>
                         <ListProject
-                        selectProject={setProjetoEditar}
-                        edit={(title, abbreviation, describe) => editar(title, abbreviation, describe)} 
+                        selectProject={setUpdateProject}
+                        ItemUpdate={(title, abbreviation, describe) => UpdateProject(title, abbreviation, describe)} 
                         projects={projects}
                         />
                     </div>
