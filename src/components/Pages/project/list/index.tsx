@@ -5,21 +5,19 @@ import './style.scss'
 
 export type ListProps = {
     projects: ProjectProps[],
-    selectProject: (selectedProject: ProjectProps) => void 
-    ItemUpdate: (title:string, abbreviation:string, describe:string) => void
+    // ItemUpdate: (title:string, abbreviation:string, describe:string) => void
 }
 
-export function ListProject ({projects, selectProject, ItemUpdate}: ListProps) {
+export function ListProject ({projects}: ListProps) {
 
     return (
         <div id="page-list-project">
             <div className="page-list--itens">
-                {projects.map((item, index) => (
+                {projects.map((project, index) => (
                     <ItemProject
-                    selectProject={selectProject}
-                    ItemUpdate={(title, abbreviation, describe) => ItemUpdate(title, abbreviation, describe)}
+                        // ItemUpdate={(title, abbreviation, describe) => ItemUpdate(title, abbreviation, describe)}
                         key={index}
-                        {...item}
+                        {...project}
                     />
             ))}
             </div>

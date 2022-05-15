@@ -5,15 +5,13 @@ import deleteCrud from '../../../../assets/icon/delete-crud.png'
 import editCrud from '../../../../assets/icon/edit-crud.png'
 
 import './style.scss'
-import axios from 'axios'
 
 type ItemProps = ProjectProps & {
-    selectProject: (selectedProject: ProjectProps) => void
-    ItemUpdate: (title:string, abbreviation:string, describe:string) => void
+    // ItemUpdate: (title:string, abbreviation:string, describe:string) => void
 }
 
 
-export function ItemProject({ title, abbreviation, describe, ItemUpdate, selectProject}: ItemProps) {
+export function ItemProject({ title, abbreviation, describe}: ItemProps) {
 
     return (
         <div id="page-item-project">
@@ -42,7 +40,8 @@ export function ItemProject({ title, abbreviation, describe, ItemUpdate, selectP
                     <div className="item-project--more-options">
                         <Button 
                         className="btn-crud btn-crud-edit"
-                        onClick={() => ItemUpdate(title, abbreviation, describe)}>
+                        // onClick={() => ItemUpdate(title, abbreviation, describe)}
+                        >
                             <img className="item-project--btn-more-edit" src={editCrud} alt="icone para expandir maios opções." />
                         </Button>
                         <Button className="btn-crud btn-crud-delete">
