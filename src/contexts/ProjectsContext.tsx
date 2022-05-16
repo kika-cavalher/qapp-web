@@ -23,6 +23,64 @@ const ProjectsContextProvider: React.FC = ({children}) => {
     //   })
     // } , [])
 
+  //   function createProject(e: any) {
+  //     e.preventDefault();
+  //     axios.post('https://qapp-api.herokuapp.com/projects', {
+  //         title: state.title,
+  //         abbreviation: state.abbreviation,
+  //         describe: state.describe
+  //     })
+  //     .then((res) => console.log(res))
+  //     .catch((error) => console.log(error))
+
+  //     setState({
+  //         title: "",
+  //         abbreviation: "",
+  //         describe: "",
+  //     });
+  //     closeModal(false)
+  // };
+
+  // function createEditProject(e: any) {
+  //     e.preventDefault();
+  //     axios.put('https://qapp-api.herokuapp.com/projects', {
+  //         title: state.title,
+  //         abbreviation: state.abbreviation,
+  //         describe: state.describe
+  //     })
+  //     .then((res) => console.log(res))
+  //     .catch((error) => console.log(error))
+
+  //     setState({
+  //         title: "",
+  //         abbreviation: "",
+  //         describe: "",
+  //     });
+  //     closeModal(false)
+  // };
+
+     //     function UpdateProject(title:string, abbreviation:string, describe:string) {
+    //     setUpdateProject({
+    //         title,
+    //         abbreviation,
+    //         describe})
+    //     setOpenModal(true)
+    //     axios.put('https://qapp-api.herokuapp.com/projects', {
+    //         title,
+    //         abbreviation,
+    //         describe
+    //     })
+    //     .then((res) => console.log(res))
+    //     .catch((error) => console.log(error))
+    // }
+
+    //     useEffect(() => {
+    //         api.get("projects")
+    //         .then(({data}) => {
+    //             setProjects(data);
+    //         })
+    //     } , [])
+
     
     const teste = console.log('teste context precisa aparecer')
     return (

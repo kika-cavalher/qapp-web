@@ -1,0 +1,11 @@
+@import '../../../styles/variables.scss';
+
+.page-title {
+    margin-top: 1rem;
+
+    h1 {
+        color: $dark-grey;
+        font-size: 3.5rem;
+        font-weight: 500;
+    }
+}

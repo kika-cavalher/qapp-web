@@ -7,7 +7,7 @@ import {
   // Navigate,
 } from "react-router-dom";
 
-import ProjectPage from "./components/Pages/project";
+import { ProjectPage } from "./components/Pages/project";
 import { LoginPage } from "./components/Pages/auth/signIn";
 import { RegisterPage } from "./components/Pages/auth/signUp";
 
