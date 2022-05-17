@@ -1,4 +1,4 @@
-import { PagesProps } from '../../../types/default';
+import { PagesProps } from '../../../types/defaultPages';
 import './style.scss';
 
 export function TitlePage({titlePage}: PagesProps) {

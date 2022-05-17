@@ -3,7 +3,7 @@ import { useState } from "react";
 import { TopMenu } from "../../PageDefault/head/menu";
 import { Search } from "../../Global/search";
 import { Footer } from "../../PageDefault/footer";
-import { Button } from "../../Global/button";
+import { Button } from "../../Global/button/default";
 
 import './style.scss'
 import { Modal } from "../../Global/modal/index";

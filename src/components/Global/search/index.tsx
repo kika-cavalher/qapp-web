@@ -1,4 +1,4 @@
-import { Button } from '../button';
+import { Button } from '../button/default';
 
 import iconSearch from '../../../assets/icon/search.png';
 import './style.scss'

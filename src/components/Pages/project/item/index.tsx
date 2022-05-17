@@ -1,5 +1,5 @@
 import { ItemProps, ProjectProps } from '../../../../types/project'
-import { Button } from '../../../Global/button'
+import { Button } from '../../../Global/button/default'
 
 import deleteCrud from '../../../../assets/icon/delete-crud.png'
 import editCrud from '../../../../assets/icon/edit-crud.png'

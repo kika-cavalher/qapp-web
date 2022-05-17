@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 import { CreateProjectProps } from "../../../types/project";
-import { Button } from "../button";
+import { Button } from "../button/default";
 import { ProjectsContextProvider } from "../../../contexts/ProjectsContext";
 
 import addModal from '../../../assets/icon/addModal.png'

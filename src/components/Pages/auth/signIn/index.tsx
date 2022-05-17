@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import React, { FormEvent } from 'react';
 import { getAuth, signOut } from '@firebase/auth';
 
-import { Button } from '../../../Global/button';
+import { Button } from '../../../Global/button/default';
 import { useAuth } from '../../../../hooks/useAuth';
 import Logo from '../../../PageDefault/head/logo';
 

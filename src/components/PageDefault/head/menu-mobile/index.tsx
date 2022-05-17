@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import './style.scss'
-import { Button } from "../../../Global/button";
+import { Button } from "../../../Global/button/default";
 
 export type CreateProjectProps = {
     closeModal: (isOpen: boolean) => void

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './style.scss'
 import Logo from '../logo';
 import IconMenu from '../../../../assets/icon/menu.png';
-import { Button } from '../../../Global/button';
+import { Button } from '../../../Global/button/default';
 import { useState } from 'react';
 import { ModalMobile } from '../menu-mobile';
 
