@@ -1,20 +1,42 @@
 import React from "react";
-import { createContext, ReactNode, useEffect, useState } from "react";
-import api from "../services/api";
-import { ProjectProps } from '../types/project'
+import { createContext, useState } from "react";
+import { Modal } from "../components/Global/modal";
 
 type ProjectContextProviderProps = {
-    children: any;
+    children: React.ReactNode;
   };
 
 type ProjectContextType = {
-    teste: any
+    handleAddProject: () => void;
   };
   
-export const ProjectContext = React.createContext<ProjectContextType | null>(null);
+export const ProjectContext = createContext<ProjectContextType>({} as ProjectContextType);
 
-const ProjectsContextProvider: React.FC = ({children}) => {
-    const [projects , setProjects] = useState([]);
+export function ProjectsContextProvider ({ children }: ProjectContextProviderProps) {
+    const [openFormModal , setOpenFormModal] = useState(false);
+
+    function handleAddProject() {
+      setOpenFormModal(true);
+    }
+
+  return (
+    <ProjectContext.Provider value={{ handleAddProject }}>
+      {children}
+      {openFormModal && <Modal
+                        titleModal={'Adicione um novo projeto.'}
+                        nameModal={'Nome do projeto.'}
+                        name_placeholder={'Qual será o titulo do seu projeto.'}
+                        contentModal={'Abreviação.'}
+                        content_placeholder={'3 caracteres.'}
+                        describeModal={'Descreva o seu projeto.'}
+                        describe_placeholder={'Descreva o seu projeto melhor nesse campo.'}
+                        />}
+    </ProjectContext.Provider>
+  );
+}
+
+
+// export const ProjectsContextProvider: React.FC<React.ReactNode> = ({children}) => {
     
     // useEffect(() => {
     //   api.get("projects")
@@ -81,13 +103,5 @@ const ProjectsContextProvider: React.FC = ({children}) => {
     //         })
     //     } , [])
 
-    
-    const teste = console.log('teste context precisa aparecer')
-    return (
-        <ProjectContext.Provider value={{ teste }}>
-          {children}
-        </ProjectContext.Provider>
-    );
-};
 
-export {ProjectsContextProvider};
+// };

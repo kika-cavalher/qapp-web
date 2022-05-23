@@ -10,10 +10,12 @@ import {
 import { ProjectPage } from "./components/Pages/project";
 import { LoginPage } from "./components/Pages/auth/signIn";
 import { RegisterPage } from "./components/Pages/auth/signUp";
+import { ProjectsContextProvider } from "./contexts/ProjectsContext";
 
 function App() {
   return (
     <BrowserRouter>
+      <ProjectsContextProvider>
       <AuthContextProvider>
         <Routes>
           <Route path="/auth/sign-in" element={<LoginPage />} />
@@ -22,6 +24,7 @@ function App() {
           <Route path="/projects" element={<ProjectPage />} />
         </Routes>
       </AuthContextProvider>
+      </ProjectsContextProvider>
     </BrowserRouter>
   );
 }

@@ -11,7 +11,6 @@ export type ProjectModalProps = {
     title: string
     abbreviation: string,
     describe: string,
-    openModal: boolean,
 }
 
 export type ListProps = {
@@ -27,7 +26,7 @@ export type ItemProps = {
 }
 
 export type CreateProjectProps = {
-    closeModal: (isOpen: boolean) => void,
+    closeModal?: (isOpen: boolean) => void,
     createOrEditProject?: () => void,
     titleModal?: React.ReactNode,
     nameModal?: React.ReactNode,

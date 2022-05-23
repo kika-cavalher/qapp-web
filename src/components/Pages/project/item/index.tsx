@@ -5,12 +5,10 @@ import deleteCrud from '../../../../assets/icon/delete-crud.png'
 import editCrud from '../../../../assets/icon/edit-crud.png'
 
 import './style.scss'
-import { ProjectsContextProvider } from '../../../../contexts/ProjectsContext'
 
 export function ItemProject({ title, abbreviation, describe }: ItemProps) {
 
     return (
-        <ProjectsContextProvider>
             <div id="page-item-project">
                 <div
                     className="item-project--box">
@@ -49,6 +47,5 @@ export function ItemProject({ title, abbreviation, describe }: ItemProps) {
                     </div>
                 </div>
             </div>
-        </ProjectsContextProvider>
     )
 }
