@@ -2,31 +2,23 @@ import { useState } from "react"
 
 import { CreateProjectProps } from "../../../types/project";
 import { Button } from "../button/default";
-import { ProjectsContextProvider } from "../../../contexts/ProjectsContext";
 
 import addModal from '../../../assets/icon/addModal.png'
 import iconCloseModal from '../../../assets/icon/closeModalX.png'
 import './style.scss'
 
-
-
-export function Modal({ closeModal, createOrEditProject, titleModal, nameModal, name_placeholder, contentModal, content_placeholder, describeModal, describe_placeholder }: CreateProjectProps) {
+export function Modal({ createOrEditProject, titleModal, nameModal, name_placeholder, contentModal, content_placeholder, describeModal, describe_placeholder }: CreateProjectProps) {
     const [name, setName] = useState("")
     const [content, setContent] = useState("")
     const [describe, setDescribe] = useState("")
 
-    function handleClose() {
-        closeModal(false)
-    };
-
     return (
-        <ProjectsContextProvider>
             <div className="modal-main">
                 <div className="modal">
                     <div className="modal-header--close-menu">
                         <Button
                             className="icon-close-modal"
-                            onClick={handleClose}>
+                            >
                             <img className="item-project--btn-close-modal" src={iconCloseModal} alt="icone para fechar o modal." />
                         </Button>
                     </div>
@@ -75,15 +67,15 @@ export function Modal({ closeModal, createOrEditProject, titleModal, nameModal, 
                         </div>
                         <div className="btn">
                             <Button
-                                className="btn__send"
-                            >Salvar</Button>
+                                className="btn__send">Salvar
+                            </Button>
                         </div>
                     </form>
                 </div>
-                <div className="modal-out" onClick={handleClose}>
+                <div className="modal-out" 
+                >
                 </div>
             </div>
-        </ProjectsContextProvider>
     )
 }
 
