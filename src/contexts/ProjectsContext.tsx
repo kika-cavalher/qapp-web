@@ -1,41 +1,91 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import { createContext, useState } from "react";
 import { Modal } from "../components/Global/modal";
+import api from "../services/api";
 
 type ProjectContextProviderProps = {
-    children: React.ReactNode;
-  };
+  children: React.ReactNode;
+};
 
 type ProjectContextType = {
-    handleAddProject: () => void;
-    closeModal: () => void;
-  };
-  
+  handleAddProject: () => void;
+  handleClose: () => void;
+  handleSubmit: (event: any) => void;
+  name: string;
+  setName: React.Dispatch<React.SetStateAction<string>>;
+  nameHandler: (event: any) => void;
+  content: string;
+  setContent: React.Dispatch<React.SetStateAction<string>>;
+  contentHandler: (event: any) => void;
+  describe: string;
+  setDescribe: React.Dispatch<React.SetStateAction<string>>;
+  describeHandler: (event: any) => void;
+};
+
 export const ProjectContext = createContext<ProjectContextType>({} as ProjectContextType);
 
-export function ProjectsContextProvider ({ children }: ProjectContextProviderProps) {
-    const [openFormModal , setOpenFormModal] = useState(false);
+export function ProjectsContextProvider({ children }: ProjectContextProviderProps) {
+  const [openFormModal, setOpenFormModal] = useState(false);
+  const [name, setName] = useState("")
+  const [content, setContent] = useState("")
+  const [describe, setDescribe] = useState("")
 
-    function handleAddProject() {
-      setOpenFormModal(true);
-    }
+  function handleAddProject() {
+    setOpenFormModal(true);
+  }
 
-    function closeModal() {
-      setOpenFormModal(false);
+  function handleClose() {
+    setOpenFormModal(false);
+  }
+
+  function handleSubmit(event: any) {
+    event.preventDefault();
+    const project = {
+      name, content, describe
     }
+    api.post("projects", project);
+    console.log(project)
+    setOpenFormModal(false);
+  }
+
+  function nameHandler(event: any) {
+    setName(event.target.value)
+  }
+
+  function contentHandler(event: any) {
+    setContent(event.target.value)
+  }
+
+  function describeHandler(event: any) {
+    setDescribe(event.target.value)
+  }
 
   return (
-    <ProjectContext.Provider value={{ handleAddProject, closeModal }}>
+    <ProjectContext.Provider
+      value={{
+        handleAddProject,
+        handleClose,
+        handleSubmit,
+        name,
+        setName,
+        nameHandler,
+        content,
+        setContent,
+        contentHandler,
+        describe,
+        setDescribe,
+        describeHandler
+      }}>
       {children}
       {openFormModal && <Modal
-                        titleModal={'Adicione um novo projeto.'}
-                        nameModal={'Nome do projeto.'}
-                        name_placeholder={'Qual será o titulo do seu projeto.'}
-                        contentModal={'Abreviação.'}
-                        content_placeholder={'3 caracteres.'}
-                        describeModal={'Descreva o seu projeto.'}
-                        describe_placeholder={'Descreva o seu projeto melhor nesse campo.'}
-                        />}
+        titleModal={'Adicione um novo projeto.'}
+        nameModal={'Nome do projeto.'}
+        name_placeholder={'Qual será o titulo do seu projeto.'}
+        contentModal={'Abreviação.'}
+        content_placeholder={'3 caracteres.'}
+        describeModal={'Descreva o seu projeto.'}
+        describe_placeholder={'Descreva o seu projeto melhor nesse campo.'}
+      />}
     </ProjectContext.Provider>
   );
 }
