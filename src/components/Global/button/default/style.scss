@@ -172,18 +172,16 @@
             font-size: 2rem;
             height: 45px;
             width: 100%;
-            background: $white-offwhite;
-            color: $dark-grey;
-            border: 0.2rem solid $blue-theme;
+            background: $medium-grey;
+            border: 2px solid $medium-grey;
         }
         
         @include phone {
             font-size: 2rem;
             height: 45px;
             width: 100%;
-            background: $white-offwhite;
-            color: $dark-grey;
-            border: 2px solid $blue-theme;
+            background: $medium-grey;
+            border: 2px solid $medium-grey;
             font-size: 1.5rem;
             margin: 0;
         }

@@ -2,6 +2,8 @@ import { useState } from "react"
 
 import { CreateProjectProps } from "../../../types/project";
 import { Button } from "../button/default";
+import { useProjects } from "../../../hooks/useProjects";
+
 
 import addModal from '../../../assets/icon/addModal.png'
 import iconCloseModal from '../../../assets/icon/closeModalX.png'
@@ -12,20 +14,24 @@ export function Modal({ createOrEditProject, titleModal, nameModal, name_placeho
     const [content, setContent] = useState("")
     const [describe, setDescribe] = useState("")
 
+    const { closeModal } = useProjects()
+
     return (
             <div className="modal-main">
                 <div className="modal">
-                    <div className="modal-header--close-menu">
+                    <div className="modal-header">
+                        <div className="modal-header--title">
+                            <img className="item-project--btn-add-modal"
+                                src={addModal} alt="icone para fechar o modal." />
+                            <h1>{titleModal}</h1>
+                        </div>
+                        <div className="modal-header--close-menu">
                         <Button
                             className="icon-close-modal"
-                            >
+                            onClick={closeModal}>
                             <img className="item-project--btn-close-modal" src={iconCloseModal} alt="icone para fechar o modal." />
                         </Button>
                     </div>
-                    <div className="modal-header">
-                        <img className="item-project--btn-add-modal"
-                            src={addModal} alt="icone para fechar o modal." />
-                        <h1>{titleModal}</h1>
                     </div>
                     <form className="modal-content--form" onSubmit={createOrEditProject}>
                         <div className="modal-content--titleAndAbreviation">
@@ -67,7 +73,9 @@ export function Modal({ createOrEditProject, titleModal, nameModal, name_placeho
                         </div>
                         <div className="btn">
                             <Button
-                                className="btn__send">Salvar
+                                className="btn__send"
+                                onClick={closeModal}>
+                                    Salvar
                             </Button>
                         </div>
                     </form>

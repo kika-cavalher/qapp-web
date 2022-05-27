@@ -8,6 +8,7 @@ type ProjectContextProviderProps = {
 
 type ProjectContextType = {
     handleAddProject: () => void;
+    closeModal: () => void;
   };
   
 export const ProjectContext = createContext<ProjectContextType>({} as ProjectContextType);
@@ -19,8 +20,12 @@ export function ProjectsContextProvider ({ children }: ProjectContextProviderPro
       setOpenFormModal(true);
     }
 
+    function closeModal() {
+      setOpenFormModal(false);
+    }
+
   return (
-    <ProjectContext.Provider value={{ handleAddProject }}>
+    <ProjectContext.Provider value={{ handleAddProject, closeModal }}>
       {children}
       {openFormModal && <Modal
                         titleModal={'Adicione um novo projeto.'}

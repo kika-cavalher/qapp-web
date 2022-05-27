@@ -18,20 +18,19 @@
 
 .modal {
     background: $white-offwhite;
-    border-radius: 5px;
+    border-radius: 20px;
     display: flex;
     height: 55%;
     flex-direction: column;
     overflow: hidden;
     position: fixed;
-    width: 30%;
+    top: 3rem;
+    width: 40%;
     z-index: 999;
-    margin-top: 10rem;
 
     @include slim {
-        margin-top: 5rem;
         height: 75%;
-        width: 45%;
+        width: 50%;
     }
 
     @include tablet {
@@ -40,13 +39,12 @@
     }
 
     @include phone {
-        height: 65%;
+        height: 70%;
         width: 90%;
     }
 }
 
 .icon-close-modal {
-    margin: 1rem 1rem 0 0;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -64,14 +62,19 @@
 }
 
 .modal-header {
-    margin: 0rem 1rem 1rem 3rem;
+    align-items: center;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    justify-content: space-around;
+    margin: 3rem 0rem 1rem 0;
+    width: 100%;
 
-    
-    @include slim {
-        margin: 0 0 0 3rem;
+    @include tablet {
+        margin: 3.5rem 0rem 1rem 0;
+    }
+
+    @include phone {
+        margin: 2.5rem 0rem 1rem 0;
     }
 
     img {
@@ -79,6 +82,11 @@
         width: 40px;
 
         @include slim {
+            height: 30px;
+            width: 30px;
+        }
+
+        @include phone {
             height: 30px;
             width: 30px;
         }
@@ -92,6 +100,21 @@
             margin-left: 0.8rem;
         }
     }
+}
+
+.modal-header--title {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+
+    @include tablet {
+        font-size: 0.7rem;
+    }
+
+    @include phone {
+        font-size: 0.6rem;
+    }
+    
 }
 
 .modal-content {

@@ -27,8 +27,8 @@
         @include phone {
             border: 1px solid $grey_border;
             height: 2.2rem;
-            width: 15rem;  
-            font-size: 0.8rem;
+            width: 12rem;  
+            font-size: 0.6rem;
         }
     }
 
@@ -41,7 +41,7 @@
         z-index:1;
 
         @include phone {
-            width: 14.5rem;  
+            width: 11.5rem;  
         }
 
         img {
