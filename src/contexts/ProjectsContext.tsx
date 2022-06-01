@@ -44,7 +44,6 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
       name, content, describe
     }
     api.post("projects", project);
-    console.log(project)
     setOpenFormModal(false);
   }
 

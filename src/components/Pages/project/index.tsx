@@ -30,7 +30,6 @@ export function ProjectPage() {
                 </div>
                 <div className='page-project--list'>
                     <ListProject
-                        projects={projects}
                     />
                 </div>
             </div>
