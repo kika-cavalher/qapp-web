@@ -14,7 +14,7 @@ export type ProjectModalProps = {
 }
 
 export type ListProps = {
-    projects: ProjectProps[],
+    project: ProjectProps[],
     // selectProject: (selectedProject: ProjectProps) => void 
     // edit: (title:string, abbreviation:string, describe:string) => void
 }
