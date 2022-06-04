@@ -146,7 +146,6 @@
     }
 
     p {
-        padding: 2%;
         font-size: 1.1rem;
         font-weight: 600;
         color: $dark-blue-theme;
@@ -163,16 +162,11 @@
     }
 }
 
-.modal--abbreviation{
-    p {
-        padding: 4%;
-    }
-}
-
 .modal-content--titleAndAbreviation {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin: 1rem 0;
     width: 100%;
 
@@ -261,6 +255,10 @@
     @include phone {
         width: 90%;
     }
+
+    p {
+        padding: 2%;
+    }
 }
 
 .modal-content--abbreviation {
@@ -277,6 +275,10 @@
     @include phone {
         width: 40%;
     }
+
+    p {
+        padding: 4%;
+    }
 }
 
 
@@ -285,6 +287,10 @@
 
     @include phone {
         margin-bottom: 0.5rem;
+    }
+
+    p {
+        padding: 2%;
     }
 
     textarea {
