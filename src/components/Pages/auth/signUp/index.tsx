@@ -106,11 +106,10 @@ export function RegisterPage () {
                                     type="password"
                                     placeholder="Confirmar senha"/>
                             </div>
-                            <div className='btn__send'>
-                                <ButtonSend 
-                                    type="submit">Entrar
-                                </ButtonSend>
-                            </div>
+                            <ButtonSend
+                                className='btn__send'
+                                type="submit">Entrar
+                            </ButtonSend>
                         </form>
                     </div>
                 </div>
