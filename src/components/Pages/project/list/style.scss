@@ -1,5 +1,9 @@
 @import '../../../../styles/variables.scss';
 
+.page-list--container{
+    display: flex;
+    width: 100%;
+}
 
 .page-list--itens {
     display: flex;

@@ -1,28 +1,11 @@
+import React from "react"
+
 export type ProjectProps = {
-    id?: string,
-    title: string
-    abbreviation: string,
+    id: string,
+    name: string
+    content: string,
     describe: string,
 
-}
-
-export type ProjectModalProps = {
-    id?: string,
-    title: string
-    abbreviation: string,
-    describe: string,
-}
-
-export type ListProps = {
-    project: ProjectProps[],
-    // selectProject: (selectedProject: ProjectProps) => void 
-    // edit: (title:string, abbreviation:string, describe:string) => void
-}
-
-export type ItemProps = {
-    title: string
-    abbreviation: string,
-    describe: string,
 }
 
 export type CreateProjectProps = {
@@ -36,4 +19,34 @@ export type CreateProjectProps = {
     describeModal?: React.ReactNode,
     describe_placeholder?: string | undefined,
 }
+
+
+export type ProjectContextProviderProps = {
+    children: React.ReactNode;
+};
+  
+export type ProjectContextType = {
+    handleAddProject: () => void;
+    handleClose: () => void;
+    handleSubmit: (event: any) => void;
+    handleEdit: (idProjec: string, name: string, content: string, describe: string) => void
+    id: string;
+    name: string;
+    setName: React.Dispatch<React.SetStateAction<string>>;
+    nameHandler: (event: any) => void;
+    content: string;
+    setContent: React.Dispatch<React.SetStateAction<string>>;
+    contentHandler: (event: any) => void;
+    describe: string;
+    setDescribe: React.Dispatch<React.SetStateAction<string>>;
+    describeHandler: (event: any) => void;
+    isEditing: boolean, 
+    setIsEditing: (value: React.SetStateAction<boolean>) => void
+};
+  
+export type ProjectEditType = {
+    name: string, 
+    content: string, 
+    describe: string,
+};
 

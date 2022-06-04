@@ -1,8 +1,8 @@
 
 import './style.scss'
-import { ButtonDefaultProps } from '../../../../types/button'
+import { ButtonDeleteProps } from '../../../../types/button'
 
-export function Button ({ className, children, onClick, type }: ButtonDefaultProps) {
+export function ButtonDelete ({ className, children, onClick, type }: ButtonDeleteProps) {
     return (
         <div className={className} >
             <button

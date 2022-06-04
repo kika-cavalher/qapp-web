@@ -14,17 +14,23 @@
     display: flex;
     background: $orange-theme-with-transparency;
     border-radius: 10px 0 0 10px ;
-    width: 6rem;
+    width: 150px;
     height: 6rem;
     color: $white-offwhite;
     justify-content: center;
     
     @include slim {
-        width: 8rem;
+        width: 150px;
+    }
+
+    @include tablet {
+        max-width: 110px;
+        min-width: 70px;
     }
 
     @include phone {
-            width: 4.5rem;
+        max-width: 100px;
+        min-width: 70px;
     }
 }
 
@@ -38,6 +44,10 @@
         font-weight: 500;
         text-transform: uppercase;
 
+        @include tablet {
+            font-size: 1.2rem;
+        }
+
         @include phone {
             font-size: 1.2rem;
         }
@@ -50,8 +60,12 @@
         flex: 1;
         margin-right: 0.2rem;
 
-        @include phone {
+        @include tablet {
             font-size: 1.2rem;
+        }
+
+        @include phone {
+            font-size: 1.1rem;
         }
     }
 }
@@ -63,11 +77,13 @@
     margin: 0 1rem;
 
     @include tablet {
-        width: 60%;
+        max-width: 50%;
+        min-width: 35%;
     }
 
     @include phone {
-        width: 45%;
+        max-width: 42%;
+        min-width: 38%;
     }
 }
 
@@ -76,7 +92,7 @@
     margin-bottom: 0.2rem;
 
     .item-project--title__title{
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         font-weight: 600;
         word-break: break-all;
 
@@ -84,8 +100,12 @@
             font-size: 1.2rem;
         }
 
+        @include tablet {
+            font-size: 1.2rem;
+        }
+
         @include phone {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
     }
 }
@@ -108,6 +128,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            font-size: 0.8rem;
         }
 
         @include phone {
@@ -115,6 +136,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            font-size: 0.8rem;
         }
     }
 }
@@ -126,7 +148,7 @@
 
     @include tablet {
         border-left: 1px solid $grey-with-transparency;
-        width: 1rem;
+        max-width: 1rem;
     }
 
     @include phone {
@@ -145,6 +167,11 @@
         margin-right: 3rem;
     }
 
+    @include tablet {
+        max-width: 8%;
+        min-width: 15%;
+    }
+
     .btn-crud {
 
         button {
@@ -155,12 +182,12 @@
         }
     
         img {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
 
             @include slim {
-                width: 30px;
-                height: 30px;
+                width: 20px;
+                height: 20px;
             }
 
             @include phone {

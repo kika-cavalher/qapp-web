@@ -5,81 +5,56 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 
 .modal-out {
     background: $black-with-transparency;
     position: fixed;
-    z-index: 2;
-    width: 100%;
-    height: 200%;
+    height: 150vh;
+    width: 150vw;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 998;
+
 }
 
 .modal {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
     background: $white-offwhite;
     border-radius: 20px;
-    display: flex;
-    height: 55%;
-    flex-direction: column;
-    overflow: hidden;
-    position: fixed;
-    top: 3rem;
+    height: 50%;
     width: 40%;
+    top: 10%;
     z-index: 999;
+    overflow: hidden;
 
-    @include slim {
-        height: 75%;
-        width: 50%;
-    }
-
-    @include tablet {
-        height: 60%;
-        width: 60%;
-    }
-
-    @include phone {
-        height: 70%;
-        width: 90%;
-    }
-}
-
-.icon-close-modal {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    button {
-        background: $white-offwhite;
-        cursor: pointer;
-        border: none;
-    }
-
-    img {
-        height: 40px;
-        width: 40px;
-    }
 }
 
 .modal-header {
-    align-items: center;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    margin: 3rem 0rem 1rem 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 3rem;
     width: 100%;
+    height: 20%;
 
     @include tablet {
-        margin: 3.5rem 0rem 1rem 0;
+        max-height: 10%;
     }
 
     @include phone {
-        margin: 2.5rem 0rem 1rem 0;
+        max-height: 10%;
     }
 
     img {
-        height: 40px;
-        width: 40px;
+        height: 30px;
+        width: 30px;
 
         @include slim {
             height: 30px;
@@ -92,18 +67,9 @@
         }
     }
 
-    h1 {
-        margin-left: 1rem;
-        font-weight: 600;
-
-        @include slim {
-            margin-left: 0.8rem;
-        }
-    }
 }
 
 .modal-header--title {
-    align-items: center;
     display: flex;
     flex-direction: row;
 
@@ -114,20 +80,26 @@
     @include phone {
         font-size: 0.6rem;
     }
-    
-}
 
-.modal-content {
-    padding: 0.5rem 1rem;
-    display: flex;
-    justify-content: center;
+    h1 {
+        font-size: 1.7rem;
+        font-weight: 600;
+        margin-left: 1rem;
+
+        @include slim {
+            margin-left: 0.8rem;
+        }
+    }
+    
 }
 
 .modal-content--form {
     display: flex;
     flex-direction: column;
-    width: 80%;
-    margin: 0.5rem 10%;
+    justify-content: center;
+    padding: 0.5rem 3rem;
+    width: 100%;
+    height: 60%;
 
     p {
         font-size: 1.1rem;

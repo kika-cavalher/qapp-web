@@ -2,8 +2,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FormEvent, useState } from 'react';
 
 import { useAuth } from '../../../../hooks/useAuth';
+import { ButtonSend } from '../../../Global/button/send';
+
 import Logo from '../../../PageDefault/head/logo';
-    
 import imgLogin from '../../../../assets/images/imgLogin.jpg';
 import './style.scss'
 import '../signIn/style.scss'
@@ -106,7 +107,9 @@ export function RegisterPage () {
                                     placeholder="Confirmar senha"/>
                             </div>
                             <div className='btn__send'>
-                                <button type="submit">Entrar</button>
+                                <ButtonSend 
+                                    type="submit">Entrar
+                                </ButtonSend>
                             </div>
                         </form>
                     </div>

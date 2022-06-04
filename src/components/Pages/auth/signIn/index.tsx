@@ -3,13 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import React, { FormEvent } from 'react';
 import { getAuth, signOut } from '@firebase/auth';
 
-import { Button } from '../../../Global/button/default';
 import { useAuth } from '../../../../hooks/useAuth';
 import Logo from '../../../PageDefault/head/logo';
 
 import imgLogin from '../../../../assets/images/imgLogin.jpg';
 import googleIconImg from '../../../../assets/icon/googleIconImg.png';
 import './style.scss'
+import { ButtonGoogle } from '../../../Global/button/google_btn';
+import { ButtonSend } from '../../../Global/button/send';
 
 
 export function LoginPage() {
@@ -71,11 +72,12 @@ export function LoginPage() {
                             </div>
                         </div>
                         <div className='page-login--main__google'>
-                            <Button className='btn__google'
+                            <ButtonGoogle 
+                            className='btn__google'
                             onClick={handleGoogleLogin}>
                                 <img id="img-icon__google" src={googleIconImg} alt="Logo da empresa QApp" />
                                 <p>Entrar usando conta Google.</p>
-                            </Button>
+                            </ButtonGoogle>
                         </div>
                         <div className='page-login--main__divider'>
                             <div>Ou entre com o seu login</div>
@@ -101,11 +103,9 @@ export function LoginPage() {
                                     placeholder="Insira sua senha"/>
                                 </div>
                                 <div className='btn__send'>
-                                    <Button
-                                    type="submit">Entrar</Button>
-                                    {/* <Button
-                                    onClick={HandleSignOut}
-                                    type="submit">Sair</Button> */}
+                                    <ButtonSend
+                                    type="submit">Entrar
+                                    </ButtonSend>
                                 </div>
                             </form>
                         </div>

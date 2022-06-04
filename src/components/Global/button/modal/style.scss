@@ -1,0 +1,81 @@
+@import '../../../../styles/variables.scss';
+
+.btn-open-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+        align-items: center;
+        background: $blue-theme;
+        border: 0;
+        border-radius: 8px;
+        color: $white;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        font-weight: 600;
+        font-size: 1.2rem;
+        height: 2.5rem;
+        justify-content: center;
+        margin: 1rem 0;
+        width: 10rem;
+
+        @include slim {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            width: 8rem;
+        }
+        
+        @include tablet {
+            font-size: 2rem;
+            height: 45px;
+            width: 100%;
+            background: $medium-grey;
+            border: 2px solid $medium-grey;
+        }
+        
+        @include phone {
+            font-size: 2rem;
+            height: 45px;
+            width: 100%;
+            background: $medium-grey;
+            border: 2px solid $medium-grey;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+    }    
+}
+
+.modal-mobile--btn-open {
+    button{
+        overflow: hidden;
+        cursor: pointer;
+        border: 0;
+        background-color: $white-offwhite;
+    }
+
+}
+
+.icon-close-modal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    button {
+        background: $white-offwhite;
+        cursor: pointer;
+        border: none;
+    }
+
+    img {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+.close-modal{
+    display: flex;
+    flex-direction: column;
+}
+

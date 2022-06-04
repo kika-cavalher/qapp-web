@@ -1,4 +1,4 @@
-import { Button } from '../button/default';
+import { ButtonSearch } from '../button/search';
 
 import iconSearch from '../../../assets/icon/search.png';
 import './style.scss'
@@ -13,11 +13,11 @@ export function Search () {
                     <img id="icon-search" src={iconSearch} alt="icone de identificação visual do campo de busca" />
                 </div>
             </div>
-            <Button 
+            <ButtonSearch 
             type="submit" 
             className="btn__search">
                 Buscar
-            </Button>
+            </ButtonSearch>
         </div>
     )
 }

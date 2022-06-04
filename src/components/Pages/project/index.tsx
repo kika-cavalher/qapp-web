@@ -1,13 +1,14 @@
 import { useState } from "react";
 
+import { useProjects } from "../../../hooks/useProjects";
+
 import { TopMenu } from "../../PageDefault/head/menu";
 import { Search } from "../../Global/search";
 import { Footer } from "../../PageDefault/footer";
-import { Button } from "../../Global/button/default";
 import { ListProject } from "./list";
 import { TitlePage } from "../../PageDefault/body/titlePage";
+import { ButtonModal } from "../../Global/button/modal";
 
-import { useProjects } from "../../../hooks/useProjects";
 
 import './style.scss'
 
@@ -23,10 +24,11 @@ export function ProjectPage() {
                 <TitlePage titlePage={'Projetos'} />
                 <div className='page-project--container__options'>
                     <Search />
-                    <Button
+                    <ButtonModal
+                        className="btn-open-modal"
                         onClick={handleAddProject}
-                        className="btn-open-modal"> Novo projeto
-                    </Button>
+                        >Novo projeto
+                    </ButtonModal>
                 </div>
                 <div className='page-project--list'>
                     <ListProject

@@ -1,31 +1,18 @@
+import { title } from "process";
 import React, { FormEvent } from "react";
 import { createContext, useState } from "react";
+
 import { Modal } from "../components/Global/modal";
 import api from "../services/api";
-
-type ProjectContextProviderProps = {
-  children: React.ReactNode;
-};
-
-type ProjectContextType = {
-  handleAddProject: () => void;
-  handleClose: () => void;
-  handleSubmit: (event: any) => void;
-  name: string;
-  setName: React.Dispatch<React.SetStateAction<string>>;
-  nameHandler: (event: any) => void;
-  content: string;
-  setContent: React.Dispatch<React.SetStateAction<string>>;
-  contentHandler: (event: any) => void;
-  describe: string;
-  setDescribe: React.Dispatch<React.SetStateAction<string>>;
-  describeHandler: (event: any) => void;
-};
+import { ProjectContextProviderProps, ProjectContextType, ProjectEditType } from "../types/project";
 
 export const ProjectContext = createContext<ProjectContextType>({} as ProjectContextType);
 
 export function ProjectsContextProvider({ children }: ProjectContextProviderProps) {
   const [openFormModal, setOpenFormModal] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [projects, setProjects] = useState([])
+  const [id, setId] = useState("")
   const [name, setName] = useState("")
   const [content, setContent] = useState("")
   const [describe, setDescribe] = useState("")
@@ -35,16 +22,49 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
   }
 
   function handleClose() {
+    if(name) {
+      setName('')
+    }
+    if(content) {
+      setContent('')
+    }
+    if(describe) {
+      setDescribe('')
+    }
+
     setOpenFormModal(false);
   }
 
   function handleSubmit(event: any) {
     event.preventDefault();
     const project = {
-      name, content, describe
+      id, name, content, describe
     }
-    api.post("projects", project);
+    if(id) {
+      api.put(`projects/${project.id}`, project);
+    }else {
+      api.post("projects", project);
+    }
+
     setOpenFormModal(false);
+    if(project.id) {
+      setName('')
+    }
+    if(content) {
+      setContent('')
+    }
+    if(describe) {
+      setDescribe('')
+    }
+  }
+
+  function handleEdit(id: string, name: string, content: string, describe: string) {
+    setName(name);
+    setContent(content);
+    setDescribe(describe);
+    setIsEditing(true)
+
+    setOpenFormModal(true);
   }
 
   function nameHandler(event: any) {
@@ -59,12 +79,15 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
     setDescribe(event.target.value)
   }
 
+
   return (
     <ProjectContext.Provider
       value={{
         handleAddProject,
         handleClose,
         handleSubmit,
+        handleEdit,
+        id,
         name,
         setName,
         nameHandler,
@@ -73,7 +96,9 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
         contentHandler,
         describe,
         setDescribe,
-        describeHandler
+        describeHandler,
+        isEditing, 
+        setIsEditing
       }}>
       {children}
       {openFormModal && <Modal

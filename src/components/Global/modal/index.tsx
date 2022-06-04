@@ -1,9 +1,8 @@
-import { useState } from "react"
-
 import { CreateProjectProps } from "../../../types/project";
-import { Button } from "../button/default";
 import { useProjects } from "../../../hooks/useProjects";
 
+import { ButtonSend } from "../button/send";
+import { ButtonModal } from "../button/modal";
 
 import addModal from '../../../assets/icon/addModal.png'
 import iconCloseModal from '../../../assets/icon/closeModalX.png'
@@ -32,11 +31,11 @@ export function Modal({  titleModal, nameModal, name_placeholder, contentModal, 
                         <h1>{titleModal}</h1>
                     </div>
                     <div className="modal-header--close-menu">
-                        <Button
+                        <ButtonModal
                             className="icon-close-modal"
                             onClick={handleClose}>
                             <img className="item-project--btn-close-modal" src={iconCloseModal} alt="icone para fechar o modal." />
-                        </Button>
+                        </ButtonModal>
                     </div>
                 </div>
                 <form className="modal-content--form" onSubmit={handleSubmit}>
@@ -73,17 +72,17 @@ export function Modal({  titleModal, nameModal, name_placeholder, contentModal, 
                             name="describeModal"
                             value={describe}
                             onChange={describeHandler}
-                            maxLength={200}
+                            maxLength={170}
                             placeholder={describe_placeholder}>
                         </textarea>
                     </div>
-                    <div className="btn">
-                        <Button
-                            className="btn__send">
-                            Salvar
-                        </Button>
-                    </div>
                 </form>
+                <div className="btn">
+                    <ButtonSend
+                        className="btn__send">
+                        Salvar
+                    </ButtonSend>
+                </div>
             </div>
             <div className="modal-out"
             >
