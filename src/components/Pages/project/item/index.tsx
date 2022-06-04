@@ -10,7 +10,7 @@ import editCrud from '../../../../assets/icon/edit-crud.png'
 
 import './style.scss'
 
-export function ItemProject({ id, name, content, describe }: ProjectProps) {
+export function ItemProject({ _id, name, content, describe }: ProjectProps) {
 
     const { handleEdit } = useProjects()
 
@@ -33,16 +33,13 @@ export function ItemProject({ id, name, content, describe }: ProjectProps) {
                             <div className="item-project--subtitle">
                                 <h3 className="item-project--title__subtitle">{describe}</h3>
                             </div>
-                            <div className="item-project--menber">
-                                {/* <h2 className="item-project--menber__title">{member}</h2> */}
-                            </div>
                         </div>
                         <div className="item-project--divider"></div>
                         <div className="item-project--more-options">
                             
                             <ButtonEdit
                             className="btn-crud btn-crud-edit"
-                            onClick={() => handleEdit(id, name, content, describe)}
+                            onClick={() => handleEdit({_id, name, content, describe})}
                             >
                                 <img className="item-project--btn-more-edit" src={editCrud} alt="icone para editar projeto" />
                             </ButtonEdit>

@@ -1,7 +1,7 @@
 import React from "react"
 
 export type ProjectProps = {
-    id: string,
+    _id: string,
     name: string
     content: string,
     describe: string,
@@ -29,8 +29,10 @@ export type ProjectContextType = {
     handleAddProject: () => void;
     handleClose: () => void;
     handleSubmit: (event: any) => void;
-    handleEdit: (idProjec: string, name: string, content: string, describe: string) => void
+    handleId?: (id: any) => void;
+    handleEdit: ({ _id, name, content, describe }: ProjectProps) => void
     id: string;
+    setId: (value: React.SetStateAction<string>) => void
     name: string;
     setName: React.Dispatch<React.SetStateAction<string>>;
     nameHandler: (event: any) => void;
@@ -40,8 +42,7 @@ export type ProjectContextType = {
     describe: string;
     setDescribe: React.Dispatch<React.SetStateAction<string>>;
     describeHandler: (event: any) => void;
-    isEditing: boolean, 
-    setIsEditing: (value: React.SetStateAction<boolean>) => void
+    
 };
   
 export type ProjectEditType = {

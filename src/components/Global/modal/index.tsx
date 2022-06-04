@@ -9,7 +9,6 @@ import './style.scss'
 
 export function Modal({  titleModal, nameModal, name_placeholder, contentModal, content_placeholder, describeModal, describe_placeholder }: CreateProjectProps) {
 
-
     const {
         handleClose,
         handleSubmit,
@@ -75,11 +74,12 @@ export function Modal({  titleModal, nameModal, name_placeholder, contentModal, 
                             placeholder={describe_placeholder}>
                         </textarea>
                     </div>
+                    <ButtonModal
+                        className="btn__send--modal"
+                        onClick={() => handleSubmit}>
+                        Salvar
+                    </ButtonModal>
                 </form>
-                <ButtonModal
-                    className="btn__send--modal">
-                    Salvar
-                </ButtonModal>
             </div>
             <div className="modal-out"
             >

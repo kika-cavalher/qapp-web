@@ -21,7 +21,7 @@ export function ListProject() {
                     {projectsList.map((projects, index) =>
                         <div className="page-list--container" key={index}>
                             <ItemProject
-                                id={projects.id}
+                                _id={projects._id}
                                 name={projects.name}
                                 content={projects.content}
                                 describe={projects.describe}

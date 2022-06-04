@@ -1,21 +1,63 @@
-import { title } from "process";
-import React, { FormEvent } from "react";
 import { createContext, useState } from "react";
 
 import { Modal } from "../components/Global/modal";
 import api from "../services/api";
-import { ProjectContextProviderProps, ProjectContextType, ProjectEditType } from "../types/project";
+import { ProjectContextProviderProps, ProjectContextType, ProjectProps } from "../types/project";
 
 export const ProjectContext = createContext<ProjectContextType>({} as ProjectContextType);
 
 export function ProjectsContextProvider({ children }: ProjectContextProviderProps) {
-  const [openFormModal, setOpenFormModal] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const [projects, setProjects] = useState([])
-  const [id, setId] = useState("")
   const [name, setName] = useState("")
   const [content, setContent] = useState("")
   const [describe, setDescribe] = useState("")
+  
+  const [openFormModal, setOpenFormModal] = useState(false);
+  const [id, setId] = useState("")
+
+  function handleId(id: string) {
+    api.get("projects")
+        .then(res => setId(res.data._id))
+        return id
+  }
+
+  function handleSubmit(event: any) {
+    event.preventDefault();
+    console.log('Você clicou em enviar.');
+
+    const project = {
+      name, 
+      content, 
+      describe
+    }
+    console.log(project)
+
+    if(id) {
+      api.put(`projects/${id}`, project);
+    }else {
+      api.post("projects", project);
+    }
+
+    setOpenFormModal(false);
+
+    if(name) {
+      setName('')
+    }
+    if(content) {
+      setContent('')
+    }
+    if(describe) {
+      setDescribe('')
+    }
+  }
+
+  function handleEdit({_id, name, content, describe} : ProjectProps) {
+    setName(name);
+    setContent(content);
+    setDescribe(describe);
+
+    setId(_id);
+    setOpenFormModal(true);
+  }
 
   function handleAddProject() {
     setOpenFormModal(true);
@@ -33,38 +75,6 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
     }
 
     setOpenFormModal(false);
-  }
-
-  function handleSubmit(event: any) {
-    event.preventDefault();
-    const project = {
-      id, name, content, describe
-    }
-    if(id) {
-      api.put(`projects/${project.id}`, project);
-    }else {
-      api.post("projects", project);
-    }
-
-    setOpenFormModal(false);
-    if(project.id) {
-      setName('')
-    }
-    if(content) {
-      setContent('')
-    }
-    if(describe) {
-      setDescribe('')
-    }
-  }
-
-  function handleEdit(id: string, name: string, content: string, describe: string) {
-    setName(name);
-    setContent(content);
-    setDescribe(describe);
-    setIsEditing(true)
-
-    setOpenFormModal(true);
   }
 
   function nameHandler(event: any) {
@@ -88,6 +98,7 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
         handleSubmit,
         handleEdit,
         id,
+        setId,
         name,
         setName,
         nameHandler,
@@ -97,8 +108,6 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
         describe,
         setDescribe,
         describeHandler,
-        isEditing, 
-        setIsEditing
       }}>
       {children}
       {openFormModal && <Modal
