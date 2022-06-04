@@ -146,9 +146,12 @@
     }
 
     p {
+        padding: 2%;
         font-size: 1.1rem;
         font-weight: 600;
-        margin-left: 3px;
+        color: $dark-blue-theme;
+        background-color: $light-grey;
+        border-radius: 10px;
 
         @include tv {
             font-size: 2.5rem;
@@ -157,6 +160,12 @@
         @include phone {
             font-size: 1rem;
         }
+    }
+}
+
+.modal--abbreviation{
+    p {
+        padding: 4%;
     }
 }
 
