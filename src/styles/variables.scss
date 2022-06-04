@@ -29,14 +29,21 @@ $light-pink: #f8eaea;
 $red_google: #ea4335;
 
 // media queries
-$monitor-width: 1300px;
-@mixin monitor {
-    @media (min-width: #{$monitor-width}) {
+$tv-width: 3000px;
+@mixin tv {
+    @media (min-width: #{$tv-width}) {
         @content;
     }
 }
 
-$notebook-width: 1300px;
+$monitor-width: 2400px;
+@mixin monitor {
+    @media (max-width: #{$monitor-width}) {
+        @content;
+    }
+}
+
+$notebook-width: 1290px;
 $notebook-height: 700px;
 @mixin notebook {
     @media (max-width: #{$notebook-width}) and (min-height: #{$notebook-height}){

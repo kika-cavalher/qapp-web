@@ -27,12 +27,25 @@
     position: fixed;
     background: $white-offwhite;
     border-radius: 20px;
-    height: 50%;
-    width: 40%;
+    height: 50vh;
+    width: 40vw;
     top: 10%;
     z-index: 999;
     overflow: hidden;
 
+    @include tablet {
+        width: 70vw;
+    }
+
+    @include slim {
+        width: 50vw;
+        height: 70vh;
+    }
+
+    @include phone {
+        width: 90vw;
+        height: 60vh;
+    }
 }
 
 .modal-header {
@@ -44,17 +57,23 @@
     width: 100%;
     height: 20%;
 
-    @include tablet {
-        max-height: 10%;
+    @include tv {
+        max-height: 15%;
     }
 
     @include phone {
-        max-height: 10%;
+        max-height: 15%;
+        padding: 0.5rem 1.8rem;
     }
 
     img {
         height: 30px;
         width: 30px;
+    
+        @include tv {
+            height: 50px;
+            width: 50px;
+        }
 
         @include slim {
             height: 30px;
@@ -62,16 +81,16 @@
         }
 
         @include phone {
-            height: 30px;
-            width: 30px;
+            height: 25px;
+            width: 25px;
         }
     }
-
 }
 
 .modal-header--title {
     display: flex;
     flex-direction: row;
+    align-items: center;
 
     @include tablet {
         font-size: 0.7rem;
@@ -86,8 +105,17 @@
         font-weight: 600;
         margin-left: 1rem;
 
+        @include tv {
+            font-size: 3rem;
+        }
+
         @include slim {
             margin-left: 0.8rem;
+        }
+    
+        @include phone {
+            font-size: 1.2rem;
+            margin-left: 0.2rem;
         }
     }
     
@@ -100,11 +128,31 @@
     padding: 0.5rem 3rem;
     width: 100%;
     height: 60%;
+    
+    @include tv {
+        height: 70%;
+        justify-content:flex-start;
+        padding: 0 3rem;
+    }
+
+    @include phone {
+        height: 70%;
+        justify-content:center;
+        padding: 0 2rem;
+    }
 
     p {
         font-size: 1.1rem;
         font-weight: 600;
         margin-left: 3px;
+
+        @include tv {
+            font-size: 2.5rem;
+        }
+
+        @include phone {
+            font-size: 1rem;
+        }
     }
 }
 
@@ -115,6 +163,11 @@
     margin: 1rem 0;
     width: 100%;
 
+    @include tv {
+        flex-direction: column;
+        margin: 2.5rem 0;
+    }
+
     @include tablet {
         flex-direction: column;
     }
@@ -124,23 +177,29 @@
     }
 
     input {
+        margin: 0.5rem 0 2rem 0;
+        padding: 0 5px;
+        width: 100%;
+        height: 2.5rem;
+        font-weight: 500;
+        color: $dark-grey;
         background: $white-offwhite;
         border: none;
         border-bottom: 1px solid $grey_border;
-        color: $dark-grey;
-        font-weight: 500;
-        height: 2.5rem;
-        margin: 0.5rem 0 2rem 0;
         outline: none;
-        padding: 0 5px;
-        width: 100%;
+
+        @include tv {
+            margin: 2rem 0;
+            font-size: 1.8rem;
+        }
 
         @include slim {
             margin: 0.5rem 0 1rem 0;
         }
 
         @include phone {
-            margin: 0.5rem 0 1rem 0;
+            margin: 0rem 0 0.5rem 0;
+            font-size: 0.8rem;
         }
 
         &:hover {
@@ -173,6 +232,10 @@
 .modal-content--title {
     width: 60%;
 
+    @include tv {
+        width: 90%;
+    }
+
     @include tablet {
         width: 90%;
     }
@@ -184,6 +247,10 @@
 
 .modal-content--abbreviation {
     width: 30%;
+
+    @include tv {
+        width: 50%;
+    }
 
     @include tablet {
         width: 40%;
@@ -199,31 +266,31 @@
     margin-bottom: 1.5rem;
 
     @include phone {
-            margin-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
     }
 
     textarea {
+        margin-top: 0.5rem;
+        padding: 5px 15px;
+        width: 100%;
+        height: 5rem;
+        font-weight: 500;
+        color: $dark-grey;
         background: $white;
         border: 1.8px solid $grey_border;
         border-radius: 10px;
-        color: $dark-grey;
-        font-weight: 500;
-        height: 5rem;
-        margin-top: 0.5rem;
         outline: none;
-        padding: 5px 15px;
-        width: 100%;
 
-        // ::-webkit-scrollbar-track {
-        //     background-color: #F4F4F4;
-        // }
-        // ::-webkit-scrollbar {
-        //     width: 6px;
-        //     background: #F4F4F4;
-        // }
-        // ::-webkit-scrollbar-thumb {
-        //     background: #dad7d7;
-        // }
+        @include tv {
+            height: 10rem;
+            font-size: 1.8rem;
+        }
+
+        @include phone {
+            height: 4rem;
+            font-size: 0.8rem;
+            border: 1.0px solid $grey_border;
+        }
 
             &:hover {
             border: 2px solid $turquoise;

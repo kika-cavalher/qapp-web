@@ -1,7 +1,6 @@
 import { CreateProjectProps } from "../../../types/project";
 import { useProjects } from "../../../hooks/useProjects";
 
-import { ButtonSend } from "../button/send";
 import { ButtonModal } from "../button/modal";
 
 import addModal from '../../../assets/icon/addModal.png'
@@ -77,12 +76,10 @@ export function Modal({  titleModal, nameModal, name_placeholder, contentModal, 
                         </textarea>
                     </div>
                 </form>
-                <div className="btn">
-                    <ButtonSend
-                        className="btn__send">
-                        Salvar
-                    </ButtonSend>
-                </div>
+                <ButtonModal
+                    className="btn__send--modal">
+                    Salvar
+                </ButtonModal>
             </div>
             <div className="modal-out"
             >

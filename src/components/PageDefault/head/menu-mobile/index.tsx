@@ -14,12 +14,13 @@ export function ModalMobile({ closeModal }: CreateProjectProps) {
         closeModal(false) 
     };
 
+    //refactoring
     return (
         <div className="menu-mobile--main">
             <div className="menu-mobile--modal">
 
                 <div className="menu-mobile--modal-content">
-                    
+
                     <ButtonModal
                     className="close-modal" 
                     onClick={handleClose}>Projetos
