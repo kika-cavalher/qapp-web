@@ -14,22 +14,14 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
   const [openFormModal, setOpenFormModal] = useState(false);
   const [id, setId] = useState("")
 
-  function handleId(id: string) {
-    api.get("projects")
-        .then(res => setId(res.data._id))
-        return id
-  }
-
   function handleSubmit(event: any) {
     event.preventDefault();
-    console.log('Você clicou em enviar.');
 
     const project = {
       name, 
       content, 
       describe
     }
-    console.log(project)
 
     if(id) {
       api.put(`projects/${id}`, project);
@@ -57,6 +49,10 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
 
     setId(_id);
     setOpenFormModal(true);
+  }
+
+  function handleDelete(id: string) {
+    api.delete(`projects/${id}`);
   }
 
   function handleAddProject() {
@@ -97,6 +93,7 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
         handleClose,
         handleSubmit,
         handleEdit,
+        handleDelete,
         id,
         setId,
         name,

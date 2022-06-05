@@ -29,8 +29,8 @@ export type ProjectContextType = {
     handleAddProject: () => void;
     handleClose: () => void;
     handleSubmit: (event: any) => void;
-    handleId?: (id: any) => void;
     handleEdit: ({ _id, name, content, describe }: ProjectProps) => void
+    handleDelete: (id: string) => void;
     id: string;
     setId: (value: React.SetStateAction<string>) => void
     name: string;

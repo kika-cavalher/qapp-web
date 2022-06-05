@@ -12,7 +12,7 @@ import './style.scss'
 
 export function ItemProject({ _id, name, content, describe }: ProjectProps) {
 
-    const { handleEdit } = useProjects()
+    const { handleEdit, handleDelete } = useProjects()
 
     return (
             <div id="page-item-project">
@@ -44,7 +44,9 @@ export function ItemProject({ _id, name, content, describe }: ProjectProps) {
                                 <img className="item-project--btn-more-edit" src={editCrud} alt="icone para editar projeto" />
                             </ButtonEdit>
 
-                            <ButtonDelete className="btn-crud btn-crud-delete">
+                            <ButtonDelete 
+                            className="btn-crud btn-crud-delete"
+                            onClick={() => handleDelete(_id)}>
                                 <img className="item-project--btn-more-delete" src={deleteCrud} alt="icone para excluir projeto" />
                             </ButtonDelete>
                         </div>
