@@ -1,6 +1,6 @@
+import { Key } from 'react'
+import { useAxios } from '../../../../hooks/useAxios'
 
-import { useEffect, useState } from 'react'
-import api from '../../../../services/api'
 import { ProjectProps } from '../../../../types/project'
 
 import { ItemProject } from '../item'
@@ -8,17 +8,12 @@ import { ItemProject } from '../item'
 import './style.scss'
 
 export function ListProject() {
-        const [projectsList, setProjectsList] = useState<ProjectProps[]>([])
-
-    useEffect(() => {
-        api.get("projects")
-        .then(res => setProjectsList(res.data))
-    }, [])
-
+    const { data } = useAxios('projects')
+      
     return (
             <div id="page-list-project">
                 <div className="page-list--itens">
-                    {projectsList.map((projects, index) =>
+                    {data?.map((projects: ProjectProps, index: Key | null | undefined) =>
                         <div className="page-list--container" key={index}>
                             <ItemProject
                                 _id={projects._id}
