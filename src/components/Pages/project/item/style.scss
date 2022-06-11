@@ -182,12 +182,12 @@
         }
     
         img {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
 
             @include slim {
-                width: 20px;
-                height: 20px;
+                width: 30px;
+                height: 30px;
             }
 
             @include phone {

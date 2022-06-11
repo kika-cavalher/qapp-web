@@ -8,22 +8,26 @@ import { ItemProject } from '../item'
 import './style.scss'
 
 export function ListProject() {
-    const { data } = useAxios('projects')
-      
+    const { data: project } = useAxios<ProjectProps[]>('projects')
+
+    if (!project) {
+        return <p> Carregando...</p>
+    }
+
     return (
-            <div id="page-list-project">
-                <div className="page-list--itens">
-                    {data?.map((projects: ProjectProps, index: Key | null | undefined) =>
-                        <div className="page-list--container" key={index}>
-                            <ItemProject
-                                _id={projects._id}
-                                name={projects.name}
-                                content={projects.content}
-                                describe={projects.describe}
-                            />
-                        </div>
-                    )}
-                </div>
+        <div id="page-list-project">
+            <div className="page-list--itens">
+                {project.map((projects: ProjectProps, index: Key | null | undefined) =>
+                    <div className="page-list--container" key={index}>
+                        <ItemProject
+                            _id={projects._id}
+                            name={projects.name}
+                            content={projects.content}
+                            describe={projects.describe}
+                        />
+                    </div>
+                )}
             </div>
+        </div>
     )
 }

@@ -1,16 +1,21 @@
+import { Console } from "console";
+import { userInfo } from "os";
 import { createContext, useState } from "react";
 
 import { Modal } from "../components/Global/modal";
+import { useAxios } from "../hooks/useAxios";
 import api from "../services/api";
 import { ProjectContextProviderProps, ProjectContextType, ProjectProps } from "../types/project";
 
 export const ProjectContext = createContext<ProjectContextType>({} as ProjectContextType);
 
 export function ProjectsContextProvider({ children }: ProjectContextProviderProps) {
+  const { data, mutate } = useAxios('projects')
+
   const [name, setName] = useState("")
   const [content, setContent] = useState("")
   const [describe, setDescribe] = useState("")
-  
+
   const [openFormModal, setOpenFormModal] = useState(false);
   const [id, setId] = useState("")
 
@@ -18,41 +23,57 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
     event.preventDefault();
 
     const project = {
-      name, 
-      content, 
+      name,
+      content,
       describe
     }
 
-    if(id) {
+    if (id) {
       api.put(`projects/${id}`, project);
-    }else {
-      api.post("projects", project);
-    }
 
+      const updateProject = data?.map((projects: ProjectProps) => {
+        if (projects._id === id) {
+          return { ...project, name, content, describe }
+        }
+        return projects
+      });
+      mutate(updateProject, false)
+
+    } else {
+      api.post("projects", project);
+      const updateProject =  [ ...data, project]
+      mutate(updateProject, false)
+    }
+    console.log(`handleSubmit --> ${id}`)
     setOpenFormModal(false);
 
-    if(name) {
+    if (name) {
       setName('')
     }
-    if(content) {
+    if (content) {
       setContent('')
     }
-    if(describe) {
+    if (describe) {
       setDescribe('')
     }
   }
 
-  function handleEdit({_id, name, content, describe} : ProjectProps) {
+  function handleEdit({ _id, name, content, describe }: ProjectProps) {
     setName(name);
     setContent(content);
     setDescribe(describe);
-
     setId(_id);
+
+    console.log(`handleEdit --> ${id}`)
     setOpenFormModal(true);
   }
 
   function handleDelete(id: string) {
     api.delete(`projects/${id}`);
+
+    const updateProject = data?.filter((projects: ProjectProps) => projects._id !== id);
+    mutate(updateProject, false)
+
   }
 
   function handleAddProject() {
@@ -60,13 +81,13 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
   }
 
   function handleClose() {
-    if(name) {
+    if (name) {
       setName('')
     }
-    if(content) {
+    if (content) {
       setContent('')
     }
-    if(describe) {
+    if (describe) {
       setDescribe('')
     }
 
@@ -119,74 +140,3 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
     </ProjectContext.Provider>
   );
 }
-
-
-// export const ProjectsContextProvider: React.FC<React.ReactNode> = ({children}) => {
-    
-    // useEffect(() => {
-    //   api.get("projects")
-    //   .then(({data}) => {
-    //     setProjects(data);
-    //   })
-    // } , [])
-
-  //   function createProject(e: any) {
-  //     e.preventDefault();
-  //     axios.post('https://qapp-api.herokuapp.com/projects', {
-  //         title: state.title,
-  //         abbreviation: state.abbreviation,
-  //         describe: state.describe
-  //     })
-  //     .then((res) => console.log(res))
-  //     .catch((error) => console.log(error))
-
-  //     setState({
-  //         title: "",
-  //         abbreviation: "",
-  //         describe: "",
-  //     });
-  //     closeModal(false)
-  // };
-
-  // function createEditProject(e: any) {
-  //     e.preventDefault();
-  //     axios.put('https://qapp-api.herokuapp.com/projects', {
-  //         title: state.title,
-  //         abbreviation: state.abbreviation,
-  //         describe: state.describe
-  //     })
-  //     .then((res) => console.log(res))
-  //     .catch((error) => console.log(error))
-
-  //     setState({
-  //         title: "",
-  //         abbreviation: "",
-  //         describe: "",
-  //     });
-  //     closeModal(false)
-  // };
-
-     //     function UpdateProject(title:string, abbreviation:string, describe:string) {
-    //     setUpdateProject({
-    //         title,
-    //         abbreviation,
-    //         describe})
-    //     setOpenModal(true)
-    //     axios.put('https://qapp-api.herokuapp.com/projects', {
-    //         title,
-    //         abbreviation,
-    //         describe
-    //     })
-    //     .then((res) => console.log(res))
-    //     .catch((error) => console.log(error))
-    // }
-
-    //     useEffect(() => {
-    //         api.get("projects")
-    //         .then(({data}) => {
-    //             setProjects(data);
-    //         })
-    //     } , [])
-
-
-// };
