@@ -14,7 +14,6 @@ import './style.scss'
 
 
 export function ProjectPage() {
-    const [projects, setProjects] = useState([]);
     const { handleAddProject } = useProjects()
 
     return (

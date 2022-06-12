@@ -1,16 +1,14 @@
-import { Console } from "console";
-import { userInfo } from "os";
 import { createContext, useState } from "react";
 
 import { Modal } from "../components/Global/modal";
-import { useAxios } from "../hooks/useAxios";
+import { useApi } from "../hooks/useApi";
 import api from "../services/api";
 import { ProjectContextProviderProps, ProjectContextType, ProjectProps } from "../types/project";
 
 export const ProjectContext = createContext<ProjectContextType>({} as ProjectContextType);
 
 export function ProjectsContextProvider({ children }: ProjectContextProviderProps) {
-  const { data, mutate } = useAxios('projects')
+  const { data, mutate } = useApi('projects')
 
   const [name, setName] = useState("")
   const [content, setContent] = useState("")
@@ -23,6 +21,7 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
     event.preventDefault();
 
     const project = {
+      id,
       name,
       content,
       describe
@@ -33,7 +32,7 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
 
       const updateProject = data?.map((projects: ProjectProps) => {
         if (projects._id === id) {
-          return { ...project, name, content, describe }
+          return { ...projects, id, name, content, describe }
         }
         return projects
       });
@@ -41,12 +40,15 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
 
     } else {
       api.post("projects", project);
-      const updateProject =  [ ...data, project]
+      const updateProject =  [...data, project]
       mutate(updateProject, false)
     }
     console.log(`handleSubmit --> ${id}`)
     setOpenFormModal(false);
 
+    if (id) {
+      setId('')
+    }
     if (name) {
       setName('')
     }
@@ -59,10 +61,10 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
   }
 
   function handleEdit({ _id, name, content, describe }: ProjectProps) {
+    setId(_id);
     setName(name);
     setContent(content);
     setDescribe(describe);
-    setId(_id);
 
     console.log(`handleEdit --> ${id}`)
     setOpenFormModal(true);
