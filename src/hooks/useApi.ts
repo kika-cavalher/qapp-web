@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import useSWR, { mutate } from 'swr'
+import useSWR from 'swr'
 import api from '../services/api';
 
 export function useApi<data = any>(url: any) {

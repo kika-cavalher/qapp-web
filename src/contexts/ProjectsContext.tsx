@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { mutate as mutateGlobal }  from 'swr'
 
 import { Modal } from "../components/Global/modal";
 import { useApi } from "../hooks/useApi";
@@ -21,7 +22,6 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
     event.preventDefault();
 
     const project = {
-      id,
       name,
       content,
       describe
@@ -32,11 +32,12 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
 
       const updateProject = data?.map((projects: ProjectProps) => {
         if (projects._id === id) {
-          return { ...projects, id, name, content, describe }
+          return { ...projects, name, content, describe }
         }
         return projects
       });
       mutate(updateProject, false)
+      mutateGlobal(`projects/${id}`, { id, name, content, describe })
 
     } else {
       api.post("projects", project);
