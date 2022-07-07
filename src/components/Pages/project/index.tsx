@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { useProjects } from "../../../hooks/useProjects";
 
 import { TopMenu } from "../../PageDefault/head/menu";

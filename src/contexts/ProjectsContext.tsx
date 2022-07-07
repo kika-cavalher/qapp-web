@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import { mutate as mutateGlobal }  from 'swr'
 
 import { Modal } from "../components/Global/modal";
 import { useApi } from "../hooks/useApi";
@@ -29,22 +28,22 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
 
     if (id) {
       api.put(`projects/${id}`, project);
+      // console.log(`handleSubmit put --> ${id}`)
 
-      const updateProject = data?.map((projects: ProjectProps) => {
-        if (projects._id === id) {
-          return { ...projects, name, content, describe }
-        }
-        return projects
-      });
-      mutate(updateProject, false)
-      mutateGlobal(`projects/${id}`, { id, name, content, describe })
+      // const updateProject = data?.map((projects: ProjectProps) => {
+      //   if (projects._id === id) {
+      //     return { ...projects, name, content, describe }
+      //   }
+      //   return projects
+      // });
+      // mutate(updateProject, false)
 
     } else {
       api.post("projects", project);
-      const updateProject =  [...data, project]
-      mutate(updateProject, false)
+      // console.log(`handleSubmit post --> ${id}`)
+      // const updateProject = [...data, project]
+      // mutate(updateProject, false)
     }
-    console.log(`handleSubmit --> ${id}`)
     setOpenFormModal(false);
 
     if (id) {

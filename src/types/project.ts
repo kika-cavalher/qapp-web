@@ -5,7 +5,6 @@ export type ProjectProps = {
     name: string
     content: string,
     describe: string,
-
 }
 
 export type CreateProjectProps = {

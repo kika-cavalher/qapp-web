@@ -12,12 +12,12 @@ export function ListProject() {
 
     if (!project) {
         return <p> Carregando...</p>
-    }
+    } 
 
     return (
         <div id="page-list-project">
             <div className="page-list--itens">
-                {project.map((projects: ProjectProps, index: Key | null | undefined) =>
+                {project.map((projects: ProjectProps, index: Key) =>
                     <div className="page-list--container" key={index}>
                         <ItemProject
                             _id={projects._id}
