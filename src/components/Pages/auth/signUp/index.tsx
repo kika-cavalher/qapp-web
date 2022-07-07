@@ -1,7 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { FormEvent, useState } from 'react';
 
-import { useAuth } from '../../../../hooks/useAuth';
 import { ButtonSend } from '../../../Global/button/send';
 
 import Logo from '../../../PageDefault/head/logo';
@@ -12,7 +11,6 @@ import '../signIn/style.scss'
 
 
 export function RegisterPage () {
-    const {signUp, user} = useAuth()
     const navigate = useNavigate()
     const [state, setState] = useState({
         name: "",
@@ -43,7 +41,6 @@ export function RegisterPage () {
     async function handleSubmit(event: FormEvent) {
         event.preventDefault();
         try {
-            await signUp(signUpForms)
             navigate("/auth/sign-in") 
         } catch (error: any) {
             console.log(error)

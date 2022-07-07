@@ -3,18 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import React, { FormEvent } from 'react';
 import { getAuth, signOut } from '@firebase/auth';
 
-import { useAuth } from '../../../../hooks/useAuth';
 import Logo from '../../../PageDefault/head/logo';
 
 import imgLogin from '../../../../assets/images/imgLogin.jpg';
-import googleIconImg from '../../../../assets/icon/googleIconImg.png';
 import './style.scss'
 import { ButtonGoogle } from '../../../Global/button/google_btn';
 import { ButtonSend } from '../../../Global/button/send';
 
 
 export function LoginPage() {
-    const {signIn, user, signInWithGoogle} = useAuth()
     const navigate = useNavigate()
     const [state, setState] = React.useState({
         email: "",
@@ -33,7 +30,6 @@ export function LoginPage() {
     async function handleSubmit(e: FormEvent) {
         e.preventDefault();
         try {
-            await signIn(state)
             navigate("/projects")
         } catch (error: any) {
             e.preventDefault()
@@ -42,18 +38,17 @@ export function LoginPage() {
     }
 
     async function handleGoogleLogin() {
-        await signInWithGoogle();
         navigate('/projects')
     }
       
-    function HandleSignOut()   {
-        const auth = getAuth()
-        if(user) {
-            signOut(auth).then(() => {
-            }).catch((error) => {
-            });
-        }
-    }
+    // function HandleSignOut()   {
+    //     const auth = getAuth()
+    //     if(user) {
+    //         signOut(auth).then(() => {
+    //         }).catch((error) => {
+    //         });
+    //     }
+    // }
 
         return (
             <div id="page-login">
@@ -71,7 +66,7 @@ export function LoginPage() {
                                 </Link>
                             </div>
                         </div>
-                        <div className='page-login--main__google'>
+                        {/* <div className='page-login--main__google'>
                             <ButtonGoogle 
                             className='btn__google'
                             onClick={handleGoogleLogin}>
@@ -81,7 +76,7 @@ export function LoginPage() {
                         </div>
                         <div className='page-login--main__divider'>
                             <div>Ou entre com o seu login</div>
-                        </div>
+                        </div> */}
                         <div className='page-login--main__forms'>
                             <form onSubmit={handleSubmit}>
                                 <div className='page-login--forms__email'>
