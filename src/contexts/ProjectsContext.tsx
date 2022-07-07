@@ -8,7 +8,6 @@ import { ProjectContextProviderProps, ProjectContextType, ProjectProps } from ".
 export const ProjectContext = createContext<ProjectContextType>({} as ProjectContextType);
 
 export function ProjectsContextProvider({ children }: ProjectContextProviderProps) {
-  const { data, mutate } = useApi('projects')
 
   const [name, setName] = useState("")
   const [content, setContent] = useState("")
@@ -28,21 +27,9 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
 
     if (id) {
       api.put(`projects/${id}`, project);
-      // console.log(`handleSubmit put --> ${id}`)
-
-      // const updateProject = data?.map((projects: ProjectProps) => {
-      //   if (projects._id === id) {
-      //     return { ...projects, name, content, describe }
-      //   }
-      //   return projects
-      // });
-      // mutate(updateProject, false)
 
     } else {
       api.post("projects", project);
-      // console.log(`handleSubmit post --> ${id}`)
-      // const updateProject = [...data, project]
-      // mutate(updateProject, false)
     }
     setOpenFormModal(false);
 
@@ -72,9 +59,6 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
 
   function handleDelete(id: string) {
     api.delete(`projects/${id}`);
-
-    const updateProject = data?.filter((projects: ProjectProps) => projects._id !== id);
-    mutate(updateProject, false)
 
   }
 

@@ -1,56 +1,33 @@
 import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom';
-import React, { FormEvent } from 'react';
-import { getAuth, signOut } from '@firebase/auth';
+import { useForm } from "react-hook-form";
 
 import Logo from '../../../PageDefault/head/logo';
 
 import imgLogin from '../../../../assets/images/imgLogin.jpg';
 import './style.scss'
-import { ButtonGoogle } from '../../../Global/button/google_btn';
+
 import { ButtonSend } from '../../../Global/button/send';
+import { useQuery } from 'react-query';
+import api from '../../../../services/api';
 
 
 export function LoginPage() {
-    const navigate = useNavigate()
-    const [state, setState] = React.useState({
-        email: "",
-        password: ""
-      })
-
-    function handleChange(e: any) {
-        const value = e.target.value;
-        setState({
-          ...state,
-          [e.target.name]: value
-        });
-      }
-
-
-    async function handleSubmit(e: FormEvent) {
-        e.preventDefault();
-        try {
-            navigate("/projects")
-        } catch (error: any) {
-            e.preventDefault()
-            console.log("MERDA" + error.message)
-        }
+    type FormData = {
+        email: string;
+        password: string;
     }
+    const {data, isLoading} = useQuery('users', () =>  api.get('users'))
+    console.log(data)
 
-    async function handleGoogleLogin() {
-        navigate('/projects')
-    }
-      
-    // function HandleSignOut()   {
-    //     const auth = getAuth()
-    //     if(user) {
-    //         signOut(auth).then(() => {
-    //         }).catch((error) => {
-    //         });
-    //     }
-    // }
+    const { handleSubmit, register, formState: { errors }  } = useForm<FormData>({mode:'onSubmit'});
 
-        return (
+    const onSubmit = handleSubmit((data) => {
+        
+    })
+
+
+    return isLoading? <>'Carregando...'</> :    
+         (
             <div id="page-login">
                 <main>
                     <div className='page-login--main__container'>
@@ -66,36 +43,25 @@ export function LoginPage() {
                                 </Link>
                             </div>
                         </div>
-                        {/* <div className='page-login--main__google'>
-                            <ButtonGoogle 
-                            className='btn__google'
-                            onClick={handleGoogleLogin}>
-                                <img id="img-icon__google" src={googleIconImg} alt="Logo da empresa QApp" />
-                                <p>Entrar usando conta Google.</p>
-                            </ButtonGoogle>
-                        </div>
-                        <div className='page-login--main__divider'>
-                            <div>Ou entre com o seu login</div>
-                        </div> */}
                         <div className='page-login--main__forms'>
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={onSubmit}>
                                 <div className='page-login--forms__email'>
                                     <p>E-mail</p>
-                                    <input 
+                                    <input
+                                    {...register("email", {required: {value: true, message: "Preenche o campo seu ANIMAL"}})}
                                     type="email"
                                     name="email"
-                                    value={state.email}
-                                    onChange={handleChange}
                                     placeholder="Insira o seu e-mail"/>
+                                    <div>{errors?.email ? errors?.email?.message : ""}</div>
                                 </div>
                                 <div className='page-login--forms__password'>
                                     <p>Senha</p>
-                                    <input 
+                                    <input
+                                    {...register("password", {required: {value: true, message: "Preenche o campo seu ANIMAL"}})}
                                     type="password" 
                                     name="password"                                    
-                                    value={state.password}
-                                    onChange={handleChange}
                                     placeholder="Insira sua senha"/>
+                                    <div>{errors?.password ? errors?.password?.message : ""}</div>
                                 </div>
                                 <div className='btn__send'>
                                     <ButtonSend

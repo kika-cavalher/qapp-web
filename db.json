@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "name": "Erica Marques Cavalher",
+      "email": "erica@gmail.com",
+      "password": "Kika1234",
+      "confirmPassword": "Kika1234",
+      "id": 1
+    },
+    {
+      "name": "Erica Marques Cavalher",
+      "email": "erica@gmail.com",
+      "password": "Kika1234",
+      "confirmPassword": "Kika1234",
+      "id": 2
+    },
+    {
+      "name": "vcbc",
+      "email": "bcvb@dsfd.com",
+      "password": "sdfsdf",
+      "confirmPassword": "dfdfssdf",
+      "id": 3
+    }
+  ],
+  "projects": []
+}
