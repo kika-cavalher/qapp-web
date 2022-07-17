@@ -4,12 +4,14 @@ import {
   Route,
 } from "react-router-dom";
 
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from 'react-query/devtools'
+
 import { ProjectPage } from "./components/Pages/project";
 import { LoginPage } from "./components/Pages/auth/signIn";
 import { RegisterPage } from "./components/Pages/auth/signUp";
 import { ProjectsContextProvider } from "./contexts/ProjectsContext";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from 'react-query/devtools'
+
 
 function App() {
   const queryClient = new QueryClient()
