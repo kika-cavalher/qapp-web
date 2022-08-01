@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import React, { FormEvent } from 'react';
-import { getAuth, signOut } from '@firebase/auth';
 
-import { useAuth } from '../../../../hooks/useAuth';
 import Logo from '../../../PageDefault/head/logo';
 
 import imgLogin from '../../../../assets/images/imgLogin.jpg';
@@ -14,7 +12,6 @@ import { ButtonSend } from '../../../Global/button/send';
 
 
 export function LoginPage() {
-    const {signIn, user, signInWithGoogle} = useAuth()
     const navigate = useNavigate()
     const [state, setState] = React.useState({
         email: "",
@@ -33,25 +30,10 @@ export function LoginPage() {
     async function handleSubmit(e: FormEvent) {
         e.preventDefault();
         try {
-            await signIn(state)
             navigate("/projects")
         } catch (error: any) {
             e.preventDefault()
             console.log("MERDA" + error.message)
-        }
-    }
-
-    async function handleGoogleLogin() {
-        await signInWithGoogle();
-        navigate('/projects')
-    }
-      
-    function HandleSignOut()   {
-        const auth = getAuth()
-        if(user) {
-            signOut(auth).then(() => {
-            }).catch((error) => {
-            });
         }
     }
 
@@ -72,12 +54,6 @@ export function LoginPage() {
                             </div>
                         </div>
                         <div className='page-login--main__google'>
-                            <ButtonGoogle 
-                            className='btn__google'
-                            onClick={handleGoogleLogin}>
-                                <img id="img-icon__google" src={googleIconImg} alt="Logo da empresa QApp" />
-                                <p>Entrar usando conta Google.</p>
-                            </ButtonGoogle>
                         </div>
                         <div className='page-login--main__divider'>
                             <div>Ou entre com o seu login</div>

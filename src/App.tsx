@@ -1,5 +1,3 @@
-import { AuthContextProvider } from "./contexts/AuthContext";
-
 import {
   BrowserRouter,
   Routes,
@@ -16,14 +14,12 @@ function App() {
   return (
     <BrowserRouter>
       <ProjectsContextProvider>
-      <AuthContextProvider>
         <Routes>
           <Route path="/auth/sign-in" element={<LoginPage />} />
           <Route path="/auth/sign-up" element={<RegisterPage />} />
           <Route path="/" element={<LoginPage />} />
           <Route path="/projects" element={<ProjectPage />} />
         </Routes>
-      </AuthContextProvider>
       </ProjectsContextProvider>
     </BrowserRouter>
   );
