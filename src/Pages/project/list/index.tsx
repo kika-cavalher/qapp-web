@@ -1,7 +1,7 @@
 import { Key } from 'react'
-import { useApi } from '../../../../hooks/useApi'
+import { useApi } from '../../../hooks/useApi'
 
-import { ProjectProps } from '../../../../types/project'
+import { ProjectProps } from '../../../types/project'
 
 import { ItemProject } from '../item'
 

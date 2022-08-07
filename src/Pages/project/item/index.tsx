@@ -1,12 +1,12 @@
-import { ProjectProps} from '../../../../types/project'
+import { ProjectProps} from '../../../types/project'
 
-import { useProjects } from '../../../../hooks/useProjects'
+import { useProjects } from '../../../hooks/useProjects'
 
-import { ButtonEdit } from '../../../Global/button/edit'
-import { ButtonDelete } from '../../../Global/button/delete'
+import { ButtonEdit } from '../../../components/Global/button/edit'
+import { ButtonDelete } from '../../../components/Global/button/delete'
 
-import deleteCrud from '../../../../assets/icon/delete-crud.png'
-import editCrud from '../../../../assets/icon/edit-crud.png'
+import deleteCrud from '../../../assets/icon/delete-crud.png'
+import editCrud from '../../../assets/icon/edit-crud.png'
 
 import './style.scss'
 

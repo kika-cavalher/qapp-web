@@ -1,10 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { FormEvent, useState } from 'react';
 
-import { ButtonSend } from '../../../Global/button/send';
+import { ButtonSend } from '../../../components/Global/button/send';
 
-import Logo from '../../../PageDefault/head/logo';
-import imgLogin from '../../../../assets/images/imgLogin.jpg';
+import Logo from '../../../components/PageDefault/head/logo';
+import imgLogin from '../../../assets/images/imgLogin.jpg';
 import './style.scss'
 import '../signIn/style.scss'
 

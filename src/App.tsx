@@ -5,9 +5,9 @@ import {
   // Navigate,
 } from "react-router-dom";
 
-import { ProjectPage } from "./components/Pages/project";
-import { LoginPage } from "./components/Pages/auth/signIn";
-import { RegisterPage } from "./components/Pages/auth/signUp";
+import { ProjectPage } from "./Pages/project";
+import { LoginPage } from "./Pages/auth/signIn";
+import { RegisterPage } from "./Pages/auth/signUp";
 import { ProjectsContextProvider } from "./contexts/ProjectsContext";
 
 function App() {

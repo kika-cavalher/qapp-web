@@ -1,11 +1,11 @@
-import { useProjects } from "../../../hooks/useProjects";
+import { useProjects } from "../../hooks/useProjects";
 
-import { TopMenu } from "../../PageDefault/head/menu";
-import { Search } from "../../Global/search";
-import { Footer } from "../../PageDefault/footer";
+import { TopMenu } from "../../components/PageDefault/head/menu";
+import { Search } from "../../components/Global/search";
+import { Footer } from "../../components/PageDefault/footer";
 import { ListProject } from "./list";
-import { TitlePage } from "../../PageDefault/body/titlePage";
-import { ButtonModal } from "../../Global/button/modal";
+import { TitlePage } from "../../components/PageDefault/body/titlePage";
+import { ButtonModal } from "../../components/Global/button/modal";
 
 
 import './style.scss'

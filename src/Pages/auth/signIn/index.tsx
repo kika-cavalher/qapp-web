@@ -2,13 +2,11 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import React, { FormEvent } from 'react';
 
-import Logo from '../../../PageDefault/head/logo';
+import Logo from '../../../components/PageDefault/head/logo';
 
-import imgLogin from '../../../../assets/images/imgLogin.jpg';
-import googleIconImg from '../../../../assets/icon/googleIconImg.png';
+import imgLogin from '../../../assets/images/imgLogin.jpg';
 import './style.scss'
-import { ButtonGoogle } from '../../../Global/button/google_btn';
-import { ButtonSend } from '../../../Global/button/send';
+import { ButtonSend } from '../../../components/Global/button/send';
 
 
 export function LoginPage() {
