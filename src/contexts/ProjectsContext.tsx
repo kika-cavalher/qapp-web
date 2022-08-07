@@ -131,9 +131,9 @@ export function ProjectsContextProvider({ children }: ProjectContextProviderProp
       }}>
       {children}
       {openFormModal && <Modal
-        titleModal={'Adicione um novo projeto.'}
-        nameModal={'Nome do projeto.'}
-        name_placeholder={'Qual será o titulo do seu projeto.'}
+        titleModal={'Novo projeto.'}
+        nameModal={'Título'}
+        name_placeholder={'Título do seu projeto.'}
         contentModal={'Abreviação.'}
         content_placeholder={'3 caracteres.'}
         describeModal={'Descreva o seu projeto.'}
