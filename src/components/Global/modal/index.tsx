@@ -1,5 +1,4 @@
 import { CreateProjectProps } from "../../../types/project";
-import { useProjects } from "../../../hooks/useProjects";
 
 import { ButtonModal } from "../button/modal";
 
@@ -8,15 +7,15 @@ import './style.scss'
 
 export function Modal({  titleModal, nameModal, name_placeholder, contentModal, content_placeholder, describeModal, describe_placeholder }: CreateProjectProps) {
 
-    const {
-        handleClose,
-        handleSubmit,
-        name,
-        nameHandler,
-        content,
-        contentHandler,
-        describe,
-        describeHandler } = useProjects()
+    // const {
+    //     handleClose,
+    //     handleSubmit,
+    //     name,
+    //     nameHandler,
+    //     content,
+    //     contentHandler,
+    //     describe,
+    //     describeHandler } = useProjects()
 
     return (
         <div className="modal-main">
@@ -28,18 +27,21 @@ export function Modal({  titleModal, nameModal, name_placeholder, contentModal, 
                     <div className="modal-header--close-menu">
                         <ButtonModal
                             className="icon-close-modal"
-                            onClick={handleClose}>
+                            // onClick={handleClose}
+                            >
                             <img className="item-project--btn-close-modal" src={iconCloseModal} alt="icone para fechar o modal." />
                         </ButtonModal>
                     </div>
                 </div>
-                <form className="modal-content--form" onSubmit={handleSubmit}>
+                <form className="modal-content--form" 
+                // onSubmit={handleSubmit}
+                >
                     <div className="modal-content--abbreviation">
                         <p className="modal--abbreviation">{contentModal}</p>
                         <input className="modal--abbreviation__input"
                                 name="contentModal"
-                                value={content}
-                                onChange={contentHandler}
+                                // value={content}
+                                // onChange={contentHandler}
                                 type="text"
                                 maxLength={3}
                                 placeholder={content_placeholder}
@@ -50,9 +52,9 @@ export function Modal({  titleModal, nameModal, name_placeholder, contentModal, 
                         <p className="modal---title">{nameModal}</p>
                         <input className="modal--title__input"
                             name="NameModal"
-                            value={name}
-                            // value={!setProject?.title? state.title : setProject.title}
-                            onChange={nameHandler}
+                            // value={name}
+                            // // value={!setProject?.title? state.title : setProject.title}
+                            // onChange={nameHandler}
                             type="text"
                             maxLength={28}
                             placeholder={name_placeholder}
@@ -63,15 +65,16 @@ export function Modal({  titleModal, nameModal, name_placeholder, contentModal, 
                         <p className="modal-content--describe__title">{describeModal}</p>
                         <textarea className="modal-content--describe_input"
                             name="describeModal"
-                            value={describe}
-                            onChange={describeHandler}
+                            // value={describe}
+                            // onChange={describeHandler}
                             maxLength={170}
                             placeholder={describe_placeholder}>
                         </textarea>
                     </div>
                     <ButtonModal
                         className="btn__send--modal"
-                        onClick={() => handleSubmit}>
+                        // onClick={() => handleSubmit}
+                        >
                         Salvar
                     </ButtonModal>
                 </form>

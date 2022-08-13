@@ -7,7 +7,7 @@ import { UserProps } from "../types/user";
 export default function useAuth(){
     async function register(user: UserProps) {
         try {
-            const data = await api.post('/users/signup').then(
+            const data = await api.post('/users/signup', user).then(
                 (response) => {
                     return response.data
                 })

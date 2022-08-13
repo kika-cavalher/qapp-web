@@ -15,21 +15,17 @@ export function RegisterPage() {
             const {register} = useContext(AuthContext)
 
     function handleChange(e: any) {
+        const nameChange = e.target.name
         const value = e.target.value;
         setUser({
             ...user,
-            [e.target.name]: value
+            [nameChange]: value
         });
     }
 
     async function handleSubmit(e: any) {
         e.preventDefault();
-        try {
-            register(user)
-            // navigate("/auth/sign-in")
-        } catch (error: any) {
-            console.log(error)
-        }
+        register(user)
     }
 
     return (

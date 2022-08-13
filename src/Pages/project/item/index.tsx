@@ -1,7 +1,5 @@
 import { ProjectProps} from '../../../types/project'
 
-import { useProjects } from '../../../hooks/useProjects'
-
 import { ButtonEdit } from '../../../components/Global/button/edit'
 import { ButtonDelete } from '../../../components/Global/button/delete'
 
@@ -11,9 +9,6 @@ import editCrud from '../../../assets/icon/edit-crud.png'
 import './style.scss'
 
 export function ItemProject({ _id, name, content, describe }: ProjectProps) {
-
-    const { handleEdit, handleDelete } = useProjects()
-
     return (
             <div id="page-item-project">
                 <div
@@ -39,14 +34,15 @@ export function ItemProject({ _id, name, content, describe }: ProjectProps) {
                             
                             <ButtonEdit
                             className="btn-crud btn-crud-edit"
-                            onClick={() => handleEdit({_id, name, content, describe})}
+                            // onClick={() => handleEdit({_id, name, content, describe})}
                             >
                                 <img className="item-project--btn-more-edit" src={editCrud} alt="icone para editar projeto" />
                             </ButtonEdit>
 
                             <ButtonDelete 
                             className="btn-crud btn-crud-delete"
-                            onClick={() => handleDelete(_id)}>
+                            // onClick={() => handleDelete(_id)}
+                            >
                                 <img className="item-project--btn-more-delete" src={deleteCrud} alt="icone para excluir projeto" />
                             </ButtonDelete>
                         </div>

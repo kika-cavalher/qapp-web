@@ -1,5 +1,3 @@
-import { useProjects } from "../../hooks/useProjects";
-
 import { TopMenu } from "../../components/Layouts/menu";
 import { Search } from "../../components/Global/search";
 import { Footer } from "../../components/Layouts/footer";
@@ -12,7 +10,6 @@ import './style.scss'
 
 
 export function ProjectPage() {
-    const { handleAddProject } = useProjects()
 
     return (
         <div id="page-project">
@@ -23,7 +20,7 @@ export function ProjectPage() {
                     <Search />
                     <ButtonModal
                         className="btn-open-modal"
-                        onClick={handleAddProject}
+                        // onClick={handleAddProject}
                         >Novo projeto
                     </ButtonModal>
                 </div>
