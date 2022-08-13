@@ -2,12 +2,12 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  // Navigate,
 } from "react-router-dom";
 
 import { ProjectPage } from "./Pages/project";
 import { LoginPage } from "./Pages/auth/signIn";
 import { RegisterPage } from "./Pages/auth/signUp";
+
 import { ProjectsContextProvider } from "./contexts/ProjectsContext";
 
 function App() {

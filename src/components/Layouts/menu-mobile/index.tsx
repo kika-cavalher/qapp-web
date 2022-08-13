@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { ButtonModal } from "../../../Global/button/modal";
+import { ButtonModal } from "../../Global/button/modal";
 
 import './style.scss'
 

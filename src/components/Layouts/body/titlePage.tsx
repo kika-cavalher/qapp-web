@@ -1,4 +1,3 @@
-import React from 'react';
 import { PagesProps } from '../../../types/defaultPages';
 import './style.scss';
 

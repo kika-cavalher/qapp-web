@@ -1,10 +1,10 @@
 import { useProjects } from "../../hooks/useProjects";
 
-import { TopMenu } from "../../components/PageDefault/head/menu";
+import { TopMenu } from "../../components/Layouts/menu";
 import { Search } from "../../components/Global/search";
-import { Footer } from "../../components/PageDefault/footer";
+import { Footer } from "../../components/Layouts/footer";
 import { ListProject } from "./list";
-import { TitlePage } from "../../components/PageDefault/body/titlePage";
+import { TitlePage } from "../../components/Layouts/body/titlePage";
 import { ButtonModal } from "../../components/Global/button/modal";
 
 

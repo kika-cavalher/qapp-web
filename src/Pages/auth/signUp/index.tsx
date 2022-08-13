@@ -3,7 +3,7 @@ import { FormEvent, useState } from 'react';
 
 import { ButtonSend } from '../../../components/Global/button/send';
 
-import Logo from '../../../components/PageDefault/head/logo';
+import Logo from '../../../components/Layouts/logo';
 import imgLogin from '../../../assets/images/imgLogin.jpg';
 import './style.scss'
 import '../signIn/style.scss'

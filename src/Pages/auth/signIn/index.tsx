@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import React, { FormEvent } from 'react';
 
-import Logo from '../../../components/PageDefault/head/logo';
+import Logo from '../../../components/Layouts/logo';
 
 import imgLogin from '../../../assets/images/imgLogin.jpg';
 import './style.scss'

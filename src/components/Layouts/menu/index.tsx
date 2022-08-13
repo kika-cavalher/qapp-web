@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
 
-import { ModalMobile } from '../menu-mobile';
-import { ButtonModal } from '../../../Global/button/modal';
+import { ModalMobile } from '../menu-mobile/index';
+import { ButtonModal } from '../../Global/button/modal';
 
 import './style.scss'
 import Logo from '../logo';
-import IconMenu from '../../../../assets/icon/menu.png';
+import IconMenu from '../../../assets/icon/menu.png';
 
 export function TopMenu () {
     const [openModal, setOpenModal] = useState(false)
