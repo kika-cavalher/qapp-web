@@ -1,0 +1,10 @@
+@import '../../../styles/variables.scss';
+
+.message {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid $medium-grey;
+    margin: 1rem auto;
+    text-align: center;
+    border-radius: 5px;
+}

@@ -16,3 +16,13 @@ export type UserContextProps = {
 export type UserContextProviderProps = {
     children: React.ReactNode;
 };
+
+export type FlashMessage = {
+    msg?: string, 
+    type?: string
+}
+
+export type Message = {
+    className?: string, 
+    text?: string
+}
