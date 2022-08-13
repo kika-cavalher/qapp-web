@@ -1,47 +1,35 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 
 import { ButtonSend } from '../../../components/Global/button/send';
-
 import Logo from '../../../components/Layouts/logo';
+import { Input } from '../../../components/Global/inputs/input';
+
 import imgLogin from '../../../assets/images/imgLogin.jpg';
 import './style.scss'
-import '../signIn/style.scss'
 
-
-
-export function RegisterPage () {
+export function RegisterPage() {
     const navigate = useNavigate()
+    
     const [state, setState] = useState({
         name: "",
+        email: "",
+        password: "",
         confirmPassword: ""
-      })
+    })
 
     function handleChange(e: any) {
         const value = e.target.value;
         setState({
-          ...state,
-          [e.target.name]: value
+            ...state,
+            [e.target.name]: value
         });
-      }
+    }
 
-      const [signUpForms, setsignUpForms] = useState({
-        email: "",
-        password: ""
-      })
-
-    function handleChangesignUp(e: any) {
-        const value = e.target.value;
-        setsignUpForms({
-          ...signUpForms,
-          [e.target.name]: value
-        });
-      }
-
-    async function handleSubmit(event: FormEvent) {
+    async function handleSubmit(event: any) {
         event.preventDefault();
         try {
-            navigate("/auth/sign-in") 
+            navigate("/auth/sign-in")
         } catch (error: any) {
             console.log(error)
         }
@@ -60,7 +48,7 @@ export function RegisterPage () {
                                 <h1>Faça o seu cadastro.</h1>
                                 <h2>Já possuí conta conosco? </h2>
                                 <Link to='/auth/sign-in' className='page-register--main__link-register'>
-                                Faça o Login
+                                    Faça o Login
                                 </Link>
                             </div>
                         </div>
@@ -68,40 +56,36 @@ export function RegisterPage () {
                     <div className='page-register--main__forms'>
                         <form onSubmit={handleSubmit}>
                             <div className='page-register--forms__name'>
-                                    <p>Nome completo</p>
-                                    <input
+                                <Input
+                                    text='Nome completo'
+                                    type="text"
                                     name="name"
-                                    value={state.name}
-                                    onChange={handleChange}
-                                    type="text" 
-                                    placeholder="Insira o seu nome"/>
+                                    placeholder="Insira o seu nome."
+                                    handleOnChange={handleChange} />
                             </div>
                             <div className='page-register--forms__email'>
-                                    <p>E-mail</p>
-                                    <input
-                                    name="email"                                    
-                                    value={signUpForms.email}
-                                    onChange={handleChangesignUp}
-                                    type="email" 
-                                    placeholder="Insira o seu e-mail"/>
+                                <Input
+                                    text='E-mail'
+                                    type="email"
+                                    name="email"
+                                    placeholder="Insira o seu e-mail."
+                                    handleOnChange={handleChange} />
                             </div>
                             <div className='page-register--forms__password'>
-                                    <p>Senha</p>
-                                    <input
-                                    name="password"                                    
-                                    value={signUpForms.password}
-                                    onChange={handleChangesignUp}
-                                    type="password" 
-                                    placeholder="Insira sua senha"/>                 
+                                <Input
+                                    text='Senha'
+                                    type="password"
+                                    name="password"
+                                    placeholder="Insira a sua senha."
+                                    handleOnChange={handleChange} />
                             </div>
                             <div className='page-register--forms__confirm-password'>
-                                    <p>Confirmar senha</p>
-                                    <input
-                                    name="confirmPassword"
-                                    value={state.confirmPassword}
-                                    onChange={handleChange}                                 
+                                <Input
+                                    text='Confirmar senha'
                                     type="password"
-                                    placeholder="Confirmar senha"/>
+                                    name="confirmPassword"
+                                    placeholder="Confirme a sua senha."
+                                    handleOnChange={handleChange} />
                             </div>
                             <ButtonSend
                                 className='btn__send'
@@ -110,7 +94,7 @@ export function RegisterPage () {
                         </form>
                     </div>
                 </div>
-    
+
                 <div className='page-login--main__img'>
                     <img src={imgLogin} alt="Imagem decorativa na pagina" />
                 </div>
