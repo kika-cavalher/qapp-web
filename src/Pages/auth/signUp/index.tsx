@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { ButtonSend } from '../../../components/Global/button/send';
 import Logo from '../../../components/Layouts/logo';
@@ -7,10 +7,12 @@ import { Input } from '../../../components/Global/inputs/input';
 
 import imgLogin from '../../../assets/images/imgLogin.jpg';
 import './style.scss'
+import { AuthContext } from '../../../contexts/UserContext';
 
 export function RegisterPage() {
     const navigate = useNavigate()
     const [user, setUser] = useState({})
+            const {register} = useContext(AuthContext)
 
     function handleChange(e: any) {
         const value = e.target.value;
@@ -23,7 +25,8 @@ export function RegisterPage() {
     async function handleSubmit(e: any) {
         e.preventDefault();
         try {
-            navigate("/auth/sign-in")
+            register(user)
+            // navigate("/auth/sign-in")
         } catch (error: any) {
             console.log(error)
         }
