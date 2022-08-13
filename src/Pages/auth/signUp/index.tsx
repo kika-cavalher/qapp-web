@@ -10,24 +10,18 @@ import './style.scss'
 
 export function RegisterPage() {
     const navigate = useNavigate()
-    
-    const [state, setState] = useState({
-        name: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
-    })
+    const [user, setUser] = useState({})
 
     function handleChange(e: any) {
         const value = e.target.value;
-        setState({
-            ...state,
+        setUser({
+            ...user,
             [e.target.name]: value
         });
     }
 
-    async function handleSubmit(event: any) {
-        event.preventDefault();
+    async function handleSubmit(e: any) {
+        e.preventDefault();
         try {
             navigate("/auth/sign-in")
         } catch (error: any) {
