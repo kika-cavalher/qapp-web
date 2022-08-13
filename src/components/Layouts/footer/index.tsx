@@ -7,7 +7,7 @@ import './style.scss';
 export function Footer () {
     return (
         <div id="component--footer">
-            <p>Produzido por Erica Cavalher</p>
+            <p>Produzido por &copy;Erica Cavalher</p>
             <div className='footer--list__social-media'>
                 <a target="_blank" href="https://www.linkedin.com/in/erica-cavalher/">
                     <img id="icon-add--linkedin" src={iconLinkedin} alt="icone de orientação para adicionar novo projeto" />
