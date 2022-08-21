@@ -140,8 +140,8 @@
         }
 
         p {
-            font-weight: 600;
-            font-size: 1.3rem;
+            font-weight: 500;
+            font-size: 1.1rem;
 
             @include slim {
                 font-size: 1.1rem;
@@ -157,7 +157,7 @@ input {
     color: $dark-grey;
     font-size: 1.2rem;
     font-weight: 500;
-    margin: 0.5rem 0;
+    margin: 0.5rem 0 0 0;
     height: 3rem;
     outline: none;
     padding: 0 16px;
@@ -196,6 +196,7 @@ input {
 .errorMessage{
     color: $red_error;
     font-weight: 600;
-
+    font-size: 1rem;
+    padding: 5px;
 }
 

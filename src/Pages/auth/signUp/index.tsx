@@ -53,7 +53,7 @@ export function RegisterPage() {
                     <div className='page-register--main__forms'>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className='page-register--forms__name'>
-                                <label>Nome completo
+                                <p>Nome completo
                                     <input
                                         type="text"
                                         placeholder="Insira o seu nome."
@@ -61,30 +61,30 @@ export function RegisterPage() {
 
                                     />
                                     <span className="errorMessage">{errors.name?.message}</span>
-                                </label>
+                                </p>
                             </div>
                             <div className='page-register--forms__email'>
-                                <label>E-mail
+                                <p>E-mail
                                     <input
                                         type="email"
                                         placeholder="Insira o seu e-mail."
                                         {...register("email", { required: true })}
                                     />
                                     <span className="errorMessage">{errors.email?.message}</span>
-                                </label>
+                                </p>
                             </div>
                             <div className='page-register--forms__password'>
-                                <label>Senha
+                                <p>Senha
                                     <input
                                         type="password"
                                         placeholder="Insira a sua senha."
                                         {...register("password", { required: true })}
                                     />
                                     <span className="errorMessage">{errors.password?.message}</span>
-                                </label>
+                                </p>
                             </div>
                             <div className='page-register--forms__confirm-password'>
-                                <label>Confirmar Senha
+                                <p>Confirmar Senha
                                     <input
                                         type="password"
                                         placeholder="Confirme a sua senha."
@@ -92,7 +92,7 @@ export function RegisterPage() {
                                     />
                                     <span className="errorMessage">{errors.confirmPassword?.message}</span>
 
-                                </label>
+                                </p>
                             </div>
                             <ButtonSend
                                 className='btn__send'
