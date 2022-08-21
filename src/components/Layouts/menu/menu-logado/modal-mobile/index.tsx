@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-import { ButtonModal } from "../../Global/button/modal";
+import { ButtonModal } from "../../../../Global/button/modal";
+import { ModalLinks } from "../modal-links";
 
 import './style.scss'
 
@@ -18,16 +19,8 @@ export function ModalMobile({ closeModal }: CreateProjectProps) {
     return (
         <div className="menu-mobile--main">
             <div className="menu-mobile--modal">
-
                 <div className="menu-mobile--modal-content">
-
-                    <ButtonModal
-                    className="close-modal" 
-                    onClick={handleClose}>Projetos
-                    </ButtonModal>
-
-                    <Link to='/project' className='menu-mobile__pages--reports'>Relatórios
-                    </Link>
+                    <ModalLinks />
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import logoQapp from '../../../assets/images/logoQapp.png';
+import logoQapp from '../../../../assets/images/logoQapp.png'
 
 export default function Logo() {
 

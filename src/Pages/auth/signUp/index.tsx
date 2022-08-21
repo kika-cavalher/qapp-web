@@ -8,7 +8,7 @@ import { FormInputs } from '../../../types/inputs';
 
 import { AuthContext } from '../../../contexts/UserContext';
 import { ButtonSend } from '../../../components/Global/button/send';
-import Logo from '../../../components/Layouts/logo';
+import Logo from '../../../components/Layouts/logo/justLogo';
 
 import imgLogin from '../../../assets/images/imgLogin.jpg';
 import './style.scss'

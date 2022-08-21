@@ -1,0 +1,13 @@
+@import '../../../../styles/variables.scss';
+
+.component--user__without-Login{
+    margin-right: 5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem;
+    color: $white;
+    background: $orange-theme;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+}

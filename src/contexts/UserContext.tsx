@@ -1,14 +1,14 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import useAuth from "../hooks/useAuth";
 import { UserContextProps, UserContextProviderProps } from "../types/user";
 
 const AuthContext = createContext<UserContextProps>({} as UserContextProps);
 
 function UserContextProvider({ children }: UserContextProviderProps) {
-    const {registerUser} = useAuth()
+    const {authenticated, registerUser} = useAuth()
 
     return(
-        <AuthContext.Provider value={{ registerUser }}>
+        <AuthContext.Provider value={{ authenticated, registerUser }}>
             {children}
         </AuthContext.Provider>
     )

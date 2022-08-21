@@ -1,4 +1,4 @@
-@import '../../../styles/variables.scss';
+@import '../../../../../styles/variables.scss';
 
 
 .menu-mobile--main {
@@ -49,7 +49,17 @@
     }
 }
 
+.menu-mobile__pages--reports {
+    margin: 2rem 0;
 
-.menu-mobile--close-modal {
-
+    button {
+        border: 0;
+        background: $blue-theme;
+        color: $white-offwhite;
+        text-decoration: none;
+        font-size: 3rem;
+        border-bottom: 1px solid $white-offwhite;
+        width: 100%;
+        text-align: initial;
+    }
 }
