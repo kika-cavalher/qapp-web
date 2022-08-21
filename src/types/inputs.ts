@@ -8,3 +8,10 @@ export type InputProps = {
     handleOnChange: (e: any) => void,
     multiple?: boolean,
 }
+
+export type FormInputs = {
+    name: string,
+    email: string,
+    password: string,
+    confirmPassword: string
+  }

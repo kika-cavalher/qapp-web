@@ -10,7 +10,7 @@ export type UserContextProps = {
     email?: string,
     password?: string,
     confirmPassword?: string
-    register: (user: UserProps) => Promise<void>;
+    registerUser: (user: UserProps) => Promise<void>;
 }
 
 export type UserContextProviderProps = {

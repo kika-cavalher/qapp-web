@@ -1,31 +1,35 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 
+import { FormInputs } from '../../../types/inputs';
+
+import { AuthContext } from '../../../contexts/UserContext';
 import { ButtonSend } from '../../../components/Global/button/send';
 import Logo from '../../../components/Layouts/logo';
-import { Input } from '../../../components/Global/inputs/input';
 
 import imgLogin from '../../../assets/images/imgLogin.jpg';
 import './style.scss'
-import { AuthContext } from '../../../contexts/UserContext';
 
 export function RegisterPage() {
     const navigate = useNavigate()
-    const [user, setUser] = useState({})
-            const {register} = useContext(AuthContext)
+    const { registerUser } = useContext(AuthContext)
 
-    function handleChange(e: any) {
-        const nameChange = e.target.name
-        const value = e.target.value;
-        setUser({
-            ...user,
-            [nameChange]: value
-        });
-    }
+    const schema = yup.object({
+        name: yup.string().required("O nome é obrigatório."),
+        email: yup.string().email("Digite um e-mail válido").required("O e-mail é obrigatório."),
+        password: yup.string().min(6, "A senha deve ter no minimo 6 caracteres").required("A senha é obrigatório."),
+        confirmPassword: yup.string().required("A confirmação da senha é obrigatório.").oneOf([yup.ref("password")], "As senhas devem ser iguais"),
+      }).required();
 
-    async function handleSubmit(e: any) {
-        e.preventDefault();
-        register(user)
+      const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>({
+        resolver: yupResolver(schema)
+      });
+
+    async function onSubmit(userData: any) {
+        registerUser(userData)
     }
 
     return (
@@ -47,38 +51,48 @@ export function RegisterPage() {
                         </div>
                     </div>
                     <div className='page-register--main__forms'>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <div className='page-register--forms__name'>
-                                <Input
-                                    text='Nome completo'
-                                    type="text"
-                                    name="name"
-                                    placeholder="Insira o seu nome."
-                                    handleOnChange={handleChange} />
+                                <label>Nome completo
+                                    <input
+                                        type="text"
+                                        placeholder="Insira o seu nome."
+                                        {...register("name", { required: true })}
+
+                                    />
+                                    <span className="errorMessage">{errors.name?.message}</span>
+                                </label>
                             </div>
                             <div className='page-register--forms__email'>
-                                <Input
-                                    text='E-mail'
-                                    type="email"
-                                    name="email"
-                                    placeholder="Insira o seu e-mail."
-                                    handleOnChange={handleChange} />
+                                <label>E-mail
+                                    <input
+                                        type="email"
+                                        placeholder="Insira o seu e-mail."
+                                        {...register("email", { required: true })}
+                                    />
+                                    <span className="errorMessage">{errors.email?.message}</span>
+                                </label>
                             </div>
                             <div className='page-register--forms__password'>
-                                <Input
-                                    text='Senha'
-                                    type="password"
-                                    name="password"
-                                    placeholder="Insira a sua senha."
-                                    handleOnChange={handleChange} />
+                                <label>Senha
+                                    <input
+                                        type="password"
+                                        placeholder="Insira a sua senha."
+                                        {...register("password", { required: true })}
+                                    />
+                                    <span className="errorMessage">{errors.password?.message}</span>
+                                </label>
                             </div>
                             <div className='page-register--forms__confirm-password'>
-                                <Input
-                                    text='Confirmar senha'
-                                    type="password"
-                                    name="confirmPassword"
-                                    placeholder="Confirme a sua senha."
-                                    handleOnChange={handleChange} />
+                                <label>Confirmar Senha
+                                    <input
+                                        type="password"
+                                        placeholder="Confirme a sua senha."
+                                        {...register("confirmPassword", { required: true })}
+                                    />
+                                    <span className="errorMessage">{errors.confirmPassword?.message}</span>
+
+                                </label>
                             </div>
                             <ButtonSend
                                 className='btn__send'
@@ -95,3 +109,4 @@ export function RegisterPage() {
         </div>
     )
 };
+

@@ -150,3 +150,52 @@
     }
 }
 
+input {
+    background: $white;
+    border: 1px solid $grey_border;
+    border-radius: 8px;
+    color: $dark-grey;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0.5rem 0;
+    height: 3rem;
+    outline: none;
+    padding: 0 16px;
+    width: 100%;
+
+    @include slim {
+        font-size: 1rem;
+        height: 2.5rem;
+    }
+
+    &:hover {
+        border: 2px solid $dark-greenish;
+
+        @include phone {
+            border: 1px solid $dark-greenish;
+        }
+        
+        @include slim {
+            border: 1px solid $dark-greenish;
+        }
+    }
+        
+    &:focus-visible {
+        border: 2px solid $dark-greenish;
+
+        @include phone {
+            border: 1px solid $dark-greenish;
+        }
+        
+        @include slim {
+            border: 1px solid $dark-greenish;
+        }
+    }
+}
+
+.errorMessage{
+    color: $red_error;
+    font-weight: 600;
+
+}
+
