@@ -1,0 +1,35 @@
+@import '../../../../../styles/variables.scss';
+
+
+.menu--main {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.menu--modal {
+    background: $blue-theme;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    z-index: 999;
+    position: fixed;
+    top: 0;
+}
+
+.menu--modal-content {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 2rem;
+
+    a {
+        color: $white-offwhite;
+        text-decoration: none;
+        font-size: 3rem;
+        border-bottom: 1px solid $white-offwhite;
+
+    }
+
+}

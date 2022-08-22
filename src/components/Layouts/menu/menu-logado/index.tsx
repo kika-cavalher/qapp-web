@@ -1,16 +1,26 @@
-import { ModalLinks } from "./modal-links";
+
+import { useState } from "react";
+import { ButtonModal } from "../../../Global/button/modal";
+import { ModalLogado } from "./modal-logado";
 
 import './style.scss'
 
 export default function MenuLogado() {
+    const [openModal, setOpenModal] = useState(false)
 
     return (
         <>
-            <ModalLinks />
             <div className='component--top-menu__user'>
-                <div className='component--user__round'>
-                    {/*                     <h1>{initials}</h1> */}
-                </div>
-            </div></>
+                <ButtonModal
+                    onClick={() => { setOpenModal(true) }}
+                    className="modal-btn-open">
+                    <div className='component--user__round'></div>
+                </ButtonModal>
+                {
+                    openModal && <ModalLogado
+                        closeModal={setOpenModal} />
+                }
+            </div>
+        </>
     );
 }

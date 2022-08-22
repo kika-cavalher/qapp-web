@@ -1,4 +1,5 @@
 
+
 import { ModalLinks } from "../modal-links";
 
 import './style.scss'
@@ -7,7 +8,7 @@ export type CreateProjectProps = {
     closeModal: (isOpen: boolean) => void
 }
 
-export function ModalMobile({ closeModal }: CreateProjectProps) {
+export function ModalLogado({ closeModal }: CreateProjectProps) {
 
     function handleClose() {
         closeModal(false) 
@@ -15,9 +16,9 @@ export function ModalMobile({ closeModal }: CreateProjectProps) {
 
     //refactoring
     return (
-        <div className="menu-mobile--main">
-            <div className="menu-mobile--modal">
-                <div className="menu-mobile--modal-content">
+        <div className="menu--main">
+            <div className="menu--modal">
+                <div className="menu--modal-content">
                     <ModalLinks />
                 </div>
             </div>
