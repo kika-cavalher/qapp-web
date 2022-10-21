@@ -1,6 +1,6 @@
-import { CreateProjectProps } from "../../../types/project";
+import { CreateProjectProps } from "../../../../types/project";
 
-import { ButtonModal } from "../button/modal";
+import { ButtonModal } from "../../button/modal";
 
 import iconCloseModal from '../../../assets/icon/closeModalX.png'
 import './style.scss'

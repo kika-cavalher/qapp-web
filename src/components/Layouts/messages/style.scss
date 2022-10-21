@@ -1,0 +1,44 @@
+@import '../../../styles/styles.scss';
+
+.message--container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: #f5f1f1;
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    height: 15rem;
+    border-radius: 20px;
+    width: 30rem;
+}
+
+.message--header{
+    background: none;
+    display: flex;
+    margin: 1rem 1rem 0 2rem;
+}
+
+.message--content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .message--title{
+        font-size: 2.3rem;
+        margin-bottom: 2rem;
+        color: $red_error;
+    }
+
+    .message--subTitle{
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+    }
+
+    .message--errorMessage{
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+    }
+}

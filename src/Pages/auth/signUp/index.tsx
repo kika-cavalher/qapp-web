@@ -1,5 +1,5 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { useContext, useState } from 'react';
+import { Link } from 'react-router-dom'
+import { useContext, } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
@@ -11,10 +11,11 @@ import { ButtonSend } from '../../../components/Global/button/send';
 import Logo from '../../../components/Layouts/logo/justLogo';
 
 import imgLogin from '../../../assets/images/imgLogin.jpg';
+import Message from '../../../components/Layouts/messages';
+
 import './style.scss'
 
 export function RegisterPage() {
-    const navigate = useNavigate()
     const { registerUser } = useContext(AuthContext)
 
     const schema = yup.object({
@@ -50,6 +51,7 @@ export function RegisterPage() {
                             </div>
                         </div>
                     </div>
+                    <Message />
                     <div className='page-register--main__forms'>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className='page-register--forms__name'>
