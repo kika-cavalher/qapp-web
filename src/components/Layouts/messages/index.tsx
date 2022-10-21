@@ -1,19 +1,31 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ButtonModal } from '../../Global/button/modal'
 
-import styles from './style.module.scss'
+
 import iconCloseModal from '../../../assets/icon/closeModalX.png'
 import './style.scss'
+import bus from '../../../utils/bus'
 
 
 function Message() {
-    const [type, setType] = useState("")
-    const [show, setShow] = useState(true)
+    const [show, setShow] = useState(false)
+    const [message, setMessage] = useState(false)
 
     const handleClose = () => setShow(false)
 
+    useEffect (() => {
+        bus.addListener('flash', ({message, type}) => {
+            setShow(true)
+            setMessage(message)
+
+            // setTimeout(() => {
+            //     setShow(false)
+            // }, 3000)
+        })
+    }, [])
+
     return (
-        <>
+        <> 
             { show && 
                 <div className='message--container'>
                     <div className='message--header'>
@@ -22,10 +34,7 @@ function Message() {
                         </ButtonModal>
                     </div>
                     <div className='message--content'>
-                        {/* <div className={`${styles.message} ${styles.type}`}> */}
-                        <h1 className='message--title'>Erro!</h1>
-                        <h2 className='message--subTitle'>Não foi possível cadastrar o seu usuário.</h2>
-                        <h2 className='message--errorMessage'></h2>
+                        <h2 className='message--text'>{message}</h2>
                     </div>
                 </div> }
         </>

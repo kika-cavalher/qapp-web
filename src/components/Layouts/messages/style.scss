@@ -10,7 +10,8 @@
     left: 20%;
     height: 15rem;
     border-radius: 20px;
-    width: 30rem;
+    width: 25rem;
+    height: 13rem;
 }
 
 .message--header{
@@ -24,21 +25,11 @@
     align-items: center;
     flex-direction: column;
 
-    .message--title{
-        font-size: 2.3rem;
-        margin-bottom: 2rem;
-        color: $red_error;
+    .message--text{
+        font-size: 1.5rem;
+        font-weight: 500;
+        padding: 2rem;
+        text-align: center;
     }
 
-    .message--subTitle{
-        font-size: 1.5rem;
-        font-weight: 400;
-        margin-bottom: 1rem;
-    }
-
-    .message--errorMessage{
-        font-size: 1.5rem;
-        font-weight: 400;
-        margin-bottom: 1rem;
-    }
 }
