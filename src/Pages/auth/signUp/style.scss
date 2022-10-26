@@ -122,6 +122,8 @@
         justify-content: center;
         margin-bottom: 1rem;
         width: 80%;
+        display: flex;
+        flex-direction: column;
 
         @include slim {
             margin: 0.3rem 0 1.6rem 0
@@ -190,6 +192,7 @@ input {
     }
 }
 
+
 .page-register--forms__confirm-password{
     margin-bottom: 2rem !important;
 }
@@ -197,14 +200,19 @@ input {
 .errorMessage{
     color: $red_error;
     font-weight: 600;
-    font-size: 1rem;
-    padding: 1px;
+    font-size: 0.9rem;
+    padding: 4px;
+    display: block;
+    position: absolute;
+    height: 7rem;
+    display: flex;
+    align-items: flex-end;
 
     @include slim {
         font-size: 0.9rem;
-        padding: 1px;
-        display: block;
-        position: absolute;
+        padding: 4px;
     }
 }
+
+
 

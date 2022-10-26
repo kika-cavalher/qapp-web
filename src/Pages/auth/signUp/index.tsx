@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom'
-import { useContext, } from 'react';
+import { useContext, useState, } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
 import { FormInputs } from '../../../types/inputs';
+import IconButton from "@material-ui/core/IconButton";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+
 
 import { AuthContext } from '../../../contexts/UserContext';
 import { ButtonSend } from '../../../components/Global/button/send';
@@ -14,20 +18,34 @@ import imgLogin from '../../../assets/images/imgLogin.jpg';
 import Message from '../../../components/Layouts/messages';
 
 import './style.scss'
+import '../../../components/Global/forms/signUsers/style.scss'
+
 
 export function RegisterPage() {
     const { registerUser } = useContext(AuthContext)
+    const [values, setValues] = useState({
+        password: "",
+        showPassword: false,
+    });
+
+    const handleClickShowPassword = () => {
+        setValues({ ...values, showPassword: !values.showPassword });
+    };
+
+    const handleMouseDownPassword = (event: any) => {
+        event.preventDefault();
+    };
 
     const schema = yup.object({
         name: yup.string().required("O nome é obrigatório."),
         email: yup.string().email("Digite um e-mail válido").required("O e-mail é obrigatório."),
         password: yup.string().min(6, "A senha deve ter no minimo 6 caracteres").required("A senha é obrigatório."),
         confirmPassword: yup.string().required("A confirmação da senha é obrigatório.").oneOf([yup.ref("password")], "As senhas devem ser iguais"),
-      }).required();
+    }).required();
 
-      const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>({
+    const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>({
         resolver: yupResolver(schema)
-      });
+    });
 
     async function onSubmit(userData: any) {
         registerUser(userData)
@@ -55,46 +73,57 @@ export function RegisterPage() {
                     <div className='page-register--main__forms'>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className='page-register--forms__name'>
-                                <p>Nome completo
-                                    <input
-                                        type="text"
-                                        placeholder="Insira o seu nome."
-                                        {...register("name", { required: true })}
+                                <p>Nome completo</p>
+                                <input
+                                    type="text"
+                                    placeholder="Insira o seu nome."
+                                    {...register("name", { required: true })}
 
-                                    />
-                                    <span className="errorMessage">{errors.name?.message}</span>
-                                </p>
+                                />
+                                <span className="errorMessage">{errors.name?.message}</span>
+
                             </div>
                             <div className='page-register--forms__email'>
-                                <p>E-mail
-                                    <input
-                                        type="email"
-                                        placeholder="Insira o seu e-mail."
-                                        {...register("email", { required: true })}
-                                    />
-                                    <span className="errorMessage">{errors.email?.message}</span>
-                                </p>
+                                <p>E-mail</p>
+                                <input
+                                    type="email"
+                                    placeholder="Insira o seu e-mail."
+                                    {...register("email", { required: true })}
+                                />
+                                <span className="errorMessage">{errors.email?.message}</span>
+
                             </div>
+                            <div className='main__container--password'>
+                    <IconButton className='eye--show-password'
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                    >Mostrar senhas  
+                                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                    </IconButton>
+                                    </div>
                             <div className='page-register--forms__password'>
-                                <p>Senha
-                                    <input
-                                        type="password"
-                                        placeholder="Insira a sua senha."
-                                        {...register("password", { required: true })}
-                                    />
-                                    <span className="errorMessage">{errors.password?.message}</span>
-                                </p>
+                                <p>Senha</p>
+                                
+                                <input
+                                    type={values.showPassword ? "text" : "password"}
+                                    placeholder="Insira a sua senha."
+                                    autoComplete="off"
+                                    {...register("password", { required: true })}
+                                />
+                                <span className="errorMessage">{errors.password?.message}</span>
+
                             </div>
                             <div className='page-register--forms__confirm-password'>
-                                <p>Confirmar Senha
-                                    <input
-                                        type="password"
-                                        placeholder="Confirme a sua senha."
-                                        {...register("confirmPassword", { required: true })}
-                                    />
-                                    <span className="errorMessage">{errors.confirmPassword?.message}</span>
+                                <p>Confirmar Senha</p>
+                                <input
+                                    type={values.showPassword ? "text" : "password"}
+                                    placeholder="Confirme a sua senha."
+                                    {...register("confirmPassword", { required: true })}
+                                />
 
-                                </p>
+                                <span className="errorMessage">{errors.confirmPassword?.message}</span>
+
+
                             </div>
                             <ButtonSend
                                 className='btn__send'
