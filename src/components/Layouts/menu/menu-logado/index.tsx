@@ -8,6 +8,9 @@ import './style.scss'
 export default function MenuLogado() {
     const [openModal, setOpenModal] = useState(false)
 
+    // Criar abreviação no menu com as iniciais. 
+    const name = localStorage.getItem('name')
+
     return (
         <>
             <div className='component--top-menu__user'>
