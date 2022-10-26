@@ -94,16 +94,16 @@ export function RegisterPage() {
 
                             </div>
                             <div className='main__container--password'>
-                    <IconButton className='eye--show-password'
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                    >Mostrar senhas  
-                                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                    </IconButton>
-                                    </div>
+                                <IconButton className='eye--show-password'
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                >Mostrar senhas
+                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                            </div>
                             <div className='page-register--forms__password'>
                                 <p>Senha</p>
-                                
+
                                 <input
                                     type={values.showPassword ? "text" : "password"}
                                     placeholder="Insira a sua senha."
