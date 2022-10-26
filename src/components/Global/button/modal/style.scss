@@ -124,6 +124,8 @@
     button {
         cursor: pointer;
         border: none;
+        outline: none;
+        background: $grey_modal;
     }
 
     img {

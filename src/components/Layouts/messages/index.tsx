@@ -14,13 +14,13 @@ function Message() {
     const handleClose = () => setShow(false)
 
     useEffect (() => {
-        bus.addListener('flash', ({message, type}) => {
+        bus.addListener('flash', ({message}) => {
             setShow(true)
             setMessage(message)
 
-            setTimeout(() => {
-                setShow(false)
-            }, 3000)
+            // setTimeout(() => {
+            //     setShow(false)
+            // }, 3000)
         })
     }, [])
 
