@@ -37,10 +37,25 @@ export function RegisterPage() {
     };
 
     const schema = yup.object({
-        name: yup.string().required("O nome é obrigatório."),
-        email: yup.string().email("Digite um e-mail válido").required("O e-mail é obrigatório."),
-        password: yup.string().min(6, "A senha deve ter no minimo 6 caracteres").required("A senha é obrigatório."),
-        confirmPassword: yup.string().required("A confirmação da senha é obrigatório.").oneOf([yup.ref("password")], "As senhas devem ser iguais"),
+        name: yup
+        .string()
+        .required("O nome é obrigatório."),
+        email: yup
+        .string()
+        .email("Digite um e-mail válido")
+        .required("O e-mail é obrigatório."),
+        password: yup
+        .string()
+        .min(6, "A senha deve ter no minimo 6 caracteres")
+        .required("A senha é obrigatório.")
+        .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\.\$%\^&\*])(?=.{6,})/,
+            "Deve conter 6 caracteres, 1 maiúsculo, 1 minúsculo, 1 numero e 1 caractere especial."
+          ),
+        confirmPassword: yup
+        .string()
+        .required("A confirmação da senha é obrigatório.")
+        .oneOf([yup.ref("password")], "As senhas devem ser iguais"),
     }).required();
 
     const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>({

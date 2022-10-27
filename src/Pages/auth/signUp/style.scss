@@ -146,6 +146,10 @@
             margin: 0.5rem 0;
         }
 
+        @include slim {
+            margin: 0.4rem 0;
+        }
+
         p {
             font-weight: 500;
             font-size: 1.1rem;
