@@ -12,6 +12,12 @@
     border-radius: 20px;
     width: 25rem;
     height: 13rem;
+    z-index: 999;
+
+    @include phone {
+        left: 3rem;
+        width: 20rem;
+    }
 }
 
 .message--header{

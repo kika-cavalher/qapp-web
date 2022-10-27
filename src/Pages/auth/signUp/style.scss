@@ -28,6 +28,11 @@
             margin-top: 6%;
         }
 
+        @include phone {
+            width: 8rem;
+        }
+        
+
     #img-logo {
         cursor: pointer;
         width: 120px;
@@ -75,7 +80,7 @@
         }
     
         @include phone {
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
     }
 
@@ -88,7 +93,7 @@
         }
     
         @include phone {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
 
     }
@@ -106,7 +111,7 @@
         }
     
         @include phone {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
 
             &:hover {
@@ -164,7 +169,7 @@ input {
     @include slim {
         font-size: 1rem;
         margin: 0;
-        height: 2rem;
+        height: 2.5rem;
     }
 
     &:hover {
@@ -192,25 +197,20 @@ input {
     }
 }
 
-
 .page-register--forms__confirm-password{
     margin-bottom: 2rem !important;
 }
 
 .errorMessage{
-    color: $red_error;
+    color: #860e03;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 1rem;
     padding: 4px;
-    display: block;
     position: absolute;
-    height: 7rem;
-    display: flex;
-    align-items: flex-end;
+    margin-top: 5rem;
 
     @include slim {
         font-size: 0.9rem;
-        padding: 4px;
     }
 }
 
