@@ -12,6 +12,15 @@ export type ButtonGoogleProps = {
     onClick?: () => void,
 }
 
+
+export type ButtonLinkProps = {
+    className?: string,
+    children?: React.ReactNode,
+    type?: "button" | "submit" | "reset" | undefined,
+    onClick?: () => void,
+}
+
+
 export type ButtonSearchProps = {
     className?: string,
     children?: React.ReactNode,

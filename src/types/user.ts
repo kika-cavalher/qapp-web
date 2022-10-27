@@ -12,6 +12,7 @@ export type UserContextProps = {
     confirmPassword?: string
     registerUser: (user: UserProps) => Promise<void>;
     authenticated: boolean
+    logout: () => Promise<void>
 }
 
 export type UserContextProviderProps = {

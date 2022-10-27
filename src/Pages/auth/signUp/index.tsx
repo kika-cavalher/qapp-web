@@ -66,6 +66,7 @@ export function RegisterPage() {
 
     async function onSubmit(userData: any) {
         registerUser(userData)
+        console.log(userData)
     }
 
     return (

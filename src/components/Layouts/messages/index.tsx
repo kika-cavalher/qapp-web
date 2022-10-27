@@ -8,8 +8,8 @@ import bus from '../../../utils/bus'
 
 
 function Message() {
-    const [show, setShow] = useState(false)
     const [message, setMessage] = useState(false)
+    const [show, setShow] = useState(false)
 
     const handleClose = () => setShow(false)
 

@@ -38,12 +38,18 @@ export default function useAuth() {
     async function authUser(data: any) {
         setAuthenticated(true)
         localStorage.setItem('token', JSON.stringify(data.token))
-        localStorage.setItem('name', JSON.stringify(data.name))
         setTimeout(() => {
             navigate('/projects')
         }, 2000)
         
     }
 
-    return { authenticated, registerUser }
+    async function logout() {
+        setAuthenticated(false)
+        localStorage.removeItem('token')
+        api.defaults.headers.common['Authorization'] = false
+
+    }
+
+    return { authenticated, registerUser, logout }
 }

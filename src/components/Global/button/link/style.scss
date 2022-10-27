@@ -1,0 +1,41 @@
+@import '../../../../styles/variables.scss';
+
+.btn__delete {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+        align-items: center;
+        background: $blue-theme;
+        border: 0;
+        border-radius: 8px;
+        color: $white;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        font-weight: 600;
+        font-size: 1.2rem;
+        height: 2.5rem;
+        justify-content: center;
+        margin: 1rem 0;
+        width: 10rem;
+
+        @include slim {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            width: 5rem;
+        }
+        
+        @include tablet {
+            font-size: 1.7rem;
+            height: 2.6rem;
+        }
+        
+        @include phone {
+            font-size: 1.3rem;
+            width: 8rem;
+            height: 2.3rem;
+        }
+    }
+}
