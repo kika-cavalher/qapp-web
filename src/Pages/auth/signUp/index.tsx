@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
-import { FormInputs } from '../../../types/inputs';
+import { RegisterInputs } from '../../../types/inputs';
 import IconButton from "@material-ui/core/IconButton";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
@@ -17,8 +17,9 @@ import Logo from '../../../components/Layouts/logo/justLogo';
 import imgLogin from '../../../assets/images/imgLogin.jpg';
 import Message from '../../../components/Layouts/messages';
 
-import './style.scss'
 import '../../../components/Global/forms/signUsers/style.scss'
+import '../../../components/Global/forms/errors/style.scss'
+import './style.scss'
 
 
 export function RegisterPage() {
@@ -38,27 +39,28 @@ export function RegisterPage() {
 
     const schema = yup.object({
         name: yup
-        .string()
-        .required("O nome é obrigatório."),
+            .string()
+            .required("O nome é obrigatório."),
         email: yup
-        .string()
-        .email("Digite um e-mail válido")
-        .required("O e-mail é obrigatório."),
+            .string()
+            .email("Digite um e-mail válido")
+            .required("O e-mail é obrigatório."),
         password: yup
-        .string()
-        .min(6, "A senha deve ter no minimo 6 caracteres")
-        .required("A senha é obrigatório.")
-        .matches(
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\.\$%\^&\*])(?=.{6,})/,
-            "Deve conter 6 caracteres, 1 maiúsculo, 1 minúsculo, 1 numero e 1 caractere especial."
-          ),
+            .string()
+            .min(6, "A senha deve ter no minimo 6 caracteres")
+            .required("A senha é obrigatório.")
+            .matches(
+                // eslint-disable-next-line
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\.\$%\^&\*])(?=.{6,})/,
+                "Deve conter 6 caracteres, 1 maiúsculo, 1 minúsculo, 1 numero e 1 caractere especial."
+            ),
         confirmPassword: yup
-        .string()
-        .required("A confirmação da senha é obrigatório.")
-        .oneOf([yup.ref("password")], "As senhas devem ser iguais"),
+            .string()
+            .required("A confirmação da senha é obrigatório.")
+            .oneOf([yup.ref("password")], "As senhas devem ser iguais"),
     }).required();
 
-    const { register, handleSubmit, formState: { errors } } = useForm<FormInputs>({
+    const { register, handleSubmit, formState: { errors } } = useForm<RegisterInputs>({
         resolver: yupResolver(schema)
     });
 
@@ -92,24 +94,20 @@ export function RegisterPage() {
                                 <input
                                     type="text"
                                     placeholder="Insira o seu nome."
-                                    {...register("name", { required: true })}
-
-                                />
-                                <span className="errorMessage">{errors.name?.message}</span>
-
+                                    {...register("name", { required: true })} />
+                                <span className="errorMessage errorMessage_register">{errors.name?.message}</span>
                             </div>
                             <div className='page-register--forms__email'>
                                 <p>E-mail</p>
                                 <input
                                     type="email"
                                     placeholder="Insira o seu e-mail."
-                                    {...register("email", { required: true })}
-                                />
-                                <span className="errorMessage">{errors.email?.message}</span>
+                                    {...register("email", { required: true })} />
+                                <span className="errorMessage errorMessage_register">{errors.email?.message}</span>
 
                             </div>
-                            <div className='main__container--password'>
-                                <IconButton className='eye--show-password'
+                            <div className='main__container--password  register__container--message'>
+                                <IconButton className='eye--show-password register__show-password'
                                     onClick={handleClickShowPassword}
                                     onMouseDown={handleMouseDownPassword}
                                 >Mostrar senhas
@@ -118,27 +116,20 @@ export function RegisterPage() {
                             </div>
                             <div className='page-register--forms__password'>
                                 <p>Senha</p>
-
                                 <input
                                     type={values.showPassword ? "text" : "password"}
                                     placeholder="Insira a sua senha."
                                     autoComplete="off"
-                                    {...register("password", { required: true })}
-                                />
-                                <span className="errorMessage">{errors.password?.message}</span>
-
+                                    {...register("password", { required: true })} />
+                                <span className="errorMessage errorMessage_register">{errors.password?.message}</span>
                             </div>
                             <div className='page-register--forms__confirm-password'>
                                 <p>Confirmar Senha</p>
                                 <input
                                     type={values.showPassword ? "text" : "password"}
                                     placeholder="Confirme a sua senha."
-                                    {...register("confirmPassword", { required: true })}
-                                />
-
-                                <span className="errorMessage">{errors.confirmPassword?.message}</span>
-
-
+                                    {...register("confirmPassword", { required: true })} />
+                                <span className="errorMessage errorMessage_register">{errors.confirmPassword?.message}</span>
                             </div>
                             <ButtonSend
                                 className='btn__send'

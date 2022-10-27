@@ -1,0 +1,22 @@
+@import '../../../../styles/variables.scss';
+
+.errorMessage{
+    color: #860e03;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 4px;
+
+    @include slim {
+        font-size: 0.9rem;
+    }
+}
+
+.errorMessage_register{
+    margin-top: 5rem;
+    position: absolute;
+}
+
+.errorMessage_login{
+    margin-top: -1rem;
+    position: initial;
+}
