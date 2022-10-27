@@ -15,7 +15,8 @@ export function MenuLogado() {
 
     const handleClose = () => setShow(false)
     const handleShow = () => {
-        setShow(true)}
+        setShow(true)
+    }
 
     return (
         <>
@@ -41,7 +42,7 @@ export function MenuLogado() {
                     <ul className='top-menu__list'>
                         <li className='top-menu__itens'>
                             <ButtonLink className='top-menu menu--logout'
-                            onClick={logout}>Logout
+                                onClick={logout}>Logout
                             </ButtonLink>
                         </li>
                     </ul>

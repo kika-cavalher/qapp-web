@@ -14,9 +14,9 @@ export function TopMenu() {
     return (
         <div id="component--top-menu">
             <FullLogo />
-            {authenticated ? 
-            <MenuLogado /> : 
-            <MenuDeslogado />}
-            </div>
+            {authenticated ?
+                <MenuLogado /> :
+                <MenuDeslogado />}
+        </div>
     )
 }

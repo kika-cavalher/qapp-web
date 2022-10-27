@@ -20,7 +20,7 @@ export default function useAuth() {
 
     async function registerUser(user: UserProps) {
 
-        const {setMessage} = UseMessage()
+        const { setMessage } = UseMessage()
         let msgText = 'Cadastro realizado com sucesso!'
 
         try {
@@ -41,14 +41,13 @@ export default function useAuth() {
         setTimeout(() => {
             navigate('/projects')
         }, 2000)
-        
+
     }
 
     async function logout() {
         setAuthenticated(false)
         localStorage.removeItem('token')
         api.defaults.headers.common['Authorization'] = false
-
     }
 
     return { authenticated, registerUser, logout }
