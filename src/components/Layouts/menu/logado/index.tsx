@@ -19,18 +19,16 @@ export function MenuLogado() {
     }
 
     return (
-        <>
+        <div className='component--menu-header'>
             <div className='component--openMenu'>
                 <div className='container--Initials'>
                     <ButtonModal className="name--initials" onClick={handleShow}>
                         Logado
                     </ButtonModal>
                 </div>
-            </div>
-
-            {show && <div id="component--menu-logado">
+                {show && <div className="component--menu-logado">
                 <ButtonModal className="icon-close-modal" onClick={handleClose}>
-                    <img className="item-project--btn-close-modal" src={iconCloseModal} alt="icone para fechar o modal." />
+                    X
                 </ButtonModal>
                 <div className='component--top-menu__pages'>
                     <ul className='top-menu__list'>
@@ -48,7 +46,8 @@ export function MenuLogado() {
                     </ul>
                 </div>
             </div>}
-        </>
+            </div>
+        </div>
     )
 }
 
