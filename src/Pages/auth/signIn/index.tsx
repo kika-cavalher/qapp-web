@@ -59,7 +59,6 @@ export function LoginPage() {
 
     async function onSubmit(userData: any) {
         login(userData)
-        console.log(userData)
     }
 
 

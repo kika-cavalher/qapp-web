@@ -1,21 +1,25 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
+import { useNavigate } from "react-router-dom";
+
+import { AuthContext } from '../../../../contexts/UserContext'
 
 import { ButtonLink } from '../../../Global/button/link'
 import { ButtonModal } from '../../../Global/button/modal'
 
-import iconCloseModal from '../../../../assets/icon/closeModalX.png'
-
 import './style.scss'
-import api from '../../../../services/api'
-import { AuthContext } from '../../../../contexts/UserContext'
 
 export function MenuLogado() {
     const [show, setShow] = useState(false)
     const { logout } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleClose = () => setShow(false)
     const handleShow = () => {
         setShow(true)
+    }
+
+    const profilePage =() => {
+        navigate('/profile')
     }
 
     return (
@@ -33,7 +37,7 @@ export function MenuLogado() {
                 <div className='component--top-menu__pages'>
                     <ul className='top-menu__list'>
                         <li className='top-menu__itens'>
-                            <ButtonLink className='top-menu menu--perfil'>Perfil
+                            <ButtonLink onClick={profilePage} className='top-menu menu--perfil'>Perfil
                             </ButtonLink>
                         </li>
                     </ul>

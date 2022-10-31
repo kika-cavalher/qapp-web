@@ -1,0 +1,11 @@
+.page-profile--main__container{
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 13rem);
+    margin: 0 5rem
+}
+
+.main__content{
+    display: flex;
+    flex-direction: row;
+}

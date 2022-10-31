@@ -20,6 +20,14 @@ export type ButtonLinkProps = {
     onClick?: () => void,
 }
 
+export type ButtonReturnProps = {
+    className?: string,
+    children?: React.ReactNode,
+    type?: "button" | "submit" | "reset" | undefined,
+    onClick?: () => void,
+}
+
+
 
 export type ButtonSearchProps = {
     className?: string,
