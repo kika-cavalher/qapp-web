@@ -10,8 +10,8 @@ export function MenuDeslogado() {
     }
 
     return (
-        <div id="component--menu-deslogado">
-            <ButtonModal onClick={HandleOpen}>Entrar</ButtonModal>
+        <div className="component--menu-deslogado">
+            <ButtonModal className="button--menu-deslogado"onClick={HandleOpen}>Entrar</ButtonModal>
             </div>
     )
 }

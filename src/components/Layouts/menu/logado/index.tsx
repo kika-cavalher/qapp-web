@@ -27,7 +27,7 @@ export function MenuLogado() {
                     </ButtonModal>
                 </div>
                 {show && <div className="component--menu-logado">
-                <ButtonModal className="icon-close-modal" onClick={handleClose}>
+                <ButtonModal className="icon-close-modal__withX" onClick={handleClose}>
                     X
                 </ButtonModal>
                 <div className='component--top-menu__pages'>

@@ -65,11 +65,12 @@
 
 .name--initials{
     button{
-        height: 4rem;
-        width: 4rem;
+        height: 3.5rem;
+        width: 3.5rem;
         border-radius: 50%;
         border: 2px solid #078fb5;
         background: none;
+        font-size: 0.8rem;
     }
 }
 
@@ -81,7 +82,11 @@
     border-bottom: none 
 }
 
-.icon-close-modal{
+.icon-close-modal__withX{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
     button{
         cursor: pointer;
         border: none;
@@ -98,9 +103,10 @@
         @include phone {
             background: #0088ac;
             color: white;
-            width: 2rem;
+            width: 2.5rem;
             border: 1px solid white;
             font-size: 2rem;
+            margin-right: 1rem;
         }
     }
 }
