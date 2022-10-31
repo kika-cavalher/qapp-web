@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { IconButton } from '@material-ui/core';
@@ -17,9 +17,13 @@ import imgLogin from '../../../assets/images/imgLogin.jpg';
 import '../../../components/Global/forms/errors/style.scss'
 import '../../../components/Global/forms/signUsers/style.scss'
 import './style.scss'
+import { AuthContext } from '../../../contexts/UserContext';
+import Message from '../../../components/Layouts/messages';
 
 
 export function LoginPage() {
+    const { login } = useContext(AuthContext)
+
     const [values, setValues] = useState({
         password: "",
         showPassword: false,
@@ -54,7 +58,8 @@ export function LoginPage() {
     });
 
     async function onSubmit(userData: any) {
-        console.log("relaxaaaaaa vai rolar!!!")
+        login(userData)
+        console.log(userData)
     }
 
 
@@ -79,6 +84,7 @@ export function LoginPage() {
                     <div className='page-login--main__divider'>
                         <div>Ou entre com o seu login</div>
                     </div>
+                    <Message />
                     <div className='page-login--main__forms'>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className='page-login--forms__email'>

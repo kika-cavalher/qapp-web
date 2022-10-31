@@ -13,6 +13,7 @@
     width: 25rem;
     height: 13rem;
     z-index: 999;
+    box-shadow: 14px 10px 20px #666666;;
 
     @include phone {
         left: 3rem;

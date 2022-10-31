@@ -11,6 +11,7 @@ export type UserContextProps = {
     password?: string,
     confirmPassword?: string
     registerUser: (user: UserProps) => Promise<void>;
+    login: (user: UserProps) => Promise<void>;
     authenticated: boolean
     logout: () => Promise<void>
 }
@@ -20,11 +21,11 @@ export type UserContextProviderProps = {
 };
 
 export type FlashMessage = {
-    msg?: string, 
+    msg?: string,
     type?: string
 }
 
 export type Message = {
-    className?: string, 
+    className?: string,
     text?: string
 }

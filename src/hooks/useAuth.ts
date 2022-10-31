@@ -8,6 +8,7 @@ import { UserProps } from "../types/user";
 export default function useAuth() {
     const [authenticated, setAuthenticated] = useState(false)
     const navigate = useNavigate()
+    const { setMessage } = UseMessage()
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -19,15 +20,13 @@ export default function useAuth() {
     }, [])
 
     async function registerUser(user: UserProps) {
-
-        const { setMessage } = UseMessage()
         let msgText = 'Cadastro realizado com sucesso!'
 
         try {
             const data = await api.post('/users/signup', user).then(
                 (response) => { return response.data })
-
             await authUser(data)
+
         } catch (error: any) {
             msgText = error.response.data.msg
         }
@@ -44,11 +43,26 @@ export default function useAuth() {
 
     }
 
+    async function login(user: any) {
+        let msgText = 'Login realizado com sucesso!'
+
+        try {
+            const data = await api.post('/users/signin', user).then(
+                (response) => { return response.data })
+            await authUser(data)
+
+        } catch (error: any) {
+            msgText = error.response.data.msg
+        }
+
+        setMessage(msgText)
+    }
+
     async function logout() {
         setAuthenticated(false)
         localStorage.removeItem('token')
         api.defaults.headers.common['Authorization'] = false
     }
 
-    return { authenticated, registerUser, logout }
+    return { authenticated, registerUser, login, logout }
 }

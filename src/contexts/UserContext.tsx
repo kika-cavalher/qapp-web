@@ -5,10 +5,10 @@ import { UserContextProps, UserContextProviderProps } from "../types/user";
 const AuthContext = createContext<UserContextProps>({} as UserContextProps);
 
 function UserContextProvider({ children }: UserContextProviderProps) {
-    const { authenticated, registerUser, logout } = useAuth()
+    const { authenticated, registerUser, login, logout } = useAuth()
 
     return (
-        <AuthContext.Provider value={{ authenticated, registerUser, logout }}>
+        <AuthContext.Provider value={{ authenticated, registerUser, login, logout }}>
             {children}
         </AuthContext.Provider>
     )
