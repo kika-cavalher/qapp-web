@@ -51,7 +51,3 @@ export function MenuLogado() {
         </div>
     )
 }
-
-function setAuthenticated(arg0: boolean) {
-    throw new Error('Function not implemented.')
-}

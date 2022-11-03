@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom'
 import { ButtonFile } from '../../../components/Global/button/file'
 
 import { TitlePage } from '../../../components/Layouts/body/titlePage'
@@ -10,11 +9,6 @@ import './style.scss'
 
 
 export function ProfilePage() {
-    const navigate = useNavigate()
-
-    const HomePage = () => {
-        navigate('/projects')
-    }
 
     return (
         <div className="page-profile">

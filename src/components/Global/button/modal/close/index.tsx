@@ -1,6 +1,5 @@
 
 import { ButtonProps } from '@material-ui/core'
-import { useState } from 'react'
 import iconCloseModal from '../../../../../assets/icon/closeModalX.png'
 import './style.scss'
 
@@ -13,6 +12,3 @@ export function ButtonCloseModal( {onClick}: ButtonProps) {
         </div>
     )
 }
-
-
-
