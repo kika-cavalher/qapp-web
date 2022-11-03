@@ -1,9 +1,9 @@
 
-import { ButtonReturnProps } from '../../../../types/button'
+import { ButtonProps } from '../../../../types/button'
 
 import './style.scss'
 
-export function ButtonReturn ({ className, children, onClick, type }: ButtonReturnProps) {
+export function ButtonReturn ({ className, children, onClick, type }: ButtonProps) {
     return (
         <div className={className} >
             <button onClick={onClick} type={type}>

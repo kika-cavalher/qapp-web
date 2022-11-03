@@ -1,0 +1,45 @@
+@import '../../../../../styles/variables.scss';
+
+.container--modal-close{
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+        cursor: pointer;
+        border: 0;
+        outline: none;
+        background: none;
+    }
+
+    img {
+        height: 40px;
+        width: 40px;
+        background-color: none;
+
+        @include tv {
+            height: 70px;
+            width: 70px;
+        }
+
+        @include phone {
+            height: 25px;
+            width: 25px;
+        }
+    }
+}
+
+.icon-close-modal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.close-modal{
+    display: flex;
+    flex-direction: column;
+}
+
+.item-project--btn-close-modal{
+    background: $grey_modal;
+    outline: none;
+}

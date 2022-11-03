@@ -1,8 +1,7 @@
 import { CreateProjectProps } from "../../../../types/project";
 
-import { ButtonModal } from "../../button/modal";
-
 import iconCloseModal from '../../../assets/icon/closeModalX.png'
+import { ButtonCloseModal } from "../../button/modal/close";
 import './style.scss'
 
 export function Modal({  titleModal, nameModal, name_placeholder, contentModal, content_placeholder, describeModal, describe_placeholder }: CreateProjectProps) {
@@ -25,12 +24,7 @@ export function Modal({  titleModal, nameModal, name_placeholder, contentModal, 
                         <h1>{titleModal}</h1>
                     </div>
                     <div className="modal-header--close-menu">
-                        <ButtonModal
-                            className="icon-close-modal"
-                            // onClick={handleClose}
-                            >
-                            <img className="item-project--btn-close-modal" src={iconCloseModal} alt="icone para fechar o modal." />
-                        </ButtonModal>
+                        <ButtonCloseModal />
                     </div>
                 </div>
                 <form className="modal-content--form" 
@@ -71,12 +65,8 @@ export function Modal({  titleModal, nameModal, name_placeholder, contentModal, 
                             placeholder={describe_placeholder}>
                         </textarea>
                     </div>
-                    <ButtonModal
-                        className="btn__send--modal"
-                        // onClick={() => handleSubmit}
-                        >
-                        Salvar
-                    </ButtonModal>
+                    <button>Salvar</button>
+
                 </form>
             </div>
             <div className="modal-out"

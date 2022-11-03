@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../../../../contexts/UserContext'
 import { UserAvatar } from '../../../../Pages/User/avatar';
 
-import { ButtonLink } from '../../../Global/button/link'
-import { ButtonModal } from '../../../Global/button/modal'
+import { ButtonCloseModal } from '../../../Global/button/modal/close';
 
 import './style.scss'
 
@@ -15,9 +14,7 @@ export function MenuLogado() {
     const navigate = useNavigate()
 
     const handleClose = () => setShow(false)
-    const handleShow = () => {
-        setShow(true)
-    }
+    const handleShow = () => setShow(true)
 
     const profilePage = () => {
         navigate('/profile')
@@ -27,27 +24,25 @@ export function MenuLogado() {
         <div className='component--menu-header'>
             <div className='component--openMenu'>
                 <div className='container--Initials'>
-                    <ButtonModal className="name--initials" onClick={handleShow}>
+                    <button className="name--initials" onClick={handleShow}>
                         <UserAvatar
                             className='avatar-menu' />
-                    </ButtonModal>
+                    </button>
                 </div>
                 {show && <div className="component--menu-logado">
-                    <ButtonModal className="icon-close-modal__withX" onClick={handleClose}>
-                        X
-                    </ButtonModal>
+                    <ButtonCloseModal onClick={handleClose}/>
                     <div className='component--top-menu__pages'>
                         <ul className='top-menu__list'>
                             <li className='top-menu__itens'>
-                                <ButtonLink onClick={profilePage} className='top-menu menu--perfil'>Perfil
-                                </ButtonLink>
+                                <button onClick={profilePage} className='top-menu menu--perfil'>Perfil
+                                </button>
                             </li>
                         </ul>
                         <ul className='top-menu__list'>
                             <li className='top-menu__itens'>
-                                <ButtonLink className='top-menu menu--logout'
+                                <button className='top-menu menu--logout'
                                     onClick={logout}>Logout
-                                </ButtonLink>
+                                </button>
                             </li>
                         </ul>
                     </div>

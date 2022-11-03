@@ -1,8 +1,8 @@
 
 import './style.scss'
-import { ButtonSendProps } from '../../../../types/button'
+import { ButtonProps } from '../../../../types/button'
 
-export function ButtonSend ({ className, children, onClick, type }: ButtonSendProps) {
+export function ButtonSend ({ className, children, onClick, type }: ButtonProps) {
     return (
         <div className={className} >
             <button

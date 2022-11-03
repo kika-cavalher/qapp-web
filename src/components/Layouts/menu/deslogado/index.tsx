@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { ButtonModal } from '../../../Global/button/modal'
+
 import './style.scss'
 
 export function MenuDeslogado() {
@@ -11,7 +11,8 @@ export function MenuDeslogado() {
 
     return (
         <div className="component--menu-deslogado">
-            <ButtonModal className="button--menu-deslogado"onClick={HandleOpen}>Entrar</ButtonModal>
+            <button className="button--menu-deslogado"onClick={HandleOpen}>Entrar
+            </button>
             </div>
     )
 }
