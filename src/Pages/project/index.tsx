@@ -17,7 +17,6 @@ export function ProjectPage() {
             <div className='page-project--main__container'>
                 <TitlePage titlePage={'Projetos'} />
                 <div className='page-project--container__options'>
-                    <Search />
                     <ButtonModal
                         className="btn-open-modal"
                         // onClick={handleAddProject}

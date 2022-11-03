@@ -29,3 +29,7 @@ export type Message = {
     className?: string,
     text?: string
 }
+
+export type avatarProps = {
+    className?: string,
+}

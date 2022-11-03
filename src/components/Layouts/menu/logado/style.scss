@@ -10,14 +10,16 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    left: 77%;
+    right: 2rem;
+    margin-top: 0.5rem;
     width: 20%;
+    max-width: 13rem;
+    min-width: 10rem;
     height: 30vh;
+    padding: 1rem;
     border-radius: 10%;
-    margin-top: 1%;
     background-color: #f3f1f1;
     box-shadow: 12px 8px 9px #dad5d5;
-    padding: 1rem;
 
     @include phone {
         width: 100%;
@@ -44,7 +46,9 @@
             padding: 0.6rem;
             text-decoration: none;
             background: none;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: $strong-grey;
             cursor: pointer;
             text-align: center;
             transition: background 250ms ease-in-out, 
@@ -65,12 +69,10 @@
 
 .name--initials{
     button{
-        height: 3.5rem;
-        width: 3.5rem;
-        border-radius: 50%;
-        border: 2px solid #078fb5;
+        outline: none;
         background: none;
         font-size: 0.8rem;
+        border: none;
     }
 }
 

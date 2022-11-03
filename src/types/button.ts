@@ -29,7 +29,7 @@ export type ButtonReturnProps = {
 
 
 
-export type ButtonSearchProps = {
+export type ButtonFileProps = {
     className?: string,
     children?: React.ReactNode,
     type?: "button" | "submit" | "reset" | undefined,
