@@ -1,3 +1,4 @@
+
 import avatarDefault2 from '../../../assets/images/avatarDefault2.jpg'
 import { avatarProps } from '../../../types/user'
 
