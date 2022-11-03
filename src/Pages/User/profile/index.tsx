@@ -5,6 +5,8 @@ import { Footer } from '../../../components/Layouts/footer'
 import { TopMenu } from '../../../components/Layouts/menu'
 
 import avatarDefault from '../../../assets/images/avatarDefault.svg'
+import avatarDefault1 from '../../../assets/images/avatarDefault1.png'
+import avatarDefault2 from '../../../assets/images/avatarDefault2.jpg'
 import './style.scss'
 
 
@@ -25,7 +27,8 @@ export function ProfilePage() {
                 <div className='main__content'>
                     <div className='main__avatar'>
                         <div className='avatar--img'>
-                        <img src={avatarDefault} alt="React Logo" />
+                        <img src={avatarDefault2} alt="Avatar perfil" />
+                        </div>
                     </div>
                     <div className='main__forms'>
                         <form>
@@ -53,7 +56,7 @@ export function ProfilePage() {
             </div>
             <Footer />
         </div>
-        </div>
+
     )
 }
 
