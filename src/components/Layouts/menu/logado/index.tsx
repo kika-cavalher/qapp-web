@@ -39,7 +39,7 @@ export function MenuLogado() {
                             </li>
                         </ul>
                         <ul className='top-menu__list'>
-                            <li className='top-menu__itens'>
+                            <li className='top-menu__itens last-menu'>
                                 <button className='top-menu menu--logout'
                                     onClick={logout}>Logout
                                 </button>

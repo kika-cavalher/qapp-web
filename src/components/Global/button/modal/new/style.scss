@@ -1,9 +1,41 @@
 @import '../../../../../styles/variables.scss';
 
-.container--btn_new{
+.main--btn_new{
     display: flex;
+    margin-top: 1rem;
+}
+
+.container--btn_new{
+    border-radius: 17px;
+    width: 15rem;
+    height: 3.5rem;
+    display: flex;
+    flex-direction: row;
+    background: $light-blue;
+    margin-left: 5px;
+}
+
+.img--add{
+    border: 0;
+    border-right: 2px solid $blue-theme;
+    border-radius: 10px 0 0 10px;
+    background: $blue-theme;
+    color: white;
+    padding: 0 1rem;
+    height: 100%;
+    font-size: 3rem;
+    display: flex;
+    align-content: flex-start;
+    align-items: center;
+    cursor: pointer;
 }
 
 .btn_new{
-
+    border: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-left: 1rem;
+    background: none;
+    color: $grey_text;
+    cursor: pointer;
 }
