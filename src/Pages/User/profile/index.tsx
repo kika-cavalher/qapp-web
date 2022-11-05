@@ -1,4 +1,5 @@
 import { ButtonFile } from '../../../components/Global/button/file'
+import { ButtonSend } from '../../../components/Global/button/send'
 
 import { TitlePage } from '../../../components/Layouts/body/titlePage'
 import { Footer } from '../../../components/Layouts/footer'
@@ -47,6 +48,9 @@ export function ProfilePage() {
                             </div>
                         </form>
                     </div>
+                </div>
+                <div className='container--btn-send'>
+                <ButtonSend />
                 </div>
             </div>
             <Footer />

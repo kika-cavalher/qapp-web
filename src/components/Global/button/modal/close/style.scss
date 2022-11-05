@@ -10,29 +10,44 @@
         outline: none;
         background: none;
     }
-
-    img {
-        height: 40px;
-        width: 40px;
-        background-color: none;
-
-        @include tv {
-            height: 70px;
-            width: 70px;
-        }
-
-        @include phone {
-            height: 25px;
-            width: 25px;
-        }
-    }
 }
 
-.icon-close-modal {
+.img--close-modal__grey {
+    height: 40px;
+    width: 40px;
+    background-color: none;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
+    @include tv {
+        height: 70px;
+        width: 70px;
+    }
+
+    @include phone {
+        display: none;
+    }
 }
+
+.img--close-modal__White {
+    display: none;
+
+    @include tv {
+        height: 70px;
+        width: 70px;
+    }
+
+    @include phone {
+        height: 40px;
+        width: 40px;
+        background-color: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+
 
 .close-modal{
     display: flex;

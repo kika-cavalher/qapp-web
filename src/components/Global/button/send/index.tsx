@@ -2,14 +2,11 @@
 import './style.scss'
 import { ButtonProps } from '../../../../types/button'
 
-export function ButtonSend ({ className, children, onClick, type }: ButtonProps) {
+export function ButtonSend ({ onClick}: ButtonProps) {
     return (
-        <div className={className} >
-            <button
-            onClick={onClick}
-            type={type}
-            >
-                {children}
+        <div className='btn__send'>
+            <button onClick={onClick} type='submit'>
+                Enviar
             </button>
         </div>
     )

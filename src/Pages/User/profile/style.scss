@@ -12,6 +12,10 @@
     flex-direction: row;
     margin-top: 2rem;
     align-items: center;
+
+    @include phone {
+        flex-direction: column;
+    }
 }
 
 .container--avatar{
@@ -25,6 +29,10 @@
     width: 3rem;
     border-right: 1px solid $medium-grey;
     height: 12rem;
+
+    @include phone {
+        display: none;
+    }
 }
 
 .main__forms{
@@ -32,6 +40,11 @@
     max-width: 30rem;
     margin-left: 3rem;
     margin-bottom: 1rem;
+
+    @include phone {
+        margin-left: 0;
+        width: 100%;
+    }
 }
 
 .main-profile__forms{
@@ -39,5 +52,13 @@
         font-weight: 600;
         margin-top: 1rem;
     }
+}
 
+.container--btn-send{
+    width: 80%;
+    margin-bottom: 1rem;
+
+    @include phone {
+        width: 100%;
+    }
 }
