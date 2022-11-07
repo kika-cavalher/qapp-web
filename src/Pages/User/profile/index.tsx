@@ -1,15 +1,39 @@
+import { FormEvent, useEffect, useState } from 'react'
 import { ButtonFile } from '../../../components/Global/button/file'
 import { ButtonSend } from '../../../components/Global/button/send'
 
 import { TitlePage } from '../../../components/Layouts/body/titlePage'
 import { Footer } from '../../../components/Layouts/footer'
 import { TopMenu } from '../../../components/Layouts/menu'
+import api from '../../../services/api'
 import { UserAvatar } from '../avatar'
 
 import './style.scss'
 
 
 export function ProfilePage() {
+    const [token] = useState(localStorage.getItem('token') || '')
+    const [user, setUser] = useState({
+        name: "",
+        email: "",
+        password: "",
+    })
+
+    useEffect(() => {
+        
+        api.get('/users/checkuser' , {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(token)}`
+            }
+        }).then((response) => {
+            setUser(response.data)
+        })
+
+    }, [token])
+
+    function onFileChange(){
+        console.log(user)
+    }
 
     return (
         <div className="page-profile">
@@ -22,7 +46,7 @@ export function ProfilePage() {
                     <div className='container--avatar'>
                         <UserAvatar
                             className='avatar-profile' />
-                        <ButtonFile />
+                        <ButtonFile onClick={onFileChange}/>
                     </div>
                     <div className='page-profile--divider'>
                     </div>
@@ -32,19 +56,24 @@ export function ProfilePage() {
                                 <p>Nome completo</p>
                                 <input
                                     type="text"
-                                    placeholder="Insira o seu nome." />
+                                    placeholder="Insira o seu nome." 
+                                    value={user.name || ''}
+                                    />
                             </div>
                             <div className='page-profile--forms__email'>
                                 <p>E-mail</p>
                                 <input
                                     type="email"
-                                    placeholder="Insira o seu e-mail." />
+                                    placeholder="Insira o seu e-mail." 
+                                    value={user.email || ''}
+                                    />
                             </div>
                             <div className='page-profile--forms__email'>
-                                <p>Iniciais</p>
+                                <p>Senha</p>
                                 <input
-                                    type="email"
-                                    placeholder="Insira as iniciais do seu nome." />
+                                    type="password"
+                                    value={user.password || '******'}
+                                    />
                             </div>
                         </form>
                     </div>

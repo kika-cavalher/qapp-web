@@ -3,6 +3,7 @@ export type UserProps = {
     email?: string,
     password?: string,
     confirmPassword?: string
+    image?: string
 }
 
 export type UserContextProps = {

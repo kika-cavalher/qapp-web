@@ -1,11 +1,20 @@
 
+import { ButtonProps } from '../../../../types/button'
 import './style.scss'
 
-export function ButtonFile () {
+export function ButtonFile({onClick}: ButtonProps) {
+
     return (
-        <div className='button-file--container' >
-            <button  className='button-file'>Nova imagem
-            </button>
+        <div className='file--container' >
+            <form className='file--form'>
+                <button className="file--btn">
+                    Selecionar imagem
+                    <input className="file--none"
+                        type="file"
+                        name="image"
+                        onClick={onClick} />
+                </button>
+            </form>
         </div>
     )
 }
