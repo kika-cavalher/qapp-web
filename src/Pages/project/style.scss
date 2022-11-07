@@ -15,7 +15,6 @@
         margin: 0 1rem;
     }
 }
-//
 
 .page-project--container__options {
         display: flex;
@@ -68,11 +67,26 @@
         font-size: 2.5rem;
         width: 5rem;
         color: $orange-theme;
+
+        @include phone {
+            font-size: 2rem;
+            font-weight: 500;
+            width: 90%;
+        }
+    }
+
+    @include phone {
+        flex-direction: column;
+        margin: 3rem 0 2rem 0;
     }
 }
 
 .no-projects{
     margin-right: 8rem;
+
+    @include phone {
+        margin-right: 1rem;
+    }
 }
 
 .img--no-projects{

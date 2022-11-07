@@ -6,7 +6,7 @@ export default function Logo() {
     const history = useNavigate();
     function navigateToHome(e: { preventDefault: () => void; }) {
         e.preventDefault();
-        history('/');
+        history('/projects');
     }
 
 
