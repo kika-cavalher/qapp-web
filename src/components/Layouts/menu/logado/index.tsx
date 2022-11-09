@@ -6,7 +6,10 @@ import { UserAvatar } from '../../../../Pages/User/avatar';
 
 import { ButtonCloseModal } from '../../../Global/button/modal/close';
 
+import avatarDefault2 from '../../../../assets/images/avatarDefault2.jpg'
+
 import './style.scss'
+import { userInfo } from 'os';
 
 export function MenuLogado() {
     const [show, setShow] = useState(false)
@@ -26,6 +29,7 @@ export function MenuLogado() {
                 <div className='container--Initials'>
                     <button className="name--initials" onClick={handleShow}>
                         <UserAvatar
+                            image={avatarDefault2}
                             className='avatar-menu' />
                     </button>
                 </div>

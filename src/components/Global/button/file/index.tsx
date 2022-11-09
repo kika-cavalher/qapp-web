@@ -12,7 +12,7 @@ export function ButtonFile({onClick}: ButtonProps) {
                     <input className="file--none"
                         type="file"
                         name="image"
-                        onClick={onClick} />
+                        onClick={onClick}  />
                 </button>
             </form>
         </div>

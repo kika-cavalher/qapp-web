@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ButtonFile } from '../../../components/Global/button/file'
 import { ButtonSend } from '../../../components/Global/button/send'
 
@@ -8,16 +8,23 @@ import { TopMenu } from '../../../components/Layouts/menu'
 import api from '../../../services/api'
 import { UserAvatar } from '../avatar'
 
+import avatarDefault2 from '../../../assets/images/avatarDefault2.jpg'
+
 import './style.scss'
 
 
 export function ProfilePage() {
+
     const [token] = useState(localStorage.getItem('token') || '')
     const [user, setUser] = useState({
         name: "",
         email: "",
         password: "",
+        image: ""
     })
+
+    const avatarImage = (user.image !== undefined && user.image !== null) ? 
+    user.image: avatarDefault2
 
     useEffect(() => {
         
@@ -31,9 +38,9 @@ export function ProfilePage() {
 
     }, [token])
 
-    function onFileChange(){
-        console.log(user)
-    }
+    // function onFileChange(e: any){
+    //     setUser({ ...user, [e.target.name]: e.target.files[0] })
+    // }
 
     return (
         <div className="page-profile">
@@ -45,8 +52,10 @@ export function ProfilePage() {
                 <div className='main__content'>
                     <div className='container--avatar'>
                         <UserAvatar
-                            className='avatar-profile' />
-                        <ButtonFile onClick={onFileChange}/>
+                            className='avatar-profile' 
+                            image= {avatarImage} />
+                        <ButtonFile 
+                        />
                     </div>
                     <div className='page-profile--divider'>
                     </div>
