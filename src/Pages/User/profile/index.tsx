@@ -23,8 +23,8 @@ export function ProfilePage() {
     })
 
     useEffect(() => {
-        
-        api.get('/users/checkuser' , {
+
+        api.get('/users/checkuser', {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`
             }
@@ -57,30 +57,30 @@ export function ProfilePage() {
                                 <p>Nome completo</p>
                                 <input
                                     type="text"
-                                    placeholder="Insira o seu nome." 
+                                    placeholder="Insira o seu nome."
                                     value={user.name || ''}
-                                    />
+                                />
                             </div>
                             <div className='page-profile--forms__email'>
                                 <p>E-mail</p>
                                 <input
                                     type="email"
-                                    placeholder="Insira o seu e-mail." 
+                                    placeholder="Insira o seu e-mail."
                                     value={user.email || ''}
-                                    />
+                                />
                             </div>
                             <div className='page-profile--forms__email'>
                                 <p>Senha</p>
                                 <input
                                     type="password"
                                     value={user.password || '******'}
-                                    />
+                                />
                             </div>
                         </form>
                     </div>
                 </div>
                 <div className='container--btn-send'>
-                <ButtonSend />
+                    <ButtonSend />
                 </div>
             </div>
             <Footer />

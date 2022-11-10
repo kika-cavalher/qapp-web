@@ -14,10 +14,10 @@ export function UserAvatar({ className }: avatarProps) {
         image: ""
     })
 
-    
+
     useEffect(() => {
-        
-        api.get('/users/checkuser' , {
+
+        api.get('/users/checkuser', {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`
             }
@@ -27,20 +27,20 @@ export function UserAvatar({ className }: avatarProps) {
 
     }, [token])
 
-    const avatarImage = (user.image !== undefined && user.image !== null) ? 
-    user.image: avatarDefault2
+    const avatarImage = (user.image !== undefined && user.image !== null) ?
+        user.image : avatarDefault2
 
     return (
         <div className='main__avatarAndButton '>
-        <div className='main__avatar'>
-            <div className='avatar-profile'>
-                <div className='avatar--img'>
-                    <img src={avatarImage} alt="Avatar perfil" />
+            <div className='main__avatar'>
+                <div className='avatar-profile'>
+                    <div className='avatar--img'>
+                        <img src={avatarImage} alt="Avatar perfil" />
+                    </div>
                 </div>
             </div>
+            <ButtonFile />
         </div>
-        <ButtonFile />
-        </div>
-        
+
     )
 }
