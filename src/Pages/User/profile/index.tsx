@@ -20,11 +20,7 @@ export function ProfilePage() {
         name: "",
         email: "",
         password: "",
-        image: ""
     })
-
-    const avatarImage = (user.image !== undefined && user.image !== null) ? 
-    user.image: avatarDefault2
 
     useEffect(() => {
         
@@ -51,11 +47,7 @@ export function ProfilePage() {
                 </div>
                 <div className='main__content'>
                     <div className='container--avatar'>
-                        <UserAvatar
-                            className='avatar-profile' 
-                            image= {avatarImage} />
-                        <ButtonFile 
-                        />
+                        <UserAvatar />
                     </div>
                     <div className='page-profile--divider'>
                     </div>

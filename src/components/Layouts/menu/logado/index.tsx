@@ -1,15 +1,13 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
-import { AuthContext } from '../../../../contexts/UserContext'
-import { UserAvatar } from '../../../../Pages/User/avatar';
-
+import { UserAvatarMenu } from './avatar';
 import { ButtonCloseModal } from '../../../Global/button/modal/close';
 
-import avatarDefault2 from '../../../../assets/images/avatarDefault2.jpg'
+import { AuthContext } from '../../../../contexts/UserContext'
 
 import './style.scss'
-import { userInfo } from 'os';
+
 
 export function MenuLogado() {
     const [show, setShow] = useState(false)
@@ -28,9 +26,7 @@ export function MenuLogado() {
             <div className='component--openMenu'>
                 <div className='container--Initials'>
                     <button className="name--initials" onClick={handleShow}>
-                        <UserAvatar
-                            image={avatarDefault2}
-                            className='avatar-menu' />
+                        <UserAvatarMenu />
                     </button>
                 </div>
                 {show && <div className="component--menu-logado">
