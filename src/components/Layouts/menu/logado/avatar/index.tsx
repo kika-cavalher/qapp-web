@@ -32,7 +32,7 @@ export function UserAvatarMenu() {
         <div className='main__avatar'>
             <div className='avatar-menu'>
                 <div className='avatar--img'>
-                    <img src={avatarImage} alt="Avatar perfil" />
+                    <img src={avatarImage}/>
                 </div>
             </div>
         </div>

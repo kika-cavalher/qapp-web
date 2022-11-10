@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { ButtonFile } from '../../../components/Global/button/file'
 import { ButtonSend } from '../../../components/Global/button/send'
 
 import { TitlePage } from '../../../components/Layouts/body/titlePage'
