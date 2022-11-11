@@ -9,6 +9,7 @@ import avatarDefault2 from '../../../assets/images/avatarDefault2.jpg'
 
 import './style.scss'
 import UseMessage from '../../../contexts/useMessage'
+import Message from '../../../components/Layouts/messages'
 
 
 export function ProfilePage() {
@@ -48,7 +49,7 @@ export function ProfilePage() {
     async function handleSubmit(e: any) {
         e.preventDefault()
         const formData = new FormData()
-        const userFormData = (Object.keys(user) as (keyof typeof user)[]).forEach((key, index) => {
+        await (Object.keys(user) as (keyof typeof user)[]).forEach((key, index) => {
             formData.append(key, user[key])
         });
 
@@ -63,7 +64,7 @@ export function ProfilePage() {
             return error.response.data
         })
 
-        setMessage(data.message)
+        setMessage(data.msg)
     }
 
     return (
@@ -73,6 +74,7 @@ export function ProfilePage() {
                 <div className='page-profile--header'>
                     <TitlePage titlePage={'Perfil'} />
                 </div>
+                <Message />
                 <div className='main__content'>
                     <div className='main__forms'>
                         <form onSubmit={handleSubmit} className='main-profile__forms'>
@@ -112,11 +114,10 @@ export function ProfilePage() {
                                             type="email"
                                             placeholder="Insira o seu e-mail."
                                             name='email'
-                                            onChange={handleChange}
                                             value={user.email || ''}
                                         />
                                     </div>
-                                    <div className='page-profile--forms__email'>
+                                    <div className='page-profile--forms__password'>
                                         <p>Senha</p>
                                         <input
                                             type="password"
