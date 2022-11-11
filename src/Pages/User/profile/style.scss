@@ -1,13 +1,13 @@
 @import '../../../styles//variables.scss';
 
-.page-profile--main__container{
+.page-profile--main__container {
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - 13rem);
     margin: 0 5rem
 }
 
-.main__content{
+.main__content {
     display: flex;
     flex-direction: row;
     margin-top: 2rem;
@@ -18,47 +18,116 @@
     }
 }
 
-.container--avatar{
+.main__forms{
+    width: 90%;
+}
+
+.main__forms--content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    @include phone {
+        flex-direction: column;
+    }
+}
+
+.main__avatar--content{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.main__img--avatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    border: 3px solid $medium-grey;
+    box-shadow: 1px 1px 8px;
+    max-height: 10rem;
+}
+
+.avatar-profile {
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    align-content: center;
     justify-content: center;
 }
 
-.page-profile--divider{
+.page-profile--divider {
     width: 3rem;
     border-right: 1px solid $medium-grey;
-    height: 12rem;
+    height: 15rem;
 
     @include phone {
         display: none;
     }
 }
 
-.main__forms{
-    width: 60%;
-    max-width: 30rem;
-    margin-left: 3rem;
-    margin-bottom: 1rem;
+.forms__content{
+    margin: 0 0 2rem 2rem;
+    width: 100%;
 
     @include phone {
-        margin-left: 0;
-        width: 100%;
+        margin: 0 0 2rem 0;
     }
-}
 
-.main-profile__forms{
-    p{
+    input{
+        width: 80%;
+        max-width: 40rem;
+
+        @include phone {
+            width: 100%;
+        }
+    }
+
+    p {
         font-weight: 600;
         margin-top: 1rem;
     }
 }
 
-.container--btn-send{
-    width: 80%;
-    margin-bottom: 1rem;
+.file--none {
+    display: none;
+}
 
-    @include phone {
-        width: 100%;
+.file--btn {
+    align-items: center;
+    justify-content: center;
+    background: #c6c6c9;
+    color: #515158;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 2rem;
+    width: 10rem;
+    margin: 1rem 0;
+    padding: 2%;
+
+    &:hover {
+        background: $turquoise;
+        color: white;
     }
 }
+
+.container--btn-send{
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 60rem;
+}
+
+// .container--btn-send {
+//     width: 80%;
+//     margin-bottom: 1rem;
+
+//     @include phone {
+//         width: 100%;
+//     }
+// }
