@@ -5,12 +5,12 @@ import { TitlePage } from '../../../components/Layouts/body/titlePage'
 import { Footer } from '../../../components/Layouts/footer'
 import { TopMenu } from '../../../components/Layouts/menu'
 import api from '../../../services/api'
-import avatarDefault2 from '../../../assets/images/avatarDefault2.jpg'
 
 import './style.scss'
 import UseMessage from '../../../contexts/useMessage'
 import Message from '../../../components/Layouts/messages'
 import { UserAvatarMenu } from '../../../components/Layouts/avatar'
+import { UserAvatar } from '../../../components/Layouts/avatar/profile'
 
 
 export function ProfilePage() {
@@ -35,10 +35,6 @@ export function ProfilePage() {
         })
 
     }, [token])
-
-    function onFileChange(e: any) {
-        setUser({ ...user, [e.target.name]: e.target.files[0] })
-    }
 
     function handleChange(e: any) {
         setUser({ ...user, [e.target.name]: e.target.value })
@@ -77,8 +73,8 @@ export function ProfilePage() {
                     <div className='main__forms'>
                         <div className='main__forms--content'>
                             <div className='main__avatar--content'>
-                            <UserAvatarMenu 
-                            className='avatar-profile'/>
+                            <UserAvatar
+                                haveButton="haveButton" />
                             </div>
                             <form onSubmit={handleSubmit} className='main-profile__forms'>
                                 <div className='forms__content'>
