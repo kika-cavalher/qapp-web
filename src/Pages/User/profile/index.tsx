@@ -10,6 +10,7 @@ import avatarDefault2 from '../../../assets/images/avatarDefault2.jpg'
 import './style.scss'
 import UseMessage from '../../../contexts/useMessage'
 import Message from '../../../components/Layouts/messages'
+import { UserAvatarMenu } from '../../../components/Layouts/avatar'
 
 
 export function ProfilePage() {
@@ -34,9 +35,6 @@ export function ProfilePage() {
         })
 
     }, [token])
-
-    const avatarImage = (user.image !== undefined && user.image !== null) ?
-        user.image : avatarDefault2
 
     function onFileChange(e: any) {
         setUser({ ...user, [e.target.name]: e.target.files[0] })
@@ -77,26 +75,12 @@ export function ProfilePage() {
                 <Message />
                 <div className='main__content'>
                     <div className='main__forms'>
-                        <form onSubmit={handleSubmit} className='main-profile__forms'>
-                            <div className='main__forms--content'>
-                                <div className='main__avatar--content'>
-                                    <div className='main__img--avatar'>
-                                        <div className='avatar-profile'>
-                                            <div className='avatar--img'>
-                                                <img src={avatarImage} />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button className="file--btn">
-                                            Selecionar imagem
-                                            <input className="file--none"
-                                                type="file"
-                                                name="image"
-                                            />
-                                    </button>
-                                </div>
-                                <div className='page-profile--divider'>
-                                </div>
+                        <div className='main__forms--content'>
+                            <div className='main__avatar--content'>
+                            <UserAvatarMenu 
+                            className='avatar-profile'/>
+                            </div>
+                            <form onSubmit={handleSubmit} className='main-profile__forms'>
                                 <div className='forms__content'>
                                     <div className='page-profile--forms__name'>
                                         <p>Nome completo</p>
@@ -127,14 +111,14 @@ export function ProfilePage() {
                                         />
                                     </div>
                                 </div>
-                            </div>
-                            <div className='container--btn-send'>
-                                <ButtonSend />
-                            </div>
-                        </form>
+                                <div className='container--btn-send'>
+                                    <ButtonSend />
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </div >
+            </div >
             <Footer />
         </div >
     )

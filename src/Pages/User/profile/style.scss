@@ -9,82 +9,29 @@
 
 .main__content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 2rem;
     align-items: center;
-
-    @include phone {
-        flex-direction: column;
-    }
 }
 
 .main__forms{
-    width: 90%;
+    width: 70%;
+    max-width: 30rem;
 }
 
 .main__forms--content{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    @include phone {
-        flex-direction: column;
-    }
-}
-
-.main__avatar--content{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.main__img--avatar{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    overflow: hidden;
-    position: relative;
-    border: 3px solid $medium-grey;
-    box-shadow: 1px 1px 8px;
-    max-height: 10rem;
-}
-
-.avatar-profile {
-    width: 10rem;
-    height: 10rem;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-}
-
-.page-profile--divider {
-    width: 3rem;
-    border-right: 1px solid $medium-grey;
-    height: 15rem;
-
-    @include phone {
-        display: none;
-    }
+.main-profile__forms{
+    width: 100%;
+    flex-direction: column;
 }
 
 .forms__content{
-    margin: 0 0 2rem 2rem;
-    width: 100%;
-
-    @include phone {
-        margin: 0 0 2rem 0;
-    }
-
-    input{
-        width: 80%;
-        max-width: 40rem;
-
-        @include phone {
-            width: 100%;
-        }
-    }
+    margin: 2rem 0;
 
     p {
         font-weight: 600;
@@ -93,48 +40,7 @@
 }
 
 .page-profile--forms__email{
-
     input{
-        background: $medium-grey;
+        background: $noClick-grey;
     }
 }
-
-.file--none {
-    display: none;
-}
-
-.file--btn {
-    align-items: center;
-    justify-content: center;
-    background: #c6c6c9;
-    color: #515158;
-    font-size: 1rem;
-    font-weight: 600;
-    border: 0;
-    border-radius: 8px;
-    cursor: pointer;
-    height: 2rem;
-    width: 10rem;
-    margin: 1rem 0;
-    padding: 2%;
-
-    &:hover {
-        background: $turquoise;
-        color: white;
-    }
-}
-
-.container--btn-send{
-    margin-bottom: 2rem;
-    width: 100%;
-    max-width: 60rem;
-}
-
-// .container--btn-send {
-//     width: 80%;
-//     margin-bottom: 1rem;
-
-//     @include phone {
-//         width: 100%;
-//     }
-// }
