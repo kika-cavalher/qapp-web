@@ -32,6 +32,7 @@ export type Message = {
 }
 
 export type avatarProps = {
-    className?: string,
-    image?: string,
+    src: string, 
+    width: number
+    alt?: string, 
 }

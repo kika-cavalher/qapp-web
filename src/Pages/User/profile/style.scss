@@ -12,10 +12,14 @@
     flex-direction: column;
     margin-top: 2rem;
     align-items: center;
+
+    @include phone {
+        margin-top: 1rem;
+    }
 }
 
 .main__forms{
-    width: 70%;
+    width: 100%;
     max-width: 30rem;
 }
 
@@ -33,9 +37,19 @@
 .forms__content{
     margin: 2rem 0;
 
+    @include phone {
+        margin: 1rem 0;
+    }
+
     p {
         font-weight: 600;
         margin-top: 1rem;
+    }
+
+    input {
+        font-weight: 500;
+        margin-top: 0.8rem;
+        color: $grey_text;
     }
 }
 
