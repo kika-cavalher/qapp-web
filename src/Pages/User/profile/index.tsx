@@ -72,10 +72,8 @@ export function ProfilePage() {
                 <div className='main__content'>
                     <div className='main__forms'>
                         <div className='main__forms--content'>
-                            <div className='main__avatar--content'>
                             <UserAvatar
                                 haveButton="haveButton" />
-                            </div>
                             <form onSubmit={handleSubmit} className='main-profile__forms'>
                                 <div className='forms__content'>
                                     <div className='page-profile--forms__name'>

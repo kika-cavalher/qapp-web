@@ -32,13 +32,12 @@ export function UserAvatar({ haveButton }: avatarProps) {
 
     async function handleSubmit(e: any) {
         e.preventDefault()
-
         const formData = new FormData()
         await (Object.keys(user) as (keyof typeof user)[]).forEach((key, index) => {
             formData.append(key, user[key])
         });
 
-        const data = await api.patch(`/users/edit/${user._id}`, formData, {
+       await api.patch(`/users/edit/${user._id}`, formData, {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`,
                 'Content-Type': 'multipart/form-data'
@@ -48,42 +47,28 @@ export function UserAvatar({ haveButton }: avatarProps) {
         }).catch((error) => {
             return error.response.data
         })
-
     }
 
-    // className={`${styles.rounded_image} ${styles[width]}`}
-
-    // {user.image ? (
-    //     <img
-    //         className={`${styles.rounded_image}`}
-    //         src={user.image}
-    //         alt={"Image logo user"}
-    //     />)
-    //     : (<img
-    //         className={`${styles.rounded_image}`}
-    //         src={avatarDefault}
-    //         alt={"Image logo Default"}
-    //     />)
-    // }
-
     return (
-        <div className='main__avatar'>
-            {( user.image || preview ) && (
-               <img
-                src={preview ? URL.createObjectURL(preview) : `http://localhost:5000/images/users/${user.image}`}
-                alt={"Image logo user"}
-                   /> 
-            )}
-            <div
-                className={`${styles.change_image} ${styles[haveButton]}`}
-            >
-                <form className="avatar--btn" onSubmit={handleSubmit}>
-                    <input
-                        className={`${styles.input_none}`}
-                        type="file"
-                        name="image"
-                        onChange={onFileChange}
+        <div className={`${styles.main_avatar}`}>
+            <div className={`${styles.rounded_image}`}>
+                {(user.image || preview) && (
+                    <img className={`${styles.avatar_image}`}
+                        src={preview ? URL.createObjectURL(preview) : `http://localhost:5000/images/users/${user.image}`}
                     />
+                )}
+            </div>
+            <div className={`${styles.change_image} ${styles[haveButton]}`}>
+                <form className="avatar--form" onSubmit={handleSubmit}>
+                    <label className={`${styles.avatar_btn}`}>Trocar imagem
+                        <input
+                            className={`${styles.input_none}`}
+                            type="file"
+                            name="image"
+                            onChange={onFileChange}
+                        />
+                        </label>
+                    <button onClick={handleSubmit}>Confirmar imagem</button>
                 </form>
             </div>
         </div>
