@@ -32,10 +32,7 @@ export function UserAvatar({ haveButton }: avatarProps) {
 
     async function handleSubmit(e: any) {
         e.preventDefault()
-        const formData = new FormData()
-        await (Object.keys(user) as (keyof typeof user)[]).forEach((key, index) => {
-            formData.append(key, user[key])
-        });
+        const formData = new FormData();
 
        await api.patch(`/users/edit/${user._id}`, formData, {
             headers: {
@@ -54,7 +51,7 @@ export function UserAvatar({ haveButton }: avatarProps) {
             <div className={`${styles.rounded_image}`}>
                 {(user.image || preview) && (
                     <img className={`${styles.avatar_image}`}
-                        src={preview ? URL.createObjectURL(preview) : `http://localhost:5000/images/users/${user.image}`}
+                    src={preview ? URL.createObjectURL(preview) : `http://localhost:5000/${user.image}`}
                     />
                 )}
             </div>
