@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import api from '../../../../services/api'
 import { avatarProps } from '../../../../types/user'
-import avatarDefault from '../../../../assets/images/avatarDefault.jpg'
 
 import styles from './avatarImage.module.css'
 
@@ -51,7 +50,9 @@ export function UserAvatar({ haveButton }: avatarProps) {
             <div className={`${styles.rounded_image}`}>
                 {(user.image || preview) && (
                     <img className={`${styles.avatar_image}`}
-                    src={preview ? URL.createObjectURL(preview) : `http://localhost:5000/${user.image}`}
+                    src={user.image} alt="Imagem padrão do Avatar"
+                    // src={preview ? URL.createObjectURL(preview) : `http://localhost:5000/${user.image}`}
+
                     />
                 )}
             </div>

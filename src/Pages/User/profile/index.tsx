@@ -9,8 +9,7 @@ import api from '../../../services/api'
 import './style.scss'
 import UseMessage from '../../../contexts/useMessage'
 import Message from '../../../components/Layouts/messages'
-import { UserAvatarMenu } from '../../../components/Layouts/avatar'
-import { UserAvatar } from '../../../components/Layouts/avatar/profile'
+import { UserAvatarSimple } from '../../../components/Layouts/avatar'
 
 
 export function ProfilePage() {
@@ -72,8 +71,8 @@ export function ProfilePage() {
                 <div className='main__content'>
                     <div className='main__forms'>
                         <div className='main__forms--content'>
-                            <UserAvatar
-                                haveButton="haveButton" />
+                            <UserAvatarSimple
+                                className='avatar-profile' />
                             <form onSubmit={handleSubmit} className='main-profile__forms'>
                                 <div className='forms__content'>
                                     <div className='page-profile--forms__name'>

@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
-import { UserAvatarMenu } from '../../avatar';
+import { UserAvatarSimple } from '../../avatar';
 import { ButtonCloseModal } from '../../../Global/button/modal/close';
 
 import { AuthContext } from '../../../../contexts/UserContext'
@@ -26,7 +26,7 @@ export function MenuLogado() {
             <div className='component--openMenu'>
                 <div className='container--Initials'>
                     <button className="name--initials" onClick={handleShow}>
-                    <UserAvatarMenu 
+                    <UserAvatarSimple 
                     className='avatar-menu'/>
                     </button>
                 </div>

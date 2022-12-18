@@ -3,13 +3,13 @@ import { ButtonProps } from '../../../types/button'
 
 import './style.scss'
 
-export function UserAvatarMenu({ className}: ButtonProps) {
+export function UserAvatarSimple({ className}: ButtonProps) {
 
     return (
         <div className='main__avatar'>
             <div className={className}>
                 <div className='avatar--img'>
-                    <img src={avatarDefault2}/>
+                    <img src={avatarDefault2} alt="Avatar padrão"/>
                 </div>
             </div>
         </div>
