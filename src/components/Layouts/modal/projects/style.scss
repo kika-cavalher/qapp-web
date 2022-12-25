@@ -1,6 +1,219 @@
+@import '../../../../styles/variables.scss';
+
+
 .main--modal__project{
-    background-color: red;
-    width: 80%;
+    width: 100vw;
     height: 100vh;
-    color: white;
+    background-color: $black-with-transparency;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.container--modal__project{
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    height: 91vh;
+    color: $light-grey;
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 5rem;
+    background-color: $grey_modal;
+    z-index: 999;
+
+    @include slim {
+        height: 90vh;
+    }
+
+    @include phone {
+        height: 90vh;
+    }
+}
+
+.content--modal__header{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @include phone {
+        align-items: center;
+    }
+}
+
+.title--modal__project{
+    color: $grey_text;
+    height: 5rem;
+    font-weight: 500;
+    font-size: 2rem;
+    border-bottom: 5px solid $orange-theme;
+    margin: 2rem 0 0 3rem;
+    display: flex;
+    align-items: center;
+    border-radius: 8%;
+    width: 50%;
+    justify-content: center;
+
+    @include slim {
+        font-size: 1.5rem;
+    }
+
+    @include tablet {
+        width: 90%;
+        font-size: 1.5rem;
+    }
+
+    @include phone {
+        margin: 1rem 0 0 2rem;
+        font-size: 1.2rem;
+        width: 75%;
+        text-align: center;
+        border-radius: 3%;
+    }
+}
+
+.content--modal__idProject{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    align-items: center;
+
+    @include tablet {
+        margin-top: 2rem;
+    }
+}
+
+.title--Idproduct{
+    color: $grey_text;
+    font-weight: 500;
+    font-size: 1.5rem;
+
+    @include phone {
+        font-size: 1.2rem;
+    }
+}
+
+.input--Idproduct{
+    background-color: $orange-theme;
+    border-radius: 15px;
+    color: $light-grey;
+    font-weight: 400;
+    font-size: 2rem;
+    height: 4rem;
+    width: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include phone {
+        font-size: 1.8rem;
+        height: 3rem;
+        width: 8rem;
+    }
+}
+
+.content--modal__form{
+    margin: 4rem 5rem 0 5rem;
+
+    @include slim {
+        margin: 2rem 4rem 0 4rem;
+    }
+
+    @include phone {
+        margin: 2rem 1rem 0 1rem;
+    }
+}
+
+.content--form__title{
+    width: 70%;
+    margin: 2rem 0;
+
+        @include tablet {
+            width: 90%;
+        }
+
+        @include phone {
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+    p{
+        color: $grey_text;
+        font-weight: 500;
+        font-size: 1.5rem;
+
+        @include phone {
+            font-size: 1rem;
+        }
+    }
+
+    input{
+        height: 4rem;
+        font-size: 1.2rem;
+        color: $grey_border;
+
+        @include slim {
+            height: 3rem;
+        }
+
+        @include phone {
+            font-size: 0.7rem;
+        }
+    }
+}
+
+.content--form__describe{
+    width: 70%;
+    margin: 4rem 0;
+
+    @include slim {
+        margin: 2rem 0;
+    }
+
+    @include tablet {
+        width: 90%;
+    }
+
+    @include phone {
+        width: 100%;
+        margin: 2rem 0;
+    }
+
+
+    p{
+        color: $grey_text;
+        font-weight: 500;
+        font-size: 1.5rem;
+
+        @include phone {
+            font-size: 1rem;
+        }
+    }
+
+    textarea{
+        height: 8rem;
+        font-size: 1.5rem;
+        color: $grey_border;
+        width: 100%;
+        border: 1px solid $grey_border;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-top: 0.5rem;
+
+
+        @include phone {
+            font-size: 0.7rem;
+        }
+
+        @include slim {
+            height: 5rem;
+            font-size: 1.2rem;
+        }
+    }
 }

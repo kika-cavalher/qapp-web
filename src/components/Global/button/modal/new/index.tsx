@@ -24,8 +24,11 @@ export function ButtonNewModal() {
             {show && (
                 <>
                     <div className='main--modal'>
+                        <div className='main--header__modal'>
+                            <button className='buttonCLoseModal' onClick={handleClose}>Voltar</button>
+                            <h1 className='TitleModal'>Adicionar novo Projeto</h1>
+                        </div>
                         <ModalProject />
-                        <ButtonCloseModal onClick={handleClose} />
                     </div>
                 </>
             )}
