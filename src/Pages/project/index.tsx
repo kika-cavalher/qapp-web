@@ -1,12 +1,13 @@
 import { TopMenu } from "../../components/Layouts/menu";
 import { Footer } from "../../components/Layouts/footer";
 import { TitlePage } from "../../components/Layouts/body/titlePage";
-import { ButtonNewModal } from "../../components/Global/button/modal/new";
+
 import noData from "../../assets/images/noData.svg"
 
 // import { ListProject } from "./list";
 import './style.scss'
 import { useState } from "react";
+import { ButtonNewModal } from "../../components/Layouts/modal/new";
 
 export function ProjectPage() {
     const [projects, setProjects] = useState([])
@@ -17,7 +18,7 @@ export function ProjectPage() {
             <div className='page-project--main__container'>
                 <TitlePage titlePage={'Projetos'} />
                 <div className='page-project--container__options'>
-                    <ButtonNewModal />
+                    <ButtonNewModal _id={""} name={""} />
                 </div>
                 {projects.length > 0 && (<h1>Tem Projects</h1>)}
                 {projects.length === 0 && (<div className='page-project--list page-project--waiting'>

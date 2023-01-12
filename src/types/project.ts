@@ -3,8 +3,8 @@ import React from "react"
 export type ProjectProps = {
     _id: string,
     name: string
-    content: string,
-    describe: string,
+    content?: string,
+    describe?: string,
 }
 
 export type CreateProjectProps = {
