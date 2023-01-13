@@ -11,6 +11,7 @@ import './style.scss'
 
 export function ButtonNewModal(projectData : ProjectProps ) {
     const [show, setShow] = useState(false)
+    const [token] = useState(localStorage.getItem('token') || '')
     const handleOpen = () => setShow(true)
     const handleClose = () => setShow(false)
 
@@ -19,7 +20,6 @@ export function ButtonNewModal(projectData : ProjectProps ) {
         name: "",
         describe: "",
     })
-    const [token] = useState(localStorage.getItem('token') || '')
 
     function handleChange(e: any) {
         setProject({ ...project, [e.target.name]: e.target.value })
@@ -34,8 +34,8 @@ export function ButtonNewModal(projectData : ProjectProps ) {
         })
             .then((response) => {
                 setTimeout(() => {
-                    setShow(false)
-                }, 3000)
+                    window.location.reload();
+                }, 2000)
                 return response.data
             })
             .catch((err) => {

@@ -1,9 +1,11 @@
-@import '../../../../styles/variables.scss';
+@import '../../../../../styles/variables.scss';
 
-.btn__edit {
+.btn-edit {
     display: flex;
     flex-direction: column;
     align-items: center;
+    outline: none;
+    border: none;
 
     button {
         align-items: center;
@@ -42,4 +44,6 @@
 
 img {
     cursor: pointer;
+    height: 2rem;
+    width: 2rem;
 }

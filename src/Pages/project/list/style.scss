@@ -1,6 +1,6 @@
 @import '../../../styles/variables.scss';
 
-.page-list--container{
+.page-list--container {
     display: flex;
     width: 100%;
 }
@@ -21,7 +21,212 @@
     }
 }
 
-#page-item-project{
+#page-item-project {
     width: 100%;
     margin-bottom: 2rem;
+}
+
+@import '../../../styles/variables.scss';
+
+.item-project--container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    cursor: pointer;
+    background-color: $light-grey;
+    border-radius: 0 10px 10px 0;
+}
+
+.item-project--head {
+    display: flex;
+    background: $orange-theme-with-transparency;
+    border-radius: 10px 0 0 10px;
+    width: 150px;
+    height: 6rem;
+    color: $white-offwhite;
+    justify-content: center;
+
+    @include slim {
+        width: 150px;
+    }
+
+    @include tablet {
+        max-width: 110px;
+        min-width: 70px;
+    }
+
+    @include phone {
+        max-width: 100px;
+        min-width: 70px;
+    }
+}
+
+.item-project--container__initials {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        text-transform: uppercase;
+
+        @include tablet {
+            font-size: 1.2rem;
+        }
+
+        @include phone {
+            font-size: 1.2rem;
+        }
+    }
+
+    &::before {
+        font-size: 1.5rem;
+        font-weight: 500;
+        content: 'ID-';
+        flex: 1;
+        margin-right: 0.2rem;
+
+        @include tablet {
+            font-size: 1.2rem;
+        }
+
+        @include phone {
+            font-size: 1.1rem;
+        }
+    }
+}
+
+.item-project--content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 1rem;
+
+    @include tablet {
+        max-width: 50%;
+        min-width: 35%;
+    }
+
+    @include phone {
+        max-width: 42%;
+        min-width: 38%;
+    }
+}
+
+.item-project--title {
+    width: 70%;
+    margin-bottom: 0.2rem;
+
+    .item-project--title__title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        word-break: break-all;
+
+        @include slim {
+            font-size: 1.2rem;
+        }
+
+        @include tablet {
+            font-size: 1.2rem;
+        }
+
+        @include phone {
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.item-project--subtitle {
+    width: 70%;
+
+
+    .item-project--title__subtitle {
+        font-weight: 500;
+        font-size: 0.9rem;
+        word-break: break-all;
+
+        @include slim {
+            font-size: 0.8rem;
+        }
+
+        @include tablet {
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 0.8rem;
+        }
+
+        @include phone {
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 0.8rem;
+        }
+    }
+}
+
+.item-project--divider {
+    border-left: 2px solid $grey-with-transparency;
+    width: 2rem;
+    height: 3rem;
+
+    @include tablet {
+        border-left: 1px solid $grey-with-transparency;
+        max-width: 1rem;
+    }
+
+    @include phone {
+        border-left: 1px solid $grey-with-transparency;
+        width: 1rem;
+    }
+}
+
+.item-project--more-options {
+    display: flex;
+    flex-direction: row;
+    width: 8%;
+    margin-right: 2rem;
+    justify-content: space-between;
+
+    @include slim {
+        margin-right: 3rem;
+    }
+
+    @include tablet {
+        max-width: 8%;
+        min-width: 15%;
+    }
+
+    .btn-crud {
+
+        button {
+            margin: 0.5rem 0 0.4rem 0;
+            border: none;
+            background: $transparente
+        }
+
+        img {
+            width: 40px;
+            height: 40px;
+
+            @include slim {
+                width: 30px;
+                height: 30px;
+            }
+
+            @include phone {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+
+}
+
+.btn-crud-delete {
+    margin-left: 1rem;
 }
