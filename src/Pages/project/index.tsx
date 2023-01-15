@@ -35,7 +35,7 @@ export function ProjectPage() {
             <div className='page-project--main__container'>
                 <TitlePage titlePage={'Projetos'} />
                 <div className='page-project--container__options'>
-                    <ButtonNewModal _id={""} name={""} />
+                    <ButtonNewModal _id={""} name={""} content={""} />
                 </div>
                 {projects.length > 0 && <ListProject /> }
                 {projects.length === 0 && (<div className='page-project--list page-project--waiting'>

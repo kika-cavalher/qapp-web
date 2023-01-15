@@ -18,9 +18,9 @@ function Message() {
             setShow(true)
             setMessage(message)
 
-            setTimeout(() => {
-                setShow(false)
-            }, 3000)
+            // setTimeout(() => {
+            //     setShow(false)
+            // }, 3000)
         })
     }, [])
 

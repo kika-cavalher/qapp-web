@@ -62,6 +62,8 @@ export default function useAuth() {
         setAuthenticated(false)
         localStorage.removeItem('token')
         api.defaults.headers.common['Authorization'] = false
+        navigate('/auth/sign-in')
+        window.location.reload();
     }
 
     return { authenticated, registerUser, login, logout }
