@@ -38,7 +38,7 @@ export function ListProject() {
                 setTimeout(() => {
                     window.location.reload();
                 }, 2000)
-                return response.data.projects
+                return response.data
             })
             .catch((err) => {
                 return err.response.data
@@ -50,7 +50,7 @@ export function ListProject() {
     return (
         <div id="page-list-project">
             <div className="page-list--itens">
-            <Message />
+                <Message />
                 {projects?.map((project: any) =>
                     <div className="page-list--container" key={project._id}>
                         <div id="page-item-project">
@@ -76,7 +76,7 @@ export function ListProject() {
                                     <div className="item-project--more-options">
 
                                         <ButtonEdit />
-                                        <ButtonDelete onClick={() => removeProject(project._id)}/>
+                                        <ButtonDelete onClick={() => removeProject(project._id)} />
                                     </div>
 
                                 </div>

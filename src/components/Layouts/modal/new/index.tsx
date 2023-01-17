@@ -75,7 +75,6 @@ export function ButtonNewModal(projectData: ProjectProps) {
             {show && (
                 <div className='main--modal'>
                     <div className='main--header__modal'>
-                    <Message />
                         <button className='buttonCLoseModal' onClick={handleClose}>Voltar</button>
                         <h1 className='TitleModal'>Adicionar novo Projeto</h1>
                     </div>
