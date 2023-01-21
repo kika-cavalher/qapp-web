@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ButtonDelete } from '../../../components/Global/button/CRUD/delete'
-import { ButtonEdit } from '../../../components/Global/button/CRUD/edit'
 import Message from '../../../components/Layouts/messages'
+import { ButtonEditModal } from '../../../components/Layouts/modal/edit'
 import UseMessage from '../../../contexts/useMessage'
 import api from '../../../services/api'
 
@@ -44,7 +44,7 @@ export function ListProject() {
                 return err.response.data
             })
 
-        setMessage(data.msg)
+        setMessage(data.mgg)
     }
 
     return (
@@ -75,7 +75,7 @@ export function ListProject() {
                                     <div className="item-project--divider"></div>
                                     <div className="item-project--more-options">
 
-                                        <ButtonEdit />
+                                        <ButtonEditModal _id={project._id} name={project.name} content={project.content} describe={project.describe}  />
                                         <ButtonDelete onClick={() => removeProject(project._id)} />
                                     </div>
 

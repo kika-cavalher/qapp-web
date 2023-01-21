@@ -4,11 +4,14 @@ import UseMessage from '../../../../contexts/useMessage'
 import api from '../../../../services/api'
 import { ProjectProps } from '../../../../types/project'
 import { ButtonSend } from '../../../Global/button/send'
-import Message from '../../messages'
+
+import editCrud  from '../../../../assets/icon/edit-crud.png'
 
 import './style.scss'
+import { useParams } from 'react-router'
+import Message from '../../messages'
 
-export function ButtonNewModal(projectData: ProjectProps) {
+export function ButtonEditModal(projectData: ProjectProps) {
     const [projects, setProjects] = useState([])
     const [project, setProject] = useState(projectData || {
         name: "",
@@ -20,10 +23,10 @@ export function ButtonNewModal(projectData: ProjectProps) {
     const [token] = useState(localStorage.getItem('token') || '')
     const handleOpen = () => setShow(true)
     const handleClose = () => setShow(false)
-    const handleContent = `00${projects.length+1}`
+    const {id} = useParams()
 
     useEffect(() => {
-        api.get('/projects/', {
+        api.get(`/projects/${project._id}`, {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`
             }
@@ -34,7 +37,7 @@ export function ButtonNewModal(projectData: ProjectProps) {
             .catch((err) => {
                 return err.response.data
             })
-    }, [token])
+    }, [token, id])
 
     function handleChange(e: any) {
         setProject({ ...project, [e.target.name]: e.target.value })
@@ -42,8 +45,7 @@ export function ButtonNewModal(projectData: ProjectProps) {
 
     async function handleSubmit(e: any) {
         e.preventDefault()
-        project.content = `00${projects.length+1}`
-        const data = await api.post('/projects/create', project, {
+        const data = await api.patch(`/projects/${project._id}`, project, {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`
             }
@@ -57,39 +59,36 @@ export function ButtonNewModal(projectData: ProjectProps) {
             .catch((err) => {
                 return err.response.data
             })
-        
-        setMessage(data.msg)
+
+        setMessage(data.mgg)
     }
 
     return (
         <>
-            <div className='main--btn_new'>
-                <div className='container--btn_new'>
-                    <button className="img--add"
-                        onClick={handleOpen}>+</button>
-                    <button className='btn_new'
-                        onClick={handleOpen}>Novo Projeto</button>
-                </div>
+            <div className='container--crud-edit' >
+                <button className='btn-edit' onClick={handleOpen}>
+                    <img className="img--btn__edit" src={editCrud} alt="icone para editar" />
+                </button>
             </div>
-            <Message />
             {show && (
                 <div className='main--modal'>
                     <div className='main--header__modal'>
                         <button className='buttonCLoseModal' onClick={handleClose}>Voltar</button>
-                        <h1 className='TitleModal'>Adicionar novo Projeto</h1>
+                        <h1 className='TitleModal'>Editar Projeto</h1>
                     </div>
                     <div className='main--modal__project'>
                         <div className='container--modal__project'>
+                        <Message />
                             <form className='content--modal__form' onSubmit={handleSubmit}>
                                 <div className='content--modal__header'>
-                                <h1 className='title--modal__project'>Segmente os seus projetos para melhor gerir e organizar.</h1>
-                                <div className='content--modal__idProject'>
-                                    <h1 className='title--Idproduct'>Id do projeto</h1>
-                                    <input className='input--Idproduct'
-                                        type="text"
-                                        name='content'
-                                        value={project.content || handleContent } />
-                                </div>
+                                    <h1 className='title--modal__project'>Segmente os seus projetos para melhor gerir e organizar.</h1>
+                                    {/* <div className='content--modal__idProject'>
+                                        <h1 className='title--Idproduct'>Id do projeto</h1>
+                                        <input className='input--Idproduct'
+                                            type="text"
+                                            name='content'
+                                            value={project.content} />
+                                    </div> */}
                                 </div>
                                 <div className='content--form__title'>
                                     <p>Título</p>
