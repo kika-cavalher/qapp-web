@@ -204,3 +204,20 @@ input {
 .page-register--forms__confirm-password {
     margin-bottom: 2rem !important;
 }
+
+.page-login--main__img {
+    overflow: hidden;
+    width: 55vw;
+    height: 100vh;
+    object-fit: cover;
+    box-shadow: -8px 0px 20px rgba(0, 0, 0, 0.1);
+ 
+    img{
+        width: 100%;
+        height: 100%;
+    }
+
+    @include tablet {
+        display: none;
+    }
+}
